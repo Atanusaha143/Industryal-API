@@ -7,8 +7,12 @@ function App() {
     <>
       <Router>
         <Switch>
+          {/* Product */}
           <Route exact path="/product">
-            <Home title="dashboard"></Home>
+            <Home title="dashboard" />
+          </Route>
+          <Route exact path="/product/create">
+            <Home title="add-product" />
           </Route>
         </Switch>
       </Router>

@@ -2,6 +2,7 @@ import Header from "../screens/Header";
 import SideNavbar from "../screens/SideNavbar";
 import Footer from "../screens/Footer";
 import Dashboard from "./Dashboard";
+import AddProduct from "../product-channel/AddProduct";
 
 const Home = ({ title }) => {
   return (
@@ -20,7 +21,7 @@ const Home = ({ title }) => {
             if (title === "dashboard") {
               return <Dashboard></Dashboard>;
             } else if (title === "add-product") {
-              //return <AddProduct></AddProduct>;
+              return <AddProduct></AddProduct>;
             } else if (title === "product-list") {
               //return <ProductList></ProductList>;
             } else if (title === "faulty-product-list") {
