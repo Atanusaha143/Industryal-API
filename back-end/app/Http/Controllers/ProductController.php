@@ -50,7 +50,7 @@ class ProductController extends Controller
 
     public function getProducts()
     {
-        $allProducts = product_table::all();
+        $allProducts = product_table::where("product_condition","Good")->get();
         return response()->json($allProducts);
     }
 

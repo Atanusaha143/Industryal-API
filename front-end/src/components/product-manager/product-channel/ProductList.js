@@ -17,6 +17,7 @@ const ProductList = () => {
   const MySwal = withReactContent(Swal);
   const history = useHistory();
   const [list, setList] = useState([]);
+  const [exportList, setExportList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,6 +28,7 @@ const ProductList = () => {
       .get("http://127.0.0.1:8000/api/product/list")
       .then(function (response) {
         setList(response.data);
+        setExportList(response.data);
         setLoading(false);
       });
   }, []);
@@ -112,7 +114,7 @@ const ProductList = () => {
           width: { wch: 25 },
         },
       ],
-      data: list.map((data) => [
+      data: exportList.map((data) => [
         { value: data.product_id, style: { font: { sz: "14" } } },
         { value: data.product_name, style: { font: { sz: "14" } } },
         { value: data.status_sell, style: { font: { sz: "14" } } },
@@ -208,9 +210,9 @@ const ProductList = () => {
               </div>{" "}
             </center>
           )}
-          {list.length !== 0 ? (
+          {exportList.length !== 0 ? (
             <ExcelFile
-              filename="Employee List"
+              filename="Product List"
               element={
                 <center>
                   <button
@@ -223,7 +225,7 @@ const ProductList = () => {
                 </center>
               }
             >
-              <ExcelSheet dataSet={DataSet} name="Employee List" />
+              <ExcelSheet dataSet={DataSet} name="Product List" />
             </ExcelFile>
           ) : null}
           {/* component */}
