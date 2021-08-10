@@ -5,12 +5,28 @@ import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom"
 
 const UserList=()=>{
+    const history = useHistory();
     const[list,setList] = useState([]);
     useEffect( async ()=>{
         let result = await fetch("http://127.0.0.1:8000/api/HR/user/list");
         result = await result.json();
         setList(result);
     },[])
+
+    function deleteUser(id)
+    {
+        if(window.confirm('Are you sure?'))
+        {
+            fetch('http://127.0.0.1:8000/api/HR/user/delete/'+id, {
+            method: 'DELETE',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            }
+            })
+            history.go(0);
+        }
+    }
     return(
         <Table  className="table table-hover ">
             <thead>
@@ -47,8 +63,8 @@ const UserList=()=>{
                             <td>{user.created_at}</td>
                             
                             <td>
-                                <Link to={`/user/edit/${user.id}`} className='btn btn-primary btn-block mx-2 m-1'> Edit </Link>
-                                <button className='btn btn-danger btn-block m-1'>Delete</button>
+                                <Link to={`/HR/user/edit/${user.id}`} className='btn btn-primary btn-block mx-2 m-1'> Edit </Link>
+                                <button onClick={()=>deleteUser(user.id)} className='btn btn-danger btn-block m-1'>Delete</button>
                         
                             </td>
                         </tr>

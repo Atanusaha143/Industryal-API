@@ -6,6 +6,7 @@ import { React } from 'react';
 import AddUser from './AddUser';
 import Home from './Home';
 import UserList from './UserList';
+import EditUser from './EditUser';
 
 const Navb=({title})=>{
     return(
@@ -71,6 +72,12 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <UserList />
+                                )
+                            }
+                            else if(title ==='Update User')
+                            {
+                                return(
+                                    <EditUser />
                                 )
                             }
                         })()}
