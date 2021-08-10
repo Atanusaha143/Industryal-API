@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WarehouseController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,3 +29,8 @@ Route::put("product/edit/{id}",[ProductController::class,'updateProduct']);
 Route::get("product/search/{name}",[ProductController::class,'getProductByName']);
 Route::get("product/list/faulty",[ProductController::class,'getFaultyProducts']);
 Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyProductByName']);
+
+
+
+                                    //Warehouse
+Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
