@@ -136,5 +136,25 @@ class ProductController extends Controller
         }
     }
 
+    public function getFaultyProducts()
+    {
+        $allFaultyProducts = product_table::where("product_condition","Faulty")->get();
+        return response()->json($allFaultyProducts);
+    }
+
+    function getFaultyProductByName($name)
+    {
+        $result = product_table::where("product_name",$name)->where("product_condition","Faulty")->get();
+        if(count($result) > 0)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Product not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
+
     
 }
