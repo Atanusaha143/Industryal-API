@@ -6,6 +6,7 @@ import AddProduct from "../product-channel/AddProduct";
 import ProductList from "../product-channel/ProductList";
 import EditProduct from "../product-channel/EditProduct";
 import FaultyProductList from "../product-channel/FaultyProductList";
+import Stocks from "../product-channel/Stocks";
 
 const Home = ({ title }) => {
   return (
@@ -32,7 +33,7 @@ const Home = ({ title }) => {
             } else if (title === "faulty-product-list") {
               return <FaultyProductList></FaultyProductList>;
             } else if (title === "product-stocks") {
-              //return <Stocks></Stocks>;
+              return <Stocks></Stocks>;
             } else if (title === "transfer-product") {
               //return <Transfer></Transfer>;
             } else if (title === "product-statistics") {
