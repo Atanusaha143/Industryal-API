@@ -3,6 +3,7 @@ import SideNavbar from "../screens/SideNavbar";
 import Footer from "../screens/Footer";
 import Dashboard from "./Dashboard";
 import AddProduct from "../product-channel/AddProduct";
+import ProductList from "../product-channel/ProductList";
 
 const Home = ({ title }) => {
   return (
@@ -23,7 +24,7 @@ const Home = ({ title }) => {
             } else if (title === "add-product") {
               return <AddProduct></AddProduct>;
             } else if (title === "product-list") {
-              //return <ProductList></ProductList>;
+              return <ProductList></ProductList>;
             } else if (title === "faulty-product-list") {
               //return <FaultyProduct></FaultyProduct>;
             } else if (title === "product-stocks") {

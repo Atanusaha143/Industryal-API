@@ -46,4 +46,10 @@ class ProductController extends Controller
         } 
         
     }
+
+    public function getProducts()
+    {
+        $allProducts = product_table::all();
+        return response()->json($allProducts);
+    }
 }
