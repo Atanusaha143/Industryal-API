@@ -8,6 +8,10 @@ import { ScaleLoader } from "react-spinners";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import ReactExport from "react-data-export";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
 const ProductList = () => {
   const MySwal = withReactContent(Swal);
@@ -33,6 +37,105 @@ const ProductList = () => {
   justify-content: center;    
   border-color: red;
 `;
+
+  const DataSet = [
+    {
+      columns: [
+        {
+          title: "Product ID",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Name",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Status(Sell)",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Status(Purchase)",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Description",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Name",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Stock",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Nature",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Weight",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Dimention",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Selling Price",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product Tax",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Product condition",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Date Added",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+      ],
+      data: list.map((data) => [
+        { value: data.product_id, style: { font: { sz: "14" } } },
+        { value: data.product_name, style: { font: { sz: "14" } } },
+        { value: data.status_sell, style: { font: { sz: "14" } } },
+        { value: data.status_purchase, style: { font: { sz: "14" } } },
+        { value: data.product_description, style: { font: { sz: "14" } } },
+        { value: data.warehouse_name, style: { font: { sz: "14" } } },
+        { value: data.stock, style: { font: { sz: "14" } } },
+        { value: data.nature, style: { font: { sz: "14" } } },
+        {
+          value: data.weight + " " + data.weight_unit,
+          style: { font: { sz: "14" } },
+        },
+        {
+          value: data.dimention + " " + data.dimention_unit,
+          style: { font: { sz: "14" } },
+        },
+        { value: data.selling_price, style: { font: { sz: "14" } } },
+        { value: data.tax, style: { font: { sz: "14" } } },
+        { value: data.product_condition, style: { font: { sz: "14" } } },
+        { value: data.date_added, style: { font: { sz: "14" } } },
+      ]),
+    },
+  ];
 
   function deleteEmployee(id) {
     MySwal.fire({
@@ -105,6 +208,24 @@ const ProductList = () => {
               </div>{" "}
             </center>
           )}
+          {list.length !== 0 ? (
+            <ExcelFile
+              filename="Employee List"
+              element={
+                <center>
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    style={{ marginLeft: "1000px", marginBottom: "20px" }}
+                  >
+                    Download
+                  </button>
+                </center>
+              }
+            >
+              <ExcelSheet dataSet={DataSet} name="Employee List" />
+            </ExcelFile>
+          ) : null}
           {/* component */}
           <div className="row justify-content-center">
             <div className="col-12">
