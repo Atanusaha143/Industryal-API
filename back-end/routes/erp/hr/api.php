@@ -21,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::Post('/HR/user/create',[HRuserController::class,'addUser']);
 Route::get('/HR/user/list',[HRuserController::class,'getUserList']);
+Route::delete('/HR/user/delete/{id}',[HRuserController::class,'deleteUser']);
+Route::put("/HR/user/update/{id}",[HRuserController::class,'updateUser']);
+Route::get("/HR/user/{id}",[HRuserController::class,'getUserById']);
