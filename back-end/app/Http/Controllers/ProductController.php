@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Product\product_table;
 
 class ProductController extends Controller
@@ -51,5 +52,26 @@ class ProductController extends Controller
     {
         $allProducts = product_table::all();
         return response()->json($allProducts);
+    }
+
+    public function deleteProduct($id)
+    {
+        $deletedProduct = product_table::find($id);
+        $img_path = "upload/Product/".$deletedProduct['image'];
+        if(File::exists($img_path)) 
+        {
+            File::delete($img_path);
+        }
+        $result = $deletedProduct->delete();
+
+        if($result)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Failed to delete product!', 404)
+                  ->header('Content-Type', 'text/plain');
+        } 
     }
 }

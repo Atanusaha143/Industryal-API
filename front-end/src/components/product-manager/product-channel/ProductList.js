@@ -2,12 +2,16 @@ import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const ProductList = () => {
+  const MySwal = withReactContent(Swal);
+  const history = useHistory();
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +32,26 @@ const ProductList = () => {
   border-color: red;
 `;
 
-  const deleteProduct = () => {};
+  function deleteEmployee(id) {
+    MySwal.fire({
+      title: "Are You Sure?",
+      icon: "error",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const deleteUrl = "http://127.0.0.1:8000/api/product/delete/" + id;
+        axios
+          .delete(deleteUrl)
+          .then((response) => {
+            history.go(0);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
+  }
 
   return (
     <>
@@ -43,81 +66,76 @@ const ProductList = () => {
             <div className="col-12">
               <div className="container">
                 <div className="text-left">
-                  <form method="POST" enctype="multipart/form-data">
-                    <Table bordered hover>
-                      <thead>
+                  <Table bordered hover>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Product Nature</th>
+                        <th>Selling Price</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Condition</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {list.length === 0 ? (
                         <tr>
-                          <th>ID</th>
-                          <th>Name</th>
-                          <th>Status</th>
-                          <th>Product Nature</th>
-                          <th>Selling Price</th>
-                          <th>Description</th>
-                          <th>Image</th>
-                          <th>Condition</th>
-                          <th>Action</th>
+                          <td colSpan="10">
+                            <ScaleLoader
+                              css={override}
+                              size={150}
+                              color={"#eb4034"}
+                              loading={loading}
+                            />
+                          </td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {list.length === 0 ? (
+                      ) : (
+                        list.map((product) => (
                           <tr>
-                            <td colSpan="10">
-                              <ScaleLoader
-                                css={override}
-                                size={150}
-                                color={"#eb4034"}
-                                loading={loading}
-                              />
+                            <td>{product.product_id}</td>
+                            <td>{product.product_name}</td>
+                            <td>
+                              {product.status_sell} <br></br>
+                              {product.status_purchase}
+                            </td>
+                            <td>{product.nature}</td>
+                            <td>{product.selling_price}</td>
+                            <td>{product.product_description}</td>
+                            <td>
+                              <img
+                                src={
+                                  "http://localhost:8000/upload/Product/" +
+                                  product.image
+                                }
+                                width="200"
+                                height="200"
+                                alt="Product_Photo"
+                              ></img>
+                            </td>
+                            <td>{product.product_condition}</td>
+                            <td>
+                              <Link
+                                to={`/employee/edit/${product.id}`}
+                                className="btn btn-warning mx-3"
+                              >
+                                Edit
+                              </Link>
+                              <br></br>
+                              <button
+                                onClick={() => deleteEmployee(product.id)}
+                                className="btn btn-danger mt-2"
+                              >
+                                Delete
+                              </button>
                             </td>
                           </tr>
-                        ) : (
-                          list.map((product) => (
-                            <tr>
-                              <td>{product.product_id}</td>
-                              <td>{product.product_name}</td>
-                              <td>
-                                {product.status_sell} <br></br>
-                                {product.status_purchase}
-                              </td>
-                              <td>{product.nature}</td>
-                              <td>{product.selling_price}</td>
-                              <td>{product.product_description}</td>
-                              <td>
-                                <img
-                                  src={
-                                    "http://localhost:8000/upload/Product/" +
-                                    product.image
-                                  }
-                                  width="200"
-                                  height="200"
-                                  alt="Product_Photo"
-                                ></img>
-                              </td>
-                              <td>{product.product_condition}</td>
-                              <td>
-                                <Link
-                                  to={`/employee/edit/${product.product_id}`}
-                                  className="btn btn-warning mx-3"
-                                >
-                                  {" "}
-                                  Edit{" "}
-                                </Link>
-                                <br></br>
-                                <button
-                                  onClick={() =>
-                                    deleteProduct(product.product_id)
-                                  }
-                                  className="btn btn-danger mt-2"
-                                >
-                                  Delete
-                                </button>
-                              </td>
-                            </tr>
-                          ))
-                        )}
-                      </tbody>
-                    </Table>
-                  </form>
+                        ))
+                      )}
+                    </tbody>
+                  </Table>
                 </div>
               </div>
             </div>

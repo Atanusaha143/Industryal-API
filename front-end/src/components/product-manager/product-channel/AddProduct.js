@@ -1,4 +1,5 @@
 import { Table } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -18,6 +19,7 @@ const AddProduct = () => {
   const [selling_price, setSellingPrice] = useState("");
   const [tax, setTax] = useState("Excluding Tax");
   const [product_image, setPhoto] = useState("");
+  const history = useHistory();
 
   useEffect(() => {}, []);
 
@@ -43,6 +45,7 @@ const AddProduct = () => {
       .post("http://127.0.0.1:8000/api/product/create", formData)
       .then((response) => {
         console.log(response);
+        history.push("/product/list");
       })
       .catch((error) => {
         console.log(error);
