@@ -118,7 +118,7 @@ const ProductList = () => {
                             <td>{product.product_condition}</td>
                             <td>
                               <Link
-                                to={`/employee/edit/${product.id}`}
+                                to={`/product/edit/${product.id}`}
                                 className="btn btn-warning mx-3"
                               >
                                 Edit

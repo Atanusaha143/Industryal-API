@@ -17,6 +17,9 @@ function App() {
           <Route exact path="/product/list">
             <Home title="product-list" />
           </Route>
+          <Route exact path="/product/edit/:id">
+            <Home title="product-edit" />
+          </Route>
         </Switch>
       </Router>
     </>

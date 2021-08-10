@@ -4,6 +4,7 @@ import Footer from "../screens/Footer";
 import Dashboard from "./Dashboard";
 import AddProduct from "../product-channel/AddProduct";
 import ProductList from "../product-channel/ProductList";
+import EditProduct from "../product-channel/EditProduct";
 
 const Home = ({ title }) => {
   return (
@@ -25,6 +26,8 @@ const Home = ({ title }) => {
               return <AddProduct></AddProduct>;
             } else if (title === "product-list") {
               return <ProductList></ProductList>;
+            } else if (title === "product-edit") {
+              return <EditProduct></EditProduct>;
             } else if (title === "faulty-product-list") {
               //return <FaultyProduct></FaultyProduct>;
             } else if (title === "product-stocks") {

@@ -74,4 +74,51 @@ class ProductController extends Controller
                   ->header('Content-Type', 'text/plain');
         } 
     }
+
+    function getProductById($id)
+    {
+        $result = product_table::find($id);
+        if($result)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Product not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
+
+    public function updateProduct(Request $req, $id)
+    {
+        $product = product_table::find($id);
+        $product->product_id = $req->product_id;
+        $product->product_name = $req->product_name;
+        $product->status_sell = $req->status_sell;
+        $product->status_purchase = $req->status_purchase;
+        $product->product_description = $req->product_description;
+        $product->warehouse_name = $req->warehouse_name;
+        $product->stock = $req->stock;
+        $product->nature = $req->nature;
+        $product->weight = $req->weight;
+        $product->weight_unit = $req->weight_unit;
+        $product->dimention = $req->dimention;
+        $product->dimention_unit = $req->dimention_unit;
+        $product->selling_price = $req->selling_price;
+        $product->tax = $req->tax;
+        $product->product_condition = $req->product_condition;
+        $product->last_updated = date('Y-m-d');
+        $result = $product->save();
+        return $product;
+ 
+         if($result)
+         {
+             return response()->json($result);
+         }
+         else
+         {
+             return response('Failed to update product!', 400)
+                   ->header('Content-Type', 'text/plain');
+         } 
+    }
 }
