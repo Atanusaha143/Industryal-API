@@ -26,6 +26,9 @@ function App() {
           <Route exact path="/product/stocks">
             <Home title="product-stocks" />
           </Route>
+          <Route exact path="/warehouse/create">
+            <Home title="add-warehouse" />
+          </Route>
         </Switch>
       </Router>
     </>

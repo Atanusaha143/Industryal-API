@@ -7,6 +7,7 @@ import ProductList from "../product-channel/ProductList";
 import EditProduct from "../product-channel/EditProduct";
 import FaultyProductList from "../product-channel/FaultyProductList";
 import Stocks from "../product-channel/Stocks";
+import AddWarehouse from "../warehouse-channel/AddWarehouse";
 
 const Home = ({ title }) => {
   return (
@@ -39,7 +40,7 @@ const Home = ({ title }) => {
             } else if (title === "product-statistics") {
               //return <ProductStatistics></ProductStatistics>;
             } else if (title === "add-warehouse") {
-              //return <AddWarehouse></AddWarehouse>;
+              return <AddWarehouse></AddWarehouse>;
             } else if (title === "warehouse-list") {
               //return <WarehouseList></WarehouseList>;
             } else if (title === "warehouse-statistics") {
