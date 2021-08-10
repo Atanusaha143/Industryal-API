@@ -121,4 +121,20 @@ class ProductController extends Controller
                    ->header('Content-Type', 'text/plain');
          } 
     }
+
+    function getProductByName($name)
+    {
+        $result = product_table::where("product_name",$name)->get();
+        if(count($result) > 0)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Product not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
+
+    
 }

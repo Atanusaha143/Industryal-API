@@ -25,3 +25,4 @@ Route::get("product/list",[ProductController::class,'getProducts']);
 Route::delete("product/delete/{id}",[ProductController::class,'deleteProduct']);
 Route::get("product/{id}",[ProductController::class,'getProductById']);
 Route::put("product/edit/{id}",[ProductController::class,'updateProduct']);
+Route::get("product/search/{name}",[ProductController::class,'getProductByName']);

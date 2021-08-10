@@ -14,6 +14,8 @@ const ProductList = () => {
   const history = useHistory();
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(async () => {
     setLoading(true);
@@ -53,6 +55,26 @@ const ProductList = () => {
     });
   }
 
+  const searchProduct = () => {
+    setLoading(true);
+    const searchUrl = "http://127.0.0.1:8000/api/product/search/" + search;
+    let check = false;
+    axios
+      .get(searchUrl)
+      .then((response) => {
+        setList(response.data);
+        setLoading(false);
+        if (response.data.length === 0) {
+          setErrorMessage("Product not found!");
+        } else {
+          setErrorMessage("");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
@@ -61,6 +83,28 @@ const ProductList = () => {
             <h3>Product List</h3>
           </center>
           <hr></hr>
+          <input
+            type="text"
+            className="form-control mt-3 mb-5"
+            style={{ width: "50%" }}
+            placeholder="Search By Product Name..."
+            onChange={(e) => setSearch(e.target.value)}
+          ></input>
+          <button
+            className="btn btn-outline-primary mt-3"
+            style={{ width: "10%", height: "5%", marginLeft: "20px" }}
+            onClick={() => searchProduct()}
+          >
+            Search
+          </button>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           {/* component */}
           <div className="row justify-content-center">
             <div className="col-12">
