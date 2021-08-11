@@ -35,7 +35,7 @@ const AddWarehouse = () => {
       .post("http://127.0.0.1:8000/api/warehouse/create", formData)
       .then((response) => {
         console.log(response);
-        //history.push("/product/list");
+        history.push("/warehouse/list");
       })
       .catch((error) => {
         console.log(error);

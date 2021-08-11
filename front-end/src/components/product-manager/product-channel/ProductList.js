@@ -139,7 +139,7 @@ const ProductList = () => {
     },
   ];
 
-  function deleteEmployee(id) {
+  function deleteProduct(id) {
     MySwal.fire({
       title: "Are You Sure?",
       icon: "error",
@@ -292,7 +292,7 @@ const ProductList = () => {
                               </Link>
                               <br></br>
                               <button
-                                onClick={() => deleteEmployee(product.id)}
+                                onClick={() => deleteProduct(product.id)}
                                 className="btn btn-danger mt-2"
                               >
                                 Delete

@@ -97,7 +97,26 @@ const WarehouseList = () => {
     },
   ];
 
-  function deleteWarehouse(id) {}
+  function deleteWarehouse(id) {
+    MySwal.fire({
+      title: "Are You Sure?",
+      icon: "error",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const deleteUrl = "http://127.0.0.1:8000/api/warehouse/delete/" + id;
+        axios
+          .delete(deleteUrl)
+          .then((response) => {
+            history.go(0);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
+  }
 
   const searchWarehouse = () => {
     setLoading(true);
