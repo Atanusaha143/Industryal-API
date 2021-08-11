@@ -38,7 +38,25 @@ const MyLeaveRequest = () => {
   border-color: red;
 `;
 
-  const searchWarehouse = () => {};
+  const searchWarehouse = () => {
+    setLoading(true);
+    const searchUrl =
+      "http://127.0.0.1:8000/api/product/user/leave/myrequest/search/" + search;
+    axios
+      .get(searchUrl)
+      .then((response) => {
+        setList(response.data);
+        setLoading(false);
+        if (response.data.length === 0) {
+          setErrorMessage("Request not found!");
+        } else {
+          setErrorMessage("");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -106,7 +124,15 @@ const MyLeaveRequest = () => {
                             <td>{request.start_time}</td>
                             <td>{request.end_time}</td>
                             <td>{request.request_made}</td>
-                            <td>{request.status}</td>
+                            <td>
+                              {request.status === "Pending" ? (
+                                <b className="text-primary">{request.status}</b>
+                              ) : request.status === "Approved" ? (
+                                <b className="text-success">{request.status}</b>
+                              ) : (
+                                <b className="text-danger">{request.status}</b>
+                              )}
+                            </td>
                           </tr>
                         ))
                       )}
