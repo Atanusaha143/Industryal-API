@@ -40,6 +40,63 @@ const WarehouseList = () => {
   border-color: red;
 `;
 
+  const DataSet = [
+    {
+      columns: [
+        {
+          title: "Warehouse ID",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Name",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Description",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Address",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Initial Quantity",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Remaining Quantity",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Warehouse Status",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+        {
+          title: "Date Added",
+          style: { font: { sz: "18", bold: true } },
+          width: { wch: 25 },
+        },
+      ],
+      data: exportList.map((data) => [
+        { value: data.warehouse_id, style: { font: { sz: "14" } } },
+        { value: data.name, style: { font: { sz: "14" } } },
+        { value: data.description, style: { font: { sz: "14" } } },
+        { value: data.address, style: { font: { sz: "14" } } },
+        { value: data.quantity, style: { font: { sz: "14" } } },
+        { value: data.remaining_quantity, style: { font: { sz: "14" } } },
+        { value: data.status, style: { font: { sz: "14" } } },
+        { value: data.date_added, style: { font: { sz: "14" } } },
+      ]),
+    },
+  ];
+
   function deleteWarehouse(id) {}
 
   const searchWarehouse = () => {
@@ -67,7 +124,7 @@ const WarehouseList = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Product List</h3>
+            <h3>Warehouse List</h3>
           </center>
           <hr></hr>
           <input
@@ -92,6 +149,24 @@ const WarehouseList = () => {
               </div>{" "}
             </center>
           )}
+          {exportList.length !== 0 ? (
+            <ExcelFile
+              filename="Warehouse List"
+              element={
+                <center>
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    style={{ marginLeft: "1000px", marginBottom: "20px" }}
+                  >
+                    Download
+                  </button>
+                </center>
+              }
+            >
+              <ExcelSheet dataSet={DataSet} name="Warehouse List" />
+            </ExcelFile>
+          ) : null}
           {/* component */}
           <div className="row justify-content-center">
             <div className="col-12">
