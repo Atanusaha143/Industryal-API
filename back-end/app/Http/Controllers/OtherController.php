@@ -30,4 +30,10 @@ class OtherController extends Controller
                   ->header('Content-Type', 'text/plain');
         } 
     }
+
+    public function getMyLeaveRequests()
+    {
+        $allLeaveData = leave_request::all();
+        return response()->json($allLeaveData);
+    }
 }
