@@ -93,4 +93,10 @@ class OtherController extends Controller
                   ->header('Content-Type', 'text/plain');
         } 
     }
+
+    public function getMyIssues()
+    {
+        $allIssueData = administration::all();
+        return response()->json($allIssueData);
+    }
 }
