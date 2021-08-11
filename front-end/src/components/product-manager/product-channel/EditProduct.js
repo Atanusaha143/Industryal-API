@@ -19,6 +19,7 @@ const EditProduct = () => {
   const [selling_price, setSellingPrice] = useState("");
   const [tax, setTax] = useState("Excluding Tax");
   const [product_condition, setCondition] = useState("");
+  const [warehouseList, setWarehouseList] = useState([]);
   const history = useHistory();
   const { id: pId } = useParams();
 
@@ -42,6 +43,12 @@ const EditProduct = () => {
         setSellingPrice(result.selling_price);
         setTax(result.tax);
         setCondition(result.product_condition);
+      });
+
+    axios
+      .get("http://127.0.0.1:8000/api/warehouse/list/names")
+      .then(function (response) {
+        setWarehouseList(response.data);
       });
   }, []);
 
@@ -161,8 +168,9 @@ const EditProduct = () => {
                             value={warehouse_name}
                             onChange={(e) => setWarehouse(e.target.value)}
                           >
-                            <option value="Warehouse 1">Warehouse 1</option>
-                            <option value="Warehouse 2">Warehouse 2</option>
+                            {warehouseList.map((wName) => (
+                              <option value={wName}>{wName}</option>
+                            ))}
                           </select>
                         </td>
                       </tr>

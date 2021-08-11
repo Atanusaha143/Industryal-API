@@ -31,6 +31,7 @@ Route::get("product/search/{name}",[ProductController::class,'getProductByName']
 Route::get("product/list/faulty",[ProductController::class,'getFaultyProducts']);
 Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyProductByName']);
 Route::get("product/dashboard/current-affairs",[ProductController::class,'getCurrentAffairs']);
+Route::get("product/warehouse/names",[ProductController::class,'getWarehouseNames']);
 
                                     //Warehouse
 Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
@@ -39,6 +40,7 @@ Route::get("warehouse/search/{name}",[WarehouseController::class,'getWarehouseBy
 Route::delete("warehouse/delete/{id}",[WarehouseController::class,'deleteWarehouse']);
 Route::get("warehouse/{id}",[WarehouseController::class,'getWarehouseById']);
 Route::put("warehouse/edit/{id}",[WarehouseController::class,'updateWarehouse']);
+Route::get("/warehouse/list/names",[WarehouseController::class,'getWarehouseNames']);
 
                                     //Other
 Route::post("/product/user/leave/create",[OtherController::class,'createLeaveRequest']);

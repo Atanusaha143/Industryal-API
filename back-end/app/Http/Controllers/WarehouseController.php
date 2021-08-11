@@ -112,4 +112,16 @@ class WarehouseController extends Controller
                   ->header('Content-Type', 'text/plain');
         }
     }
+
+    public function getWarehouseNames()
+    {
+        $allWarehouses = warehouse_table::all();
+        $allWarehouseNames = array();
+        foreach($allWarehouses as $currWarehouse)
+        {
+            array_push($allWarehouseNames,$currWarehouse->name);
+        }
+
+        return response()->json($allWarehouseNames);
+    }
 }

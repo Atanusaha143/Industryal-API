@@ -2,6 +2,7 @@ import { Table } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import WarehouseList from "../warehouse-channel/WarehouseList";
 
 const AddProduct = () => {
   const [product_id, setPId] = useState("");
@@ -9,7 +10,7 @@ const AddProduct = () => {
   const [status_sell, setSellStatus] = useState("For Sell");
   const [status_purchase, setPurchaseStatus] = useState("For Purchase");
   const [product_description, setDescription] = useState("");
-  const [warehouse_name, setWarehouse] = useState("Warehouse 1");
+  const [warehouse_name, setWarehouse] = useState("Grocery");
   const [stock, setStock] = useState("");
   const [nature, setNature] = useState("Manufactired Product");
   const [weight, setWeight] = useState("");
@@ -19,9 +20,16 @@ const AddProduct = () => {
   const [selling_price, setSellingPrice] = useState("");
   const [tax, setTax] = useState("Excluding Tax");
   const [product_image, setPhoto] = useState("");
+  const [warehouseList, setWarehouseList] = useState([]);
   const history = useHistory();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:8000/api/warehouse/list/names")
+      .then(function (response) {
+        setWarehouseList(response.data);
+      });
+  }, []);
 
   const addProduct = () => {
     const formData = new FormData();
@@ -135,8 +143,9 @@ const AddProduct = () => {
                             name="warehouse_name"
                             onChange={(e) => setWarehouse(e.target.value)}
                           >
-                            <option value="Warehouse 1">Warehouse 1</option>
-                            <option value="Warehouse 2">Warehouse 2</option>
+                            {warehouseList.map((wName) => (
+                              <option value={wName}>{wName}</option>
+                            ))}
                           </select>
                         </td>
                       </tr>
