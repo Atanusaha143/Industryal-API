@@ -102,7 +102,7 @@ class OtherController extends Controller
 
     function getIssueByName($name)
     {
-        $result = administration::where("issue_name",'like',$name.'%')->get(1);
+        $result = administration::where("issue_name",'like',$name.'%')->get();
         if(count($result) > 0)
         {
             return response()->json($result);

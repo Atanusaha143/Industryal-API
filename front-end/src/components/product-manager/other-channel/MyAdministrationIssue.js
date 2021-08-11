@@ -31,7 +31,26 @@ const MyAdministrationIssue = () => {
   border-color: red;
 `;
 
-  const searchIssue = () => {};
+  const searchIssue = () => {
+    setLoading(true);
+    const searchUrl =
+      "http://127.0.0.1:8000/api/product/user/administration/myissue/search/" +
+      search;
+    axios
+      .get(searchUrl)
+      .then((response) => {
+        setList(response.data);
+        setLoading(false);
+        if (response.data.length === 0) {
+          setErrorMessage("Issue not found!");
+        } else {
+          setErrorMessage("");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
