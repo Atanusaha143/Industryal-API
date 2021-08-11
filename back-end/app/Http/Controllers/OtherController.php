@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product\leave_request;
 use App\Models\Product\activities_table;
+use App\Models\Product\administration;
 
 class OtherController extends Controller
 {
