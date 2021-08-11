@@ -47,3 +47,4 @@ Route::get("/product/user/activities",[OtherController::class,'getActivities']);
 Route::get("/product/user/activities/search/{type}",[OtherController::class,'getActivitiesByType']);
 Route::post("/product/user/administration/create",[OtherController::class,'createAdministrationIssue']);
 Route::get("/product/user/administration/myissue",[OtherController::class,'getMyIssues']);
+Route::get("/product/user/administration/myissue/search/{name}",[OtherController::class,'getIssueByName']);

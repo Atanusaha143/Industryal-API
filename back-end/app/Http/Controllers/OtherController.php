@@ -99,4 +99,18 @@ class OtherController extends Controller
         $allIssueData = administration::all();
         return response()->json($allIssueData);
     }
+
+    function getIssueByName($name)
+    {
+        $result = administration::where("issue_name",'like',$name.'%')->get(1);
+        if(count($result) > 0)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Issue not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
 }
