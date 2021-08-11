@@ -42,6 +42,9 @@ function App() {
           <Route exact path="/product/user/leave">
             <Home title="user-leave" />
           </Route>
+          <Route exact path="/product/user/leave/myrequest">
+            <Home title="user-myLeave" />
+          </Route>
         </Switch>
       </Router>
     </>

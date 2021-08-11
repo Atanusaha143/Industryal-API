@@ -35,6 +35,18 @@ const LeaveRequest = () => {
             <h3>Leave Request</h3>
             <hr></hr>
           </center>
+          <div className="row align-items-start mb-2">
+            <div class="col"></div>
+            <div class="col-7"></div>
+            <div class="col">
+              <Link
+                to="/product/user/leave/myrequest"
+                className="btn btn-secondary rounded p-1 text-right"
+              >
+                My Leave List
+              </Link>
+            </div>
+          </div>
           {/* component */}
           <div className="row justify-content-center mt-3">
             <div className="col-10">
