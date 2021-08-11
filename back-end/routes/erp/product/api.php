@@ -36,3 +36,4 @@ Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyPr
 Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
 Route::get("warehouse/list",[WarehouseController::class,'getWarehouses']);
 Route::get("warehouse/search/{name}",[WarehouseController::class,'getWarehouseByName']);
+Route::delete("warehouse/delete/{id}",[WarehouseController::class,'deleteWarehouse']);

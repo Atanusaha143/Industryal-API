@@ -55,4 +55,20 @@ class WarehouseController extends Controller
                   ->header('Content-Type', 'text/plain');
         }
     }
+
+    public function deleteWarehouse($id)
+    {
+        $deletedWarehouse = warehouse_table::find($id);
+        $result = $deletedWarehouse->delete();
+
+        if($result)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Failed to delete warehouse!', 404)
+                  ->header('Content-Type', 'text/plain');
+        } 
+    }
 }
