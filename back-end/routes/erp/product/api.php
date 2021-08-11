@@ -34,3 +34,4 @@ Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyPr
 
                                     //Warehouse
 Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
+Route::get("warehouse/list",[WarehouseController::class,'getWarehouses']);

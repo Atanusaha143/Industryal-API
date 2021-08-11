@@ -35,4 +35,10 @@ class WarehouseController extends Controller
                   ->header('Content-Type', 'text/plain');
         } 
     }
+
+    public function getWarehouses()
+    {
+        $allWarehouses = warehouse_table::all();
+        return response()->json($allWarehouses);
+    }
 }
