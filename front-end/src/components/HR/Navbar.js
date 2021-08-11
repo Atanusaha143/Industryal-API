@@ -7,6 +7,9 @@ import AddUser from './AddUser';
 import Home from './Home';
 import UserList from './UserList';
 import EditUser from './EditUser';
+import AddEmployee from './AddEmployee';
+import AddGroup from './AddGroup';
+import EmployeeList from './EmployeeList';
 
 const Navb=({title})=>{
     return(
@@ -78,6 +81,24 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <EditUser />
+                                )
+                            }
+                            else if(title ==='New Employee')
+                            {
+                                return(
+                                    <AddEmployee />
+                                )
+                            }
+                            else if(title==='New Group')
+                            {
+                                return(
+                                    <AddGroup />
+                                )
+                            }
+                            else if(title==='Employee List')
+                            {
+                                return(
+                                    <EmployeeList />
                                 )
                             }
                         })()}

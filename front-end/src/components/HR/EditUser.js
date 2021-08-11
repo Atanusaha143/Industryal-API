@@ -83,10 +83,10 @@ const EditUser=()=>{
                     <div className="from-group">
                         <label>Gender </label><br></br>
                         {  
-                            gen.map(gender=>(
+                            gen.map(result=>(
                                 <>
-                                <input type="radio" name="gender" value={gender} onChange={(e)=>setGender(e.target.value)} value={gender}></input>
-                                <b>{gender}</b>
+                                <input type="radio" name="gender" value={result} onChange={(e)=>setGender(e.target.value)} value={gender}></input>
+                                <b>{result}</b>
                                 </>
                             ))
                         }
@@ -123,7 +123,7 @@ const EditUser=()=>{
                     </div>
                     <br></br>
                     <div className="from-group">
-                        <center><button onClick={updatedUser} className="btn btn-outline-primary btn-block w-50 mt-3" type="submit">Add User</button></center>
+                        <center><button onClick={updatedUser} className="btn btn-outline-primary btn-block w-50 mt-3" type="submit">Update</button></center>
                     </div>
             </div>
             
