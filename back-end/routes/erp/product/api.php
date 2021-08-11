@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\OtherController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,8 +31,6 @@ Route::get("product/search/{name}",[ProductController::class,'getProductByName']
 Route::get("product/list/faulty",[ProductController::class,'getFaultyProducts']);
 Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyProductByName']);
 
-
-
                                     //Warehouse
 Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
 Route::get("warehouse/list",[WarehouseController::class,'getWarehouses']);
@@ -39,3 +38,6 @@ Route::get("warehouse/search/{name}",[WarehouseController::class,'getWarehouseBy
 Route::delete("warehouse/delete/{id}",[WarehouseController::class,'deleteWarehouse']);
 Route::get("warehouse/{id}",[WarehouseController::class,'getWarehouseById']);
 Route::put("warehouse/edit/{id}",[WarehouseController::class,'updateWarehouse']);
+
+                                    //Other
+Route::post("/product/user/leave/create",[OtherController::class,'createLeaveRequest']);
