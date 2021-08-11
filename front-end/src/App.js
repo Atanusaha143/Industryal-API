@@ -34,6 +34,9 @@ function App() {
           <Route exact path="/warehouse/list">
             <Home title="warehouse-list" />
           </Route>
+          <Route exact path="/warehouse/edit/:id">
+            <Home title="warehouse-edit" />
+          </Route>
         </Switch>
       </Router>
     </>
