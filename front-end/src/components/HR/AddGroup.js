@@ -30,7 +30,7 @@ const AddGroup=()=>{
                     <label>Group</label>
                         <select name="employee_group" id="group" className="form-control" onChange={(e)=>setGroup(e.target.value)}>
                             <option>Please Select Group </option>
-                            <option value="hr">Human Resource Department</option>
+                            <option value="HR">Human Resource Department</option>
                             <option value="product">Product Department</option>
                             <option value="finance">Finance Department</option>
                             <option value="sales">Sales Department </option>

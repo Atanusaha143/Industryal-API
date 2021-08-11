@@ -1,11 +1,9 @@
-import { useHistory} from 'react-router-dom'
 import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const EmployeeList=()=>{
-    const history = useHistory();
     const[list,setList] = useState([]);
     useEffect( async ()=>{
         let result = await fetch("http://127.0.0.1:8000/api/HR/employee/list");
@@ -52,8 +50,8 @@ const EmployeeList=()=>{
                                 <td>{emp.employee_group}</td>
                                 
                                 <td>
-                                    <Link to={`/HR/employee/edit/${emp.id}`} class="btn btn-success m-1"> Update </Link>
-                                    <Link to={`/HR/employee/delete/${emp.id}`} class="btn btn-danger m-1"> Delete </Link>
+                                    <Link to={`/HR/employee/edit/${emp.employee_id}`} class="btn btn-success m-1"> Edit </Link>
+                                    <Link to={`/HR/employee/delete/${emp.employee_id}`} class="btn btn-danger m-1"> Delete </Link>
                                 </td>
                             </tr>
                         )

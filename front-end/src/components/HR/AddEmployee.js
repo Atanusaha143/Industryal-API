@@ -32,7 +32,7 @@ const AddEmployee=()=>{
     return(
        
         <>
-            <div className=" borber w-50  m-auto">
+            <div className="borber w-50  m-auto">
             
                 <div className="form-group">
                     <label>Employee ID</label> 

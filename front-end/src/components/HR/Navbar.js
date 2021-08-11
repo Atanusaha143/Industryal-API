@@ -10,6 +10,9 @@ import EditUser from './EditUser';
 import AddEmployee from './AddEmployee';
 import AddGroup from './AddGroup';
 import EmployeeList from './EmployeeList';
+import EditEmployee from './EditEmployee';
+import DeleteEmp from './DeleteEmp';
+import EmpSchedule from './EmpSchedule';
 
 const Navb=({title})=>{
     return(
@@ -99,6 +102,24 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <EmployeeList />
+                                )
+                            }
+                            else if(title==='Update Employee')
+                            {
+                                return(
+                                    <EditEmployee />
+                                )
+                            }
+                            else if(title==='Delete Employee')
+                            {
+                                return(
+                                    <DeleteEmp />
+                                )
+                            }
+                            else if(title==='Employees Schedule')
+                            {
+                                return(
+                                    <EmpSchedule/>
                                 )
                             }
                         })()}

@@ -27,6 +27,15 @@ function App() {
         <Route exact path='/HR/employee/list'>
           <Navb title='Employee List' />
         </Route>
+        <Route exact path='/HR/employee/edit/:employee_id'>
+          <Navb title='Update Employee' />
+        </Route>
+        <Route exact path='/HR/employee/delete/:employee_id'>
+          <Navb title='Delete Employee' />
+        </Route>
+        <Route exact path='/HR/employee/schedule'>
+          <Navb title='Employees Schedule' />
+        </Route>
       </Switch>
     </Router>
 
