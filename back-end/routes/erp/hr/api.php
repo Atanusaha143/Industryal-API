@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HRuserController;
+use App\Http\Controllers\HRemployeeController;
+use App\Http\Controllers\HRgroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,8 @@ Route::get('/HR/user/list',[HRuserController::class,'getUserList']);
 Route::delete('/HR/user/delete/{id}',[HRuserController::class,'deleteUser']);
 Route::put("/HR/user/update/{id}",[HRuserController::class,'updateUser']);
 Route::get("/HR/user/{id}",[HRuserController::class,'getUserById']);
+
+Route::Post('/HR/employee/create',[HRemployeeController::class,'addEmployee']);
+Route::get('/HR/employee/list',[HRemployeeController::class,'getEmployeeList']);
+Route::Post('/HR/employee/group',[HRgroupController::class,'createGroup']);
+
