@@ -57,4 +57,18 @@ class OtherController extends Controller
         $allActivities = activities_table::all();
         return response()->json($allActivities);
     }
+
+    function getActivitiesByType($type)
+    {
+        $result = activities_table::where("type",'like',$type.'%')->get();
+        if(count($result) > 0)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Request not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
 }
