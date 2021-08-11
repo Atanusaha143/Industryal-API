@@ -37,6 +37,11 @@ function App() {
           <Route exact path="/warehouse/edit/:id">
             <Home title="warehouse-edit" />
           </Route>
+
+          {/* Other */}
+          <Route exact path="/product/user/leave">
+            <Home title="user-leave" />
+          </Route>
         </Switch>
       </Router>
     </>

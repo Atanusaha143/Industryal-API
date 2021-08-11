@@ -10,6 +10,7 @@ import Stocks from "../product-channel/Stocks";
 import AddWarehouse from "../warehouse-channel/AddWarehouse";
 import WarehouseList from "../warehouse-channel/WarehouseList";
 import EditWarehouse from "../warehouse-channel/EditWarehouse";
+import LeaveRequest from "../other-channel/LeaveRequest";
 
 const Home = ({ title }) => {
   return (
@@ -50,7 +51,7 @@ const Home = ({ title }) => {
             } else if (title === "warehouse-statistics") {
               //return <WarehouseStatistics></WarehouseStatistics>;
             } else if (title === "user-leave") {
-              //return <LeaveRequest></LeaveRequest>;
+              return <LeaveRequest></LeaveRequest>;
             } else if (title === "user-activities") {
               //return <Activities></Activities>;
             } else if (title === "administration") {
