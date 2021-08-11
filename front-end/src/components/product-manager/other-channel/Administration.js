@@ -1,19 +1,49 @@
-import { Navbar } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Administration = () => {
+  const [issue_name, setIssueName] = useState("");
+  const [description, setDescription] = useState("");
+  const [message, setMessage] = useState("");
+
+  const createIssue = () => {
+    const formData = new FormData();
+    formData.append("issue_name", issue_name);
+    formData.append("description", description);
+
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/product/user/administration/create",
+        formData
+      )
+      .then((response) => {
+        setMessage("Issue has been sent!");
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Dashboard</h3>
+            <h3>Administration</h3>
+            <hr></hr>
           </center>
           {/* component */}
-          <div className="row justify-content-center">
+          {message && (
+            <center>
+              {" "}
+              <div class="alert alert-success col-8" role="alert">
+                {message}
+              </div>{" "}
+            </center>
+          )}
+          <div className="row justify-content-center mt-3">
             <div className="col-10">
               <div className="container">
                 <div className="text-left">
@@ -26,6 +56,7 @@ const Administration = () => {
                             type="text"
                             name="issue_name"
                             class="form-control"
+                            onChange={(e) => setIssueName(e.target.value)}
                           ></input>
                         </td>
                       </tr>
@@ -37,6 +68,7 @@ const Administration = () => {
                             name="message"
                             id=""
                             class="form-control"
+                            onChange={(e) => setDescription(e.target.value)}
                           >
                             {" "}
                           </textarea>
@@ -44,12 +76,13 @@ const Administration = () => {
                       </tr>
                       <tr>
                         <td colspan="2" align="center">
-                          <input
-                            type="submit"
+                          <button
+                            onClick={createIssue}
                             class="btn btn-success"
-                            value="Send"
-                            style={{ width: "400px" }}
-                          ></input>
+                            style={{ width: "100%" }}
+                          >
+                            Create
+                          </button>
                         </td>
                       </tr>
                     </tbody>
