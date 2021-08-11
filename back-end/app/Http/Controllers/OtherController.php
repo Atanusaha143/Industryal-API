@@ -36,4 +36,18 @@ class OtherController extends Controller
         $allLeaveData = leave_request::all();
         return response()->json($allLeaveData);
     }
+
+    function getRequestByName($name)
+    {
+        $result = leave_request::where("request_description",'like',$name.'%')->get();
+        if(count($result) > 0)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Request not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
 }
