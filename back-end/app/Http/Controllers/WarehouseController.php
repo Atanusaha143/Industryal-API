@@ -71,4 +71,45 @@ class WarehouseController extends Controller
                   ->header('Content-Type', 'text/plain');
         } 
     }
+
+    public function updateWarehouse(Request $req, $id)
+    {
+        $product = warehouse_table::find($id);
+        $warehouse->warehouse_id = $req->warehouse_id;
+        $warehouse->name = $req->name;
+        $warehouse->description = $req->description;
+        $warehouse->address = $req->address;
+        $warehouse->zip_code = $req->zip_code;
+        $warehouse->city = $req->city;
+        $warehouse->country = $req->country;
+        $warehouse->phone = $req->phone;
+        $warehouse->quantity = $req->quantity;
+        $warehouse->status = $req->status;
+        $warehouse->last_updated = date('Y-m-d');
+        $result = $warehouse->save();
+ 
+         if($result)
+         {
+             return response()->json($result);
+         }
+         else
+         {
+             return response('Failed to update warehouse!', 400)
+                   ->header('Content-Type', 'text/plain');
+         } 
+    }
+
+    function getWarehouseById($id)
+    {
+        $result = warehouse_table::find($id);
+        if($result)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Warehouse not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
 }

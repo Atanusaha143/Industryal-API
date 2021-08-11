@@ -37,3 +37,5 @@ Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
 Route::get("warehouse/list",[WarehouseController::class,'getWarehouses']);
 Route::get("warehouse/search/{name}",[WarehouseController::class,'getWarehouseByName']);
 Route::delete("warehouse/delete/{id}",[WarehouseController::class,'deleteWarehouse']);
+Route::get("warehouse/{id}",[WarehouseController::class,'getWarehouseById']);
+Route::put("warehouse/edit/{id}",[WarehouseController::class,'updateWarehouse']);
