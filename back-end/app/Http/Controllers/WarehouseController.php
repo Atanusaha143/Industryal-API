@@ -74,7 +74,7 @@ class WarehouseController extends Controller
 
     public function updateWarehouse(Request $req, $id)
     {
-        $product = warehouse_table::find($id);
+        $warehouse = warehouse_table::find($id);
         $warehouse->warehouse_id = $req->warehouse_id;
         $warehouse->name = $req->name;
         $warehouse->description = $req->description;

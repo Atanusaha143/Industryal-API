@@ -19,7 +19,7 @@ const EditWarehouse = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/product/" + wId)
+      .get("http://127.0.0.1:8000/api/warehouse/" + wId)
       .then(function (response) {
         const result = response.data;
         setId(result.warehouse_id);
@@ -30,12 +30,32 @@ const EditWarehouse = () => {
         setCity(result.city);
         setCountry(result.country);
         setPhone(result.phone);
-        setPhone(result.quantity);
-        setQuantity(result.status);
+        setQuantity(result.quantity);
+        setStatus(result.status);
       });
   }, []);
 
-  const updateWarehouse = () => {};
+  const updateWarehouse = () => {
+    let data = {
+      warehouse_id,
+      name,
+      description,
+      address,
+      zip_code,
+      city,
+      country,
+      phone,
+      quantity,
+      status,
+    };
+
+    axios
+      .put("http://127.0.0.1:8000/api/warehouse/edit/" + wId, data)
+      .then((response) => {
+        history.goBack();
+        //console.log(response.data);
+      });
+  };
   return (
     <>
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
@@ -57,6 +77,7 @@ const EditWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_id"
+                            value={warehouse_id}
                             onChange={(e) => setId(e.target.value)}
                           ></input>
                         </td>
@@ -68,6 +89,7 @@ const EditWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_name"
+                            value={name}
                             onChange={(e) => setName(e.target.value)}
                           ></input>
                         </td>
@@ -81,6 +103,7 @@ const EditWarehouse = () => {
                             rows="2"
                             class="form-control"
                             name="warehouse_description"
+                            value={description}
                             onChange={(e) => setDescription(e.target.value)}
                           ></textarea>
                         </td>
@@ -94,6 +117,7 @@ const EditWarehouse = () => {
                             cols="20"
                             rows="1"
                             class="form-control"
+                            value={address}
                             onChange={(e) => setAddress(e.target.value)}
                           ></textarea>
                         </td>
@@ -105,6 +129,7 @@ const EditWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_zip_code"
+                            value={zip_code}
                             onChange={(e) => setZipCode(e.target.value)}
                           ></input>
                         </td>
@@ -116,6 +141,7 @@ const EditWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_city"
+                            value={city}
                             onChange={(e) => setCity(e.target.value)}
                           ></input>
                         </td>
@@ -127,6 +153,7 @@ const EditWarehouse = () => {
                             class="form-control"
                             id="warehouse"
                             name="warehouse_country"
+                            value={country}
                             onChange={(e) => setCountry(e.target.value)}
                           >
                             <option value="Bangladesh">Bangladesh</option>
@@ -149,6 +176,7 @@ const EditWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_phone"
+                            value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                           ></input>
                         </td>
@@ -160,6 +188,7 @@ const EditWarehouse = () => {
                             class="form-control"
                             id="warehouse"
                             name="warehouse_status"
+                            value={status}
                             onChange={(e) => setStatus(e.target.value)}
                           >
                             <option value="Open">Open</option>
@@ -174,6 +203,7 @@ const EditWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_quantity"
+                            value={quantity}
                             onChange={(e) => setQuantity(e.target.value)}
                           ></input>
                         </td>
