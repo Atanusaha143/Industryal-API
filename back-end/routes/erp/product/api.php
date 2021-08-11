@@ -45,3 +45,4 @@ Route::get("/product/user/leave/myrequest",[OtherController::class,'getMyLeaveRe
 Route::get("/product/user/leave/myrequest/search/{name}",[OtherController::class,'getRequestByName']);
 Route::get("/product/user/activities",[OtherController::class,'getActivities']);
 Route::get("/product/user/activities/search/{type}",[OtherController::class,'getActivitiesByType']);
+Route::post("/product/user/administration/create",[OtherController::class,'createAdministrationIssue']);

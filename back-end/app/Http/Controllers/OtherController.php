@@ -72,4 +72,25 @@ class OtherController extends Controller
                   ->header('Content-Type', 'text/plain');
         }
     }
+
+    public function createAdministrationIssue(Request $req)
+    {
+        $issue = new administration;
+        $issue->issue_name = $req->issue_name;
+        $issue->description = $req->description;
+        $issue->issued_by = "Product Manager";
+        $issue->issue_time = date("Y-m-d H:i:s");
+        $issue->status = "Pending";
+        $result = $issue->save();
+        
+        if($result)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Failed to add issue!', 400)
+                  ->header('Content-Type', 'text/plain');
+        } 
+    }
 }
