@@ -31,6 +31,9 @@ function App() {
           <Route exact path="/warehouse/create">
             <Home title="add-warehouse" />
           </Route>
+          <Route exact path="/warehouse/list">
+            <Home title="warehouse-list" />
+          </Route>
         </Switch>
       </Router>
     </>
