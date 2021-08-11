@@ -12,6 +12,7 @@ import WarehouseList from "../warehouse-channel/WarehouseList";
 import EditWarehouse from "../warehouse-channel/EditWarehouse";
 import LeaveRequest from "../other-channel/LeaveRequest";
 import MyLeaveRequest from "../other-channel/MyLeaveRequest";
+import ActivityList from "../other-channel/ActivityList";
 
 const Home = ({ title }) => {
   return (
@@ -56,7 +57,7 @@ const Home = ({ title }) => {
             } else if (title === "user-myLeave") {
               return <MyLeaveRequest></MyLeaveRequest>;
             } else if (title === "user-activities") {
-              //return <Activities></Activities>;
+              return <ActivityList></ActivityList>;
             } else if (title === "administration") {
               //return <Administration></Administration>;
             }
