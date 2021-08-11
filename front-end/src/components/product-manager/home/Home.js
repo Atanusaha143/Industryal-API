@@ -15,6 +15,7 @@ import MyLeaveRequest from "../other-channel/MyLeaveRequest";
 import ActivityList from "../other-channel/ActivityList";
 import Administration from "../other-channel/Administration";
 import MyAdministrationIssue from "../other-channel/MyAdministrationIssue";
+import TransferProduct from "../product-channel/TransferProduct";
 
 const Home = ({ title }) => {
   return (
@@ -42,8 +43,8 @@ const Home = ({ title }) => {
               return <FaultyProductList></FaultyProductList>;
             } else if (title === "product-stocks") {
               return <Stocks></Stocks>;
-            } else if (title === "transfer-product") {
-              //return <Transfer></Transfer>;
+            } else if (title === "product-transfer") {
+              return <TransferProduct></TransferProduct>;
             } else if (title === "product-statistics") {
               //return <ProductStatistics></ProductStatistics>;
             } else if (title === "add-warehouse") {
