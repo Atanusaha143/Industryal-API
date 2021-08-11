@@ -38,7 +38,25 @@ const ActivityList = () => {
   border-color: red;
 `;
 
-  const searchActivity = () => {};
+  const searchActivity = () => {
+    setLoading(true);
+    const searchUrl =
+      "http://127.0.0.1:8000/api/product/user/activities/search/" + search;
+    axios
+      .get(searchUrl)
+      .then((response) => {
+        setList(response.data);
+        setLoading(false);
+        if (response.data.length === 0) {
+          setErrorMessage("Activity not found!");
+        } else {
+          setErrorMessage("");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
