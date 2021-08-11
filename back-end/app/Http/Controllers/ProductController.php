@@ -156,5 +156,46 @@ class ProductController extends Controller
         }
     }
 
+    public function getCurrentAffairs()
+    {
+        $products = product_table::all();
+        $max_stocked_product = "";
+        $max_stocked = -1;
+        $most_expensive_product = "";
+        $most_expensive = -1;
+        $good_products_cnt = 0;
+        $faulty_products_cnt = 0;
+        foreach($products as $product)
+        {
+            if($product->stock > $max_stocked)
+            {
+                $max_stocked = $product->stock;
+                $max_stocked_product =  $product->product_name;
+            }
+            if($product->selling_price > $most_expensive)
+            {
+                $most_expensive = $product->selling_price;
+                $most_expensive_product = $product->product_name;
+            }
+            if($product->product_condition == "Good")
+            {
+                $good_products_cnt++;
+            }
+            if($product->product_condition == "Faulty")
+            {
+                $faulty_products_cnt++;
+            }
+        }
+
+        $affairList = [
+            "max_stocked_product"=>$max_stocked_product,
+            "most_expensive_product"=>$most_expensive_product,
+            "good_products_cnt"=>$good_products_cnt,
+            "faulty_products_cnt"=>$faulty_products_cnt
+        ];
+
+        return response()->json($affairList);
+    }
+
     
 }

@@ -30,6 +30,7 @@ Route::put("product/edit/{id}",[ProductController::class,'updateProduct']);
 Route::get("product/search/{name}",[ProductController::class,'getProductByName']);
 Route::get("product/list/faulty",[ProductController::class,'getFaultyProducts']);
 Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyProductByName']);
+Route::get("product/dashboard/current-affairs",[ProductController::class,'getCurrentAffairs']);
 
                                     //Warehouse
 Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);
