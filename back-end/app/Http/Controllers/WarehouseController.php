@@ -41,4 +41,18 @@ class WarehouseController extends Controller
         $allWarehouses = warehouse_table::all();
         return response()->json($allWarehouses);
     }
+
+    function getWarehouseByName($name)
+    {
+        $result = warehouse_table::where("name",$name)->get();
+        if(count($result) > 0)
+        {
+            return response()->json($result);
+        }
+        else
+        {
+            return response('Warehouse not found!', 204)
+                  ->header('Content-Type', 'text/plain');
+        }
+    }
 }
