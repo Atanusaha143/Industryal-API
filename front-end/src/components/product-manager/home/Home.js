@@ -13,6 +13,7 @@ import EditWarehouse from "../warehouse-channel/EditWarehouse";
 import LeaveRequest from "../other-channel/LeaveRequest";
 import MyLeaveRequest from "../other-channel/MyLeaveRequest";
 import ActivityList from "../other-channel/ActivityList";
+import Administration from "../other-channel/Administration";
 
 const Home = ({ title }) => {
   return (
@@ -59,7 +60,7 @@ const Home = ({ title }) => {
             } else if (title === "user-activities") {
               return <ActivityList></ActivityList>;
             } else if (title === "administration") {
-              //return <Administration></Administration>;
+              return <Administration></Administration>;
             }
           })()}
         </div>

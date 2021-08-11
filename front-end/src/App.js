@@ -48,6 +48,9 @@ function App() {
           <Route exact path="/product/user/activities">
             <Home title="user-activities" />
           </Route>
+          <Route exact path="/product/user/administration">
+            <Home title="administration" />
+          </Route>
         </Switch>
       </Router>
     </>
