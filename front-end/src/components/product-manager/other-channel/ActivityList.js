@@ -21,6 +21,16 @@ const ActivityList = () => {
   const [search, setSearch] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(async () => {
+    setLoading(true);
+    axios
+      .get("http://127.0.0.1:8000/api/product/user/activities")
+      .then(function (response) {
+        setList(response.data);
+        setLoading(false);
+      });
+  }, []);
+
   const override = `
   display: flex;
   align-items: center;
@@ -28,13 +38,38 @@ const ActivityList = () => {
   border-color: red;
 `;
 
+  const searchActivity = () => {};
+
   return (
     <>
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Activities</h3>
+            <h3>Activity List</h3>
           </center>
+          <hr></hr>
+          <input
+            type="text"
+            className="form-control mt-3 mb-5"
+            style={{ width: "50%" }}
+            placeholder="Search By Type..."
+            onChange={(e) => setSearch(e.target.value)}
+          ></input>
+          <button
+            className="btn btn-outline-primary mt-3"
+            style={{ width: "10%", height: "5%", marginLeft: "20px" }}
+            onClick={() => searchActivity()}
+          >
+            Search
+          </button>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           {/* component */}
           <div className="row justify-content-center">
             <div className="col-12">
@@ -49,11 +84,26 @@ const ActivityList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Create Product</td>
-                        <td>Product Name: Potato, Product Id: POTATO001</td>
-                        <td>8:32PM</td>
-                      </tr>
+                      {list.length === 0 ? (
+                        <tr>
+                          <td colSpan="10">
+                            <ScaleLoader
+                              css={override}
+                              size={150}
+                              color={"#eb4034"}
+                              loading={loading}
+                            />
+                          </td>
+                        </tr>
+                      ) : (
+                        list.map((activity) => (
+                          <tr>
+                            <td>{activity.type}</td>
+                            <td>{activity.description}</td>
+                            <td>{activity.activity_time}</td>
+                          </tr>
+                        ))
+                      )}
                     </tbody>
                   </Table>
                 </div>
