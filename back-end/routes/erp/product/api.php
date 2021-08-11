@@ -43,3 +43,4 @@ Route::put("warehouse/edit/{id}",[WarehouseController::class,'updateWarehouse'])
 Route::post("/product/user/leave/create",[OtherController::class,'createLeaveRequest']);
 Route::get("/product/user/leave/myrequest",[OtherController::class,'getMyLeaveRequests']);
 Route::get("/product/user/leave/myrequest/search/{name}",[OtherController::class,'getRequestByName']);
+Route::get("/product/user/activities",[OtherController::class,'getActivities']);

@@ -50,4 +50,10 @@ class OtherController extends Controller
                   ->header('Content-Type', 'text/plain');
         }
     }
+
+    public function getActivities()
+    {
+        $allActivities = activities_table::all();
+        return response()->json($allActivities);
+    }
 }
