@@ -1,23 +1,61 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Table, Card } from "react-bootstrap";
 const Dashboard = () => {
+  const [list, setList] = useState("");
+
+  useEffect(async () => {
+    axios
+      .get("http://127.0.0.1:8000/api/product/dashboard/current-affairs")
+      .then(function (response) {
+        setList(response.data);
+      });
+  }, []);
   return (
     <>
-      <div className="col-12 col-lg-9 border border-dark rounded p-3">
+      <div className="col-5 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
             <h3>Dashboard</h3>
+            <hr></hr>
           </center>
           {/* component */}
           <div className="container">
-            <div className="row justify-content-center">
-              <div className="card w-100 bg-light text-dark m-3 border border-primary">
-                <div
-                  className="card-header bg-dark     text-light"
-                  align="center"
-                >
+            <div className="row justify-content-center mt-3">
+              <div
+                className="card bg-light text-dark border border-primary"
+                style={{ width: "70%" }}
+              >
+                <div className="card-header bg-dark text-light" align="center">
                   <b>Current Affairs</b>
                 </div>
                 <div className="card-body">
-                  <div className="card-text"></div>
+                  <div className="card-text">
+                    <Table bordered hover>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <b>Highest stocked product - {list[0]}</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <b>Most expensive product - {list[1]}</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <b>Number of good products - {list[2]}</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <b>Number of faulty product - {list[3]}</b>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
                 </div>
               </div>
             </div>

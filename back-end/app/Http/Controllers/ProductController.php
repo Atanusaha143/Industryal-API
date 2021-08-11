@@ -188,13 +188,13 @@ class ProductController extends Controller
         }
 
         $affairList = [
-            "max_stocked_product"=>$max_stocked_product,
-            "most_expensive_product"=>$most_expensive_product,
-            "good_products_cnt"=>$good_products_cnt,
-            "faulty_products_cnt"=>$faulty_products_cnt
+            $max_stocked_product,
+            $most_expensive_product,
+            $good_products_cnt,
+            $faulty_products_cnt
         ];
 
-        return response()->json($affairList);
+        return $affairList;
     }
 
     
