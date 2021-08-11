@@ -14,6 +14,7 @@ import LeaveRequest from "../other-channel/LeaveRequest";
 import MyLeaveRequest from "../other-channel/MyLeaveRequest";
 import ActivityList from "../other-channel/ActivityList";
 import Administration from "../other-channel/Administration";
+import MyAdministrationIssue from "../other-channel/MyAdministrationIssue";
 
 const Home = ({ title }) => {
   return (
@@ -61,6 +62,8 @@ const Home = ({ title }) => {
               return <ActivityList></ActivityList>;
             } else if (title === "administration") {
               return <Administration></Administration>;
+            } else if (title === "administration-myIssues") {
+              return <MyAdministrationIssue></MyAdministrationIssue>;
             }
           })()}
         </div>

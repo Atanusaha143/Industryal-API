@@ -51,6 +51,9 @@ function App() {
           <Route exact path="/product/user/administration">
             <Home title="administration" />
           </Route>
+          <Route exact path="/product/user/administration/myissue">
+            <Home title="administration-myIssues" />
+          </Route>
         </Switch>
       </Router>
     </>

@@ -34,6 +34,18 @@ const Administration = () => {
             <h3>Administration</h3>
             <hr></hr>
           </center>
+          <div className="row align-items-start mb-2">
+            <div class="col"></div>
+            <div class="col-7"></div>
+            <div class="col">
+              <Link
+                to="/product/user/administration/myissue"
+                className="btn btn-secondary rounded p-1 text-right"
+              >
+                My Issue List
+              </Link>
+            </div>
+          </div>
           {/* component */}
           {message && (
             <center>
