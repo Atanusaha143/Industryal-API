@@ -1,5 +1,5 @@
 import { Table } from "react-bootstrap";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -10,10 +10,37 @@ const AddWarehouse = () => {
   const [address, setAddress] = useState("");
   const [zip_code, setZipCode] = useState("");
   const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("Bangladesh");
   const [phone, setPhone] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Open");
+  const history = useHistory();
+
+  useEffect(() => {}, []);
+
+  const createWarehouse = () => {
+    const formData = new FormData();
+    formData.append("warehouse_id", warehouse_id);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("address", address);
+    formData.append("zip_code", zip_code);
+    formData.append("city", city);
+    formData.append("country", country);
+    formData.append("phone", phone);
+    formData.append("quantity", quantity);
+    formData.append("status", status);
+
+    axios
+      .post("http://127.0.0.1:8000/api/warehouse/create", formData)
+      .then((response) => {
+        console.log(response);
+        //history.push("/product/list");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -129,6 +156,7 @@ const AddWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_phone"
+                            onChange={(e) => setPhone(e.target.value)}
                           ></input>
                         </td>
                       </tr>
@@ -139,9 +167,10 @@ const AddWarehouse = () => {
                             class="form-control"
                             id="warehouse"
                             name="warehouse_status"
+                            onChange={(e) => setStatus(e.target.value)}
                           >
-                            <option>Open</option>
-                            <option>Closed</option>
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
                           </select>
                         </td>
                       </tr>
@@ -152,17 +181,19 @@ const AddWarehouse = () => {
                             type="text"
                             class="form-control"
                             name="warehouse_quantity"
+                            onChange={(e) => setQuantity(e.target.value)}
                           ></input>
                         </td>
                       </tr>
                       <tr>
                         <td colspan="3" align="center">
-                          <input
-                            type="submit"
+                          <button
+                            onClick={createWarehouse}
                             class="btn btn-success"
-                            value="Create"
                             style={{ width: "100%" }}
-                          ></input>
+                          >
+                            Create
+                          </button>
                         </td>
                       </tr>
                     </tbody>
