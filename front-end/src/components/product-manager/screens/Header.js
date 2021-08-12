@@ -9,17 +9,32 @@ const Header = () => {
     localStorage.clear();
     history.push("/");
   }
+  function activeProfile() {
+    localStorage.setItem("profileFlag", 1);
+    history.push("/product/user/profile");
+  }
+  function industryal() {
+    localStorage.removeItem("profileFlag");
+    history.push("/product");
+  }
   return (
     <>
       <header>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="/product">Industryal</Navbar.Brand>
+            <Nav>
+              <Nav.Link
+                onClick={industryal}
+                style={{ fontSize: "150%", fontWeight: "200px" }}
+              >
+                Industryal
+              </Nav.Link>
+            </Nav>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto"></Nav>
               <Nav>
-                <Nav.Link href="/product/user/profile">
+                <Nav.Link onClick={activeProfile}>
                   {localStorage.getItem("username")}
                 </Nav.Link>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>

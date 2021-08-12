@@ -18,6 +18,8 @@ import MyAdministrationIssue from "../other-channel/MyAdministrationIssue";
 import TransferProduct from "../product-channel/TransferProduct";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import ProfileSideNavbar from "../screens/ProfileSideNavbar";
+import Profile from "../user-channel/Profile";
 
 const Home = ({ title }) => {
   const history = useHistory();
@@ -37,7 +39,11 @@ const Home = ({ title }) => {
 
       <div>
         <div className="row mt-2 justify-content-around">
-          <SideNavbar></SideNavbar>
+          {localStorage.getItem("profileFlag") ? (
+            <ProfileSideNavbar></ProfileSideNavbar>
+          ) : (
+            <SideNavbar></SideNavbar>
+          )}
 
           {(() => {
             if (title === "dashboard") {
@@ -74,6 +80,8 @@ const Home = ({ title }) => {
               return <Administration></Administration>;
             } else if (title === "administration-myIssues") {
               return <MyAdministrationIssue></MyAdministrationIssue>;
+            } else if (title === "profile") {
+              return <Profile></Profile>;
             }
           })()}
         </div>
