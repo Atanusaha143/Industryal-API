@@ -14,7 +14,9 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto"></Nav>
               <Nav>
-                <Nav.Link href="/product/user/profile">Username</Nav.Link>
+                <Nav.Link href="/product/user/profile">
+                  {localStorage.getItem("username")}
+                </Nav.Link>
                 <Nav.Link eventKey={2} href="#memes">
                   Logout
                 </Nav.Link>
