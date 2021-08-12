@@ -26,7 +26,16 @@ class SalesCustomersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'delivery_point'=>'required',
+            'first_purchase'=>'required',
+            'type'=>'required',
+        ]);
+        
+        return SalesCustomers::create($request->all());
     }
 
     /**
@@ -35,9 +44,10 @@ class SalesCustomersController extends Controller
      * @param  \App\Models\SalesCustomers  $salesCustomers
      * @return \Illuminate\Http\Response
      */
-    public function show(SalesCustomers $salesCustomers)
+    public function show(string $id)
     {
-        //
+        // return gettype($id);
+        return SalesCustomers::find($id);
     }
 
     /**
@@ -47,9 +57,18 @@ class SalesCustomersController extends Controller
      * @param  \App\Models\SalesCustomers  $salesCustomers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SalesCustomers $salesCustomers)
+    public function update(Request $request, string $id)
     {
-        //
+        $customer = SalesCustomers::find($id);
+        $customer->update([
+            $customer->name = $request->name,
+            $customer->email = $request->email,
+            $customer->phone = $request->phone,
+            $customer->delivery_point = $request->delivery_point,
+            $customer->type = $request->type,
+            $customer->updated_at = date("Y-m-d H:i:s"),
+        ]);
+        return $customer;
     }
 
     /**
@@ -58,8 +77,8 @@ class SalesCustomersController extends Controller
      * @param  \App\Models\SalesCustomers  $salesCustomers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SalesCustomers $salesCustomers)
+    public function destroy(string $id)
     {
-        //
+        return SalesCustomers::destroy($id);
     }
 }

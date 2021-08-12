@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/sales/customers', [SalesCustomersController::class, 'index']);
+Route::post('/sales/customers', [SalesCustomersController::class, 'store']);
+Route::get('/sales/customers/{id}', [SalesCustomersController::class, 'show']);
+Route::put('/sales/customers/{id}', [SalesCustomersController::class, 'update']);
+Route::delete('/sales/customers/{id}', [SalesCustomersController::class, 'destroy']);
