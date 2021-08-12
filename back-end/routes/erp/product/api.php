@@ -32,6 +32,7 @@ Route::get("product/list/faulty",[ProductController::class,'getFaultyProducts'])
 Route::get("product/search/faulty/{name}",[ProductController::class,'getFaultyProductByName']);
 Route::get("product/dashboard/current-affairs",[ProductController::class,'getCurrentAffairs']);
 Route::get("product/warehouse/names",[ProductController::class,'getWarehouseNames']);
+Route::put("product/transfer",[ProductController::class,'transferProduct']);
 
                                     //Warehouse
 Route::post("warehouse/create",[WarehouseController::class,'addWarehouse']);

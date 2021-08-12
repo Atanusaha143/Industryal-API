@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Product\product_table;
+use App\Models\Product\warehouse_table;
 
 class ProductController extends Controller
 {
@@ -195,6 +196,74 @@ class ProductController extends Controller
         ];
 
         return $affairList;
+    }
+
+    public function transferProduct(Request $req)
+    {
+        $product_id = $req->product_id;
+        $warehouse_name = $req->warehouse_name;
+        $transfer_quantity = $req->transfer_quantity;
+
+        $product = product_table::where('product_id', $product_id)->get();
+        $warehouseQuantity = warehouse_table::where('name', $warehouse_name)->value('quantity');
+        $productQuantity = product_table::where('product_id', $product_id)->value('stock');
+
+        if(count($product) == 0) return "Product not found";
+        elseif($transfer_quantity > $warehouseQuantity)
+        {
+            return "Requested quantity is bigger than warehouse quantity";
+        }
+        else if($transfer_quantity > $productQuantity)
+        {
+            return "You don't have that much product!";
+        }
+        elseif($warehouse_name == $product[0]->warehouse_name)
+        {
+            return "You selected the current warehouse!";
+        }
+        else
+        {
+            // Decrease current product stock from current warehouse
+            $product = product_table::where('product_id', $product_id)->first();
+            $prev_warehouse_name = $product->warehouse_name;
+            $prev_warehouse_quantity = $product->stock - doubleval($transfer_quantity);
+            $product->stock = $product->stock - doubleval($transfer_quantity);
+            $product->save();
+
+            //Add transfer quantity to as a new product
+            $newProduct = new product_table;
+            $newProduct->product_id = $product->product_id;
+            $newProduct->product_name = $product->product_name;
+            $newProduct->status_sell = $product->status_sell;
+            $newProduct->status_purchase = $product->status_purchase;
+            $newProduct->product_description = $product->product_description;
+            $newProduct->warehouse_name = $warehouse_name;
+            $newProduct->stock = doubleval($transfer_quantity);
+            $newProduct->nature = $product->nature;
+            $newProduct->weight = $product->weight;
+            $newProduct->weight_unit = $product->weight_unit ;
+            $newProduct->dimention = $product->dimention;
+            $newProduct->dimention_unit = $product->dimention_unit;
+            $newProduct->selling_price = $product->selling_price;
+            $newProduct->tax = $product->tax;
+            $newProduct->image = $product->image;
+            $newProduct->product_condition = "Good";
+            $newProduct->date_added = date("Y-m-d");
+            $newProduct->last_updated = date("Y-m-d");
+            $newProduct->save();
+
+            // Increase previous warehouse quantity
+            $prev_warehouse = warehouse_table::where('name', $prev_warehouse_name)->first();
+            $prev_warehouse->remaining_quantity += $transfer_quantity;
+            $prev_warehouse->save();
+
+            // Decrease new warehouse quantity
+            $new_warehouse = warehouse_table::where('name', $warehouse_name)->first();
+            $new_warehouse->remaining_quantity -= $transfer_quantity;
+            $new_warehouse->save();
+
+            return "Transfer Successful";
+        }
     }
 
     
