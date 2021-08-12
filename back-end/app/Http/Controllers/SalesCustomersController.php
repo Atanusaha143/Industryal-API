@@ -15,7 +15,7 @@ class SalesCustomersController extends Controller
      */
     public function index()
     {
-        //
+        return SalesCustomers::all();
     }
 
     /**
