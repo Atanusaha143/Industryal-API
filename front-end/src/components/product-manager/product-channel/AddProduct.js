@@ -2,7 +2,6 @@ import { Table } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import WarehouseList from "../warehouse-channel/WarehouseList";
 
 const AddProduct = () => {
   const [product_id, setPId] = useState("");
