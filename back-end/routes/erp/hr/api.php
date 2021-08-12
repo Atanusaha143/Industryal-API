@@ -6,6 +6,7 @@ use App\Http\Controllers\HRuserController;
 use App\Http\Controllers\HRemployeeController;
 use App\Http\Controllers\HRgroupController;
 use App\Http\Controllers\HRempScheduleController;
+use App\Http\Controllers\HRleaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,12 @@ Route::delete('/HR/employee/delete/{employee_id}',[HRemployeeController::class,'
 Route::Post('/HR/employee/group',[HRgroupController::class,'createGroup']);
 Route::get('/HR/employee/{employee_id}',[HRemployeeController::class,'getEmpByEmpId']);
 Route::get('/HR/emp/schedule',[HRempScheduleController::class,'schedule']);
+
+Route::Post('/HR/leave/request',[HRleaveController::class,'verifyLeave']);
+Route::get('/HR/leave/request/list',[HRleaveController::class,'getLeaveList']);
+Route::put('/HR/leave/approve/{id}',[HRleaveController::class,'VerifyApprove']);
+Route::put('/HR/leave/reject/{id}',[HRleaveController::class,'VerifyReject']);
+Route::get("/HR/leave/{id}",[HRleaveController::class,'getLeaveById']);
 
 
 

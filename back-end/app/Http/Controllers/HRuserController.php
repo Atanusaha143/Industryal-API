@@ -82,7 +82,7 @@ class HRuserController extends Controller
 
     }
 
-    function getUserById($id)
+    public function getUserById($id)
     {
         return User::find($id);
     }
