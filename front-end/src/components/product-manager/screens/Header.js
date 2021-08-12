@@ -4,6 +4,11 @@ import { Nav } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 
 const Header = () => {
+  const history = useHistory();
+  function logout() {
+    localStorage.clear();
+    history.push("/");
+  }
   return (
     <>
       <header>
@@ -17,9 +22,7 @@ const Header = () => {
                 <Nav.Link href="/product/user/profile">
                   {localStorage.getItem("username")}
                 </Nav.Link>
-                <Nav.Link eventKey={2} href="#memes">
-                  Logout
-                </Nav.Link>
+                <Nav.Link onClick={logout}>Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
