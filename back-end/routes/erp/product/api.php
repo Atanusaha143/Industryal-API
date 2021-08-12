@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\OtherController;
+use App\Http\Controllers\ProductManagerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,3 +53,7 @@ Route::get("/product/user/activities/search/{type}",[OtherController::class,'get
 Route::post("/product/user/administration/create",[OtherController::class,'createAdministrationIssue']);
 Route::get("/product/user/administration/myissue",[OtherController::class,'getMyIssues']);
 Route::get("/product/user/administration/myissue/search/{name}",[OtherController::class,'getIssueByName']);
+
+
+                                    //User
+Route::get("product/user/profile/{username}",[ProductManagerController::class,'getUserInfo']);
