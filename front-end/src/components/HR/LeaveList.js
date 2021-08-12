@@ -1,0 +1,70 @@
+import { useState , useEffect } from 'react';
+import { React } from 'react';
+import { Table } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+
+const LeaveList=()=>{
+    const[list,setList] = useState([]);
+    useEffect( async ()=>{
+        let result = await fetch("http://127.0.0.1:8000/api/HR/leave/request/list");
+        result = await result.json();
+        setList(result);
+    },[])
+    return(
+        <>
+            <Table  className="table table-hover ">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Leave Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Description</th>
+                        <th>Request Made</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        list.map((leave)=>
+                        <tr>
+                            <td>{leave.employee_id}</td>
+                            <td>{leave.type}</td>
+                            <td>{leave.start_time}</td>
+                            <td>{leave.end_time}</td>
+                            <td>{leave.request_description}</td>
+                            <td>{leave.request_made}</td>
+                            <td>
+                                {/*  if({leave.status}==='Pending')
+                                {
+                                    <span className="text-primary font-weight-bold">{leave.status}</span>
+                                }
+                                else if({leave.status}=='Approved')
+                                {
+                                    <span className="text-success font-weight-bold">{leave.status}</span>
+                                }
+                                else
+                                {
+                                    <span className="text-danger font-weight-bold">{leave.status}</span>
+                                }  */}
+
+                                  {leave.status}  
+                            </td>
+                            <td>
+                                <Link to={`/HR/leave/approve/${leave.id}`} class="btn btn-success btn-block m-1">Approve </Link>
+                                <Link to={`/HR/leave/reject/${leave.id}`} class="btn btn-danger btn-block mx-2 m-1"> Reject </Link>
+                                    
+                            </td>
+                        </tr>
+                        )
+
+                    }
+                
+                </tbody>
+            </Table>
+        </>
+    )
+    
+}
+export default LeaveList;

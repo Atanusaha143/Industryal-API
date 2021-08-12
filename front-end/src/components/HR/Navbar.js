@@ -13,6 +13,10 @@ import EmployeeList from './EmployeeList';
 import EditEmployee from './EditEmployee';
 import DeleteEmp from './DeleteEmp';
 import EmpSchedule from './EmpSchedule';
+import MyLeave from './MyLeave';
+import LeaveList from './LeaveList';
+import Approve from './Approve';
+import Reject from './Reject';
 
 const Navb=({title})=>{
     return(
@@ -120,6 +124,31 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <EmpSchedule/>
+                                )
+                            }
+                            else if (title==='Leave Request')
+                            {
+                                return(
+                                    <MyLeave />
+                                )
+                            }
+                            else if (title==='Leave Request List')
+                            {
+                                return(
+                                    <LeaveList />
+                                )
+                               
+                            }
+                            else if (title ==='Approved Leave Request')
+                            {
+                                return(
+                                    <Approve />
+                                )
+                            }
+                            else if (title ==='Reject Leave Request')
+                            {
+                                return(
+                                    <Reject />
                                 )
                             }
                         })()}

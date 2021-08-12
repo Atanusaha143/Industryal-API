@@ -36,6 +36,18 @@ function App() {
         <Route exact path='/HR/employee/schedule'>
           <Navb title='Employees Schedule' />
         </Route>
+        <Route exact path='/HR/leave/request'>
+          <Navb title='Leave Request' />
+        </Route>
+        <Route exact path='/HR/leave/request/list'>
+          <Navb title='Leave Request List' />
+        </Route>
+        <Route exact path='/HR/leave/approve/:id'>
+          <Navb title='Approved Leave Request' />
+        </Route>
+        <Route exact path='/HR/leave/reject/:id'>
+          <Navb title='Reject Leave Request' />
+        </Route>
       </Switch>
     </Router>
 
