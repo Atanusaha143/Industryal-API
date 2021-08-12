@@ -10,19 +10,19 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="NavLinkContainer">
-                <Link className="Link" to="/">Home</Link>
+                <Link className="NavLink" to="/">Home</Link>
             </div>
             <div className="NavLinkContainer">
-                <Link className="Link" to="/orders">Orders</Link>
+                <Link className="NavLink" to="/orders">Orders</Link>
             </div>
             <div className="NavLinkContainer">
-                <Link className="Link" to="/customers">Customers</Link>
+                <Link className="NavLink" to="/customers">Customers</Link>
             </div>
             <div className="NavLinkContainer">
-                <Link className="Link" to="/statistics">Stats</Link>
+                <Link className="NavLink" to="/statistics">Stats</Link>
             </div>
             <div className="NavLinkContainer">
-                <Link className="Link" to="/emails">Emails</Link>
+                <Link className="NavLink" to="/emails">Emails</Link>
             </div>
         </div>
     )

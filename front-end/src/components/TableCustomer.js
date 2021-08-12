@@ -33,6 +33,7 @@ const TableCustomer = () => {
     {
         return (
             <div>
+
                 <table class="CusTable">
                     <thead>
                         <tr>

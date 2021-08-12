@@ -24,7 +24,7 @@ function App() {
             <NavBar/>
             <SideMenu/>
             <TableCustomer/>
-            customers
+            {/* customers */}
           </Route>
           <Route path="/statistics">
             <NavBar/>
