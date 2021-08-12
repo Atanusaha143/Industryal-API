@@ -48,6 +48,12 @@ function App() {
         <Route exact path='/HR/leave/reject/:id'>
           <Navb title='Reject Leave Request' />
         </Route>
+        <Route exact path='/HR/expense/report'>
+          <Navb title='Expense Report' />
+        </Route>
+        <Route exact path='/HR/expense/list'>
+          <Navb title='Expense Report List' />
+        </Route>
       </Switch>
     </Router>
 

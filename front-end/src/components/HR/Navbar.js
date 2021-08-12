@@ -17,6 +17,8 @@ import MyLeave from './MyLeave';
 import LeaveList from './LeaveList';
 import Approve from './Approve';
 import Reject from './Reject';
+import Expense from './Expense';
+import ExpenseList from './ExpenseList';
 
 const Navb=({title})=>{
     return(
@@ -149,6 +151,18 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <Reject />
+                                )
+                            }
+                            else if (title ==='Expense Report')
+                            {
+                                return(
+                                    <Expense />
+                                )
+                            }
+                            else if (title ==='Expense Report List')
+                            {
+                                return(
+                                    <ExpenseList />
                                 )
                             }
                         })()}
