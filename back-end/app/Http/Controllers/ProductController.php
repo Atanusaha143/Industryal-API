@@ -125,7 +125,7 @@ class ProductController extends Controller
 
     function getProductByName($name)
     {
-        $result = product_table::where("product_name",$name)->get();
+        $result = product_table::where("product_name",'like','%'.$name.'%')->get();
         if(count($result) > 0)
         {
             return response()->json($result);
@@ -145,7 +145,7 @@ class ProductController extends Controller
 
     function getFaultyProductByName($name)
     {
-        $result = product_table::where("product_name",$name)->where("product_condition","Faulty")->get();
+        $result = product_table::where("product_name",'like','%'.$name.'%')->where("product_condition","Faulty")->get();
         if(count($result) > 0)
         {
             return response()->json($result);

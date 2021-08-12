@@ -44,7 +44,7 @@ class WarehouseController extends Controller
 
     function getWarehouseByName($name)
     {
-        $result = warehouse_table::where("name",$name)->get();
+        $result = warehouse_table::where("name",'like','%'.$name.'%')->get();
         if(count($result) > 0)
         {
             return response()->json($result);

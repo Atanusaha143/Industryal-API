@@ -41,7 +41,7 @@ class OtherController extends Controller
 
     function getRequestByName($name)
     {
-        $result = leave_request::where("request_description",'like',$name.'%')->get();
+        $result = leave_request::where("request_description",'like','%'.$name.'%')->get();
         if(count($result) > 0)
         {
             return response()->json($result);
@@ -61,7 +61,7 @@ class OtherController extends Controller
 
     function getActivitiesByType($type)
     {
-        $result = activities_table::where("type",'like',$type.'%')->get();
+        $result = activities_table::where("type",'like','%'.$type.'%')->get();
         if(count($result) > 0)
         {
             return response()->json($result);
@@ -102,7 +102,7 @@ class OtherController extends Controller
 
     function getIssueByName($name)
     {
-        $result = administration::where("issue_name",'like',$name.'%')->get();
+        $result = administration::where("issue_name",'like','%'.$name.'%')->get();
         if(count($result) > 0)
         {
             return response()->json($result);
