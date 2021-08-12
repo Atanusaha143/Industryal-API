@@ -16,8 +16,17 @@ import ActivityList from "../other-channel/ActivityList";
 import Administration from "../other-channel/Administration";
 import MyAdministrationIssue from "../other-channel/MyAdministrationIssue";
 import TransferProduct from "../product-channel/TransferProduct";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const Home = ({ title }) => {
+  const history = useHistory();
+  useEffect(() => {
+    if (!localStorage.getItem("username")) {
+      history.push("/");
+    }
+  }, []);
+
   return (
     <>
       <Header></Header>
