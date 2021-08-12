@@ -1,17 +1,18 @@
 *
 {
   font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-size: 13px; */
 }
 
 :root{
-  --light-blue: rgb(79, 129, 221);
+  --blue-1: rgb(16, 63, 151);
+  --blue-2: rgb(79, 129, 221);
 }
 
 .NavBar
 {
   height: 55px;
-  background-color: var(--light-blue);
-  /* background-image: linear-gradient(to right, rgb(79, 129, 221), rgb(16, 63, 151)); */
+  background-color: var(--blue-2);
   display: flex;
   flex-direction: row;
 }
@@ -64,6 +65,7 @@ body{
 .CusTable td
 {
   border:1px solid black;
+  padding: 5px 10px 5px 10px;
 }
 
 /* ---------------------------------------SIDEBAR START-------------------------------  */

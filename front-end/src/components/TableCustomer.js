@@ -1,67 +1,73 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 
 const TableCustomer = () => {
 
-    let cus_json = [
-        {
-            "id":"1",
-            "name":"snigdho dip howlader",
-            "email":"snigdho.howlader@gmail.com",
-            "phone":"+8801775641902",
-            "delivery_point":"Kalabagan, Dhaka",
-        },
-        {
-            "id":"2",
-            "name":"tausif chowdhury",
-            "email":"tausif.niloy@gmail.com",
-            "phone":"+8801775641902",
-            "delivery_point":"Kalabagan, Dhaka",
-        },
-        {
-            "id":"3",
-            "name":"arafat antor",
-            "email":"abir.antor@gmail.com",
-            "phone":"+8801775641902",
-            "delivery_point":"Kalabagan, Dhaka",
-        },
-    ]
 
-    console.log('complete');
-    return (
-        <div>
-            <table class="CusTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Delivery Point</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        cus_json.map(emp=>{
-                            return (
-                                <tr>
-                                    <td key={emp.id}>{emp.id}</td>
-                                    <td>{emp.name}</td>
-                                    <td>{emp.email}</td>
-                                    <td>{emp.phone}</td>
-                                    <td>{emp.delivery_point}</td>
-                                    <td><button>Update</button></td>
-                                    <td><button>Delete</button></td>
-                                </tr>
-                            );
-                        })
-                    }
-                </tbody>
-            </table>
-        </div>
-    )
-    
+    const[error, setError] = useState(null);
+    const[isLoaded, setIsLoaded] = useState(false);
+    const[items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/api/sales/customers")
+        .then(res=>res.json())
+        .then(
+            (result)=>{
+                setIsLoaded(true);
+                setItems(result);
+            },
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+        )
+    }, [])
+
+    if(error){
+        return <div>Error:{error.message}</div>;
+    }
+    else if(!isLoaded){
+        return <div>Loading...</div>;
+    }
+    else
+    {
+        return (
+            <div>
+                <table class="CusTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Delivery Point</th>
+                            <th>First Purchase</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            items.map(cus=>{
+                                return (
+                                    <tr>
+                                        <td key={cus.id}>{cus.id}</td>
+                                        <td>{cus.name}</td>
+                                        <td>{cus.email}</td>
+                                        <td>{cus.phone}</td>
+                                        <td>{cus.delivery_point}</td>
+                                        <td>{cus.first_purchase}</td>
+                                        <td>{cus.type}</td>
+                                        <td><button>Update</button></td>
+                                        <td><button>Delete</button></td>
+                                    </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
 }
 
 export default TableCustomer
