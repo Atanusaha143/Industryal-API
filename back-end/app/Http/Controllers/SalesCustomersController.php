@@ -81,4 +81,16 @@ class SalesCustomersController extends Controller
     {
         return SalesCustomers::destroy($id);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\SalesCustomers  $salesCustomers
+     * @return \Illuminate\Http\Response
+     */
+    public function search(string $name)
+    {
+        // return gettype($id);
+        return SalesCustomers::where('name', 'like', '%'.$name.'%')->get();
+    }
 }

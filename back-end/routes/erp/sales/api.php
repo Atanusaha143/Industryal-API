@@ -24,3 +24,4 @@ Route::post('/sales/customers', [SalesCustomersController::class, 'store']);
 Route::get('/sales/customers/{id}', [SalesCustomersController::class, 'show']);
 Route::put('/sales/customers/{id}', [SalesCustomersController::class, 'update']);
 Route::delete('/sales/customers/{id}', [SalesCustomersController::class, 'destroy']);
+Route::get('/sales/customers/search/{name}', [SalesCustomersController::class, 'search']);
