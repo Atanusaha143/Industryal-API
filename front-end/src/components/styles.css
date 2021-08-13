@@ -75,25 +75,6 @@ body{
   padding: 5px 10px 5px 10px;
 }
 
-.UpdateBtn
-{
-  background-color: rgb(12, 107, 63);
-  color: antiquewhite;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  border-radius: 10px;
-  text-decoration: none;
-  padding: 5px 10px 5px 10px;
-}
-
-.UpdateBtn:hover
-{
-  background-color: blanchedalmond;
-  color: green;
-}
-
-
 /* ---------------------------------------SIDEBAR START-------------------------------  */
 /* #sideMenu
 {

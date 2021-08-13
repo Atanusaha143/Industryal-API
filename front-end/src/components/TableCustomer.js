@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 // import Popup from 'reactjs-popup';
+// import '../styles/styles.css'
 
 const TableCustomer = () => {
 
@@ -22,10 +24,13 @@ const TableCustomer = () => {
                 setError(error);
             }
         )
+        .catch(
+            
+        )
     }, [])
 
     const generateUpdateForm = () => {
-        console.log("ok");
+        // setItems(null)
     }
 
     if(error){
@@ -34,11 +39,10 @@ const TableCustomer = () => {
     else if(!isLoaded){
         return <div>Loading...</div>;
     }
-    else
+    else if(items !== null)
     {
         return (
             <div>
-
                 <table className="CusTable">
                     <thead>
                         <tr>
@@ -64,7 +68,7 @@ const TableCustomer = () => {
                                         <td>{cus.first_purchase}</td>
                                         <td>{cus.type}</td>
                                         {/* <td><button>Update</button></td> */}
-                                        <td><button onClick={generateUpdateForm}>Update</button></td>
+                                        <td><Link className="UpdateBtn" to='/sales/orders/:id'>Update</Link></td>
                                         <td><button>Delete</button></td>
                                     </tr>
                                 );
