@@ -9,12 +9,12 @@ import withReactContent from "sweetalert2-react-content";
 const EditProfile = () => {
   const MySwal = withReactContent(Swal);
   const history = useHistory();
-  const [userInfo, setUserInfo] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [userInfo, setUserInfo] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
@@ -25,6 +25,11 @@ const EditProfile = () => {
           localStorage.getItem("username")
       )
       .then(function (response) {
+        setFirstName(response.data[0].firstname);
+        setLastName(response.data[0].lastname);
+        setEmail(response.data[0].email);
+        setPhoneNumber(response.data[0].phone);
+        setAddress(response.data[0].address);
         setUserInfo(response.data[0]);
         setLoading(false);
         console.log(response.data);
@@ -76,7 +81,7 @@ const EditProfile = () => {
                               type="text"
                               className="form-control"
                               name="firstName"
-                              value={userInfo.firstname}
+                              value={firstName}
                               onChange={(e) => setFirstName(e.target.value)}
                             ></input>
                           </td>
@@ -88,7 +93,7 @@ const EditProfile = () => {
                               type="text"
                               className="form-control"
                               name="lastName"
-                              value={userInfo.lastname}
+                              value={lastName}
                               onChange={(e) => setLastName(e.target.value)}
                             ></input>
                           </td>
@@ -100,7 +105,7 @@ const EditProfile = () => {
                               type="text"
                               className="form-control"
                               name="Email"
-                              value={userInfo.email}
+                              value={email}
                               onChange={(e) => setEmail(e.target.value)}
                             ></input>
                           </td>
@@ -112,7 +117,7 @@ const EditProfile = () => {
                               type="text"
                               className="form-control"
                               name="phoneNumber"
-                              value={userInfo.phone}
+                              value={phoneNumber}
                               onChange={(e) => setPhoneNumber(e.target.value)}
                             ></input>
                           </td>
@@ -125,7 +130,7 @@ const EditProfile = () => {
                               name="address"
                               id=""
                               class="form-control"
-                              value={userInfo.address}
+                              value={address}
                               onChange={(e) => setAddress(e.target.value)}
                             ></textarea>
                           </td>
