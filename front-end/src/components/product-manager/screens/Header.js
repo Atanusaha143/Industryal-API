@@ -10,11 +10,9 @@ const Header = () => {
     history.push("/");
   }
   function activeProfile() {
-    localStorage.setItem("profileFlag", 1);
     history.push("/product/user/profile");
   }
   function industryal() {
-    localStorage.removeItem("profileFlag");
     history.push("/product");
   }
   return (
