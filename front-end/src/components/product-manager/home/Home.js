@@ -21,6 +21,7 @@ import { useHistory } from "react-router-dom";
 import ProfileSideNavbar from "../screens/ProfileSideNavbar";
 import Profile from "../user-channel/Profile";
 import EditProfile from "../user-channel/EditProfile";
+import EditProfilePicture from "../user-channel/EditProfilePicture";
 
 const Home = ({ title, nav }) => {
   const history = useHistory();
@@ -85,6 +86,8 @@ const Home = ({ title, nav }) => {
               return <Profile></Profile>;
             } else if (title === "profile-edit") {
               return <EditProfile></EditProfile>;
+            } else if (title === "profile-picture-edit") {
+              return <EditProfilePicture></EditProfilePicture>;
             }
           })()}
         </div>
