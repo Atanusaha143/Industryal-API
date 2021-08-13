@@ -14,6 +14,8 @@ const EditProfile = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [userInfo, setUserInfo] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -30,9 +32,9 @@ const EditProfile = () => {
         setEmail(response.data[0].email);
         setPhoneNumber(response.data[0].phone);
         setAddress(response.data[0].address);
+        setPassword(response.data[0].pass);
         setUserInfo(response.data[0]);
         setLoading(false);
-        console.log(response.data);
       });
   }, []);
 
@@ -43,7 +45,22 @@ const EditProfile = () => {
   border-color: red;
 `;
 
-  const updateProfile = () => {};
+  const updateProfile = () => {
+    const data = { firstName, lastName, email, phoneNumber, address, password };
+    axios
+      .put(
+        "http://127.0.0.1:8000/api/product/user/edit/" +
+          localStorage.getItem("username"),
+        data
+      )
+      .then((response) => {
+        if (response.data === "Incorrect current passowrd!") {
+          setErrorMessage(response.data);
+        } else {
+          history.goBack();
+        }
+      });
+  };
 
   return (
     <>
@@ -58,6 +75,14 @@ const EditProfile = () => {
             <div className="col-10">
               <div className="container">
                 <div className="text-left">
+                  {errorMessage && (
+                    <center>
+                      {" "}
+                      <div class="alert alert-danger col-8" role="alert">
+                        {errorMessage}
+                      </div>{" "}
+                    </center>
+                  )}
                   <Table striped bordered>
                     {userInfo.length === 0 ? (
                       <tbody>
@@ -133,6 +158,17 @@ const EditProfile = () => {
                               value={address}
                               onChange={(e) => setAddress(e.target.value)}
                             ></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Current Password</td>
+                          <td colSpan="2">
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="password"
+                              onChange={(e) => setPassword(e.target.value)}
+                            ></input>
                           </td>
                         </tr>
                         <tr>
