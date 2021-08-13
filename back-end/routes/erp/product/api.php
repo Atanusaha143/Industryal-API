@@ -57,3 +57,4 @@ Route::get("/product/user/administration/myissue/search/{name}",[OtherController
 
                                     //User
 Route::get("product/user/profile/{username}",[ProductManagerController::class,'getUserInfo']);
+Route::put("product/user/edit/{username}",[ProductManagerController::class,'updateUserInfo']);

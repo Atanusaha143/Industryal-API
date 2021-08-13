@@ -20,4 +20,31 @@ class ProductManagerController extends Controller
                   ->header('Content-Type', 'text/plain');
         }
     }
+
+    public function updateUserInfo(Request $req, $username)
+    {
+        $info = User::where('username',$username)->first();
+        if($info->pass == $req->password)
+        {
+            $info->firstname = $req->firstName;
+            $info->lastname = $req->lastName;
+            $info->phone = $req->phoneNumber;
+            $info->email = $req->email;
+            $info->address = $req->address;
+            $result = $info->save();
+            if($result)
+            {
+                return response()->json($info);
+            }
+            else
+            {
+                return response('Failed to update profile!', 400)
+                    ->header('Content-Type', 'text/plain');
+            }
+        }
+        else
+        {
+            return "Incorrect current passowrd!";
+        }
+    }
 }
