@@ -8,13 +8,31 @@ import withReactContent from "sweetalert2-react-content";
 
 const EditProfilePicture = () => {
   const history = useHistory();
-  const [image, setImage] = useState("");
-  const [password, setPassword] = useState("");
+  const [profile_pic, setImage] = useState("");
+  const [pass, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const updateProfilePicture = () => {
-    const data = { image, password };
-    console.log(data);
+    const formData = new FormData();
+    formData.append("profile_pic", profile_pic);
+    formData.append("pass", pass);
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/product/user/edit/profilepicture/" +
+          localStorage.getItem("username"),
+        formData
+      )
+      .then((response) => {
+        if (response.data === "Incorrect current passowrd!") {
+          setErrorMessage(response.data);
+        } else {
+          console.log(response.data);
+          history.goBack();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -45,9 +63,8 @@ const EditProfilePicture = () => {
                         <td colSpan="2">
                           <input
                             type="file"
-                            className="form-control"
-                            name="profilePicture"
-                            onChange={(e) => setImage(e.target.value)}
+                            name="profile_pic"
+                            onChange={(e) => setImage(e.target.files[0])}
                           ></input>
                         </td>
                       </tr>
@@ -55,7 +72,7 @@ const EditProfilePicture = () => {
                         <td>Current Password</td>
                         <td colSpan="2">
                           <input
-                            type="text"
+                            type="password"
                             className="form-control"
                             name="password"
                             onChange={(e) => setPassword(e.target.value)}
