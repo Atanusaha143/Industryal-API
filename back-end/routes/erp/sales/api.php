@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SalesCustomersController;
+use App\Http\Controllers\SalesOrdersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,11 @@ Route::get('/sales/customers/{id}', [SalesCustomersController::class, 'show']);
 Route::put('/sales/customers/{id}', [SalesCustomersController::class, 'update']);
 Route::delete('/sales/customers/{id}', [SalesCustomersController::class, 'destroy']);
 Route::get('/sales/customers/search/{name}', [SalesCustomersController::class, 'search']);
+
+Route::get('/sales/orders', [SalesOrdersController::class, 'index']);
+Route::post('/sales/orders', [SalesOrdersController::class, 'store']);
+Route::get('/sales/orders/{id}', [SalesOrdersController::class, 'show']);
+Route::put('/sales/orders/{id}', [SalesOrdersController::class, 'update']);
+Route::delete('/sales/orders/{id}', [SalesOrdersController::class, 'destroy']);
+Route::get('/sales/orders/search/{name}', [SalesOrdersController::class, 'search']);
+
