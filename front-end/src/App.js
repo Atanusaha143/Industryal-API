@@ -1,10 +1,10 @@
 import NavBar from './components/NavBar'
 import SideMenu from './components/SideMenu';
 import TableCustomer from './components/TableCustomer';
+import FormUpdateCustomer from './components/FormUpdateCustomer';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import Popup from 'reactjs-popup';
 import './App.css'
-
-
 
 function App() {
   return (
@@ -18,7 +18,10 @@ function App() {
           </Route>
           <Route path="/orders">
             <NavBar/>
-            orders
+          </Route>
+          <Route path="/orders/update">
+            <NavBar/>
+            <FormUpdateCustomer/>
           </Route>
           <Route path="/customers">
             <NavBar/>

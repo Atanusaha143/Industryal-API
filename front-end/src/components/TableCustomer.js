@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+// import Popup from 'reactjs-popup';
 
 const TableCustomer = () => {
 
@@ -23,6 +24,10 @@ const TableCustomer = () => {
         )
     }, [])
 
+    const generateUpdateForm = () => {
+        console.log("ok");
+    }
+
     if(error){
         return <div>Error:{error.message}</div>;
     }
@@ -34,7 +39,7 @@ const TableCustomer = () => {
         return (
             <div>
 
-                <table class="CusTable">
+                <table className="CusTable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -50,15 +55,16 @@ const TableCustomer = () => {
                         {
                             items.map(cus=>{
                                 return (
-                                    <tr>
-                                        <td key={cus.id}>{cus.id}</td>
+                                    <tr key={cus.id}>
+                                        <td>{cus.id}</td>
                                         <td>{cus.name}</td>
                                         <td>{cus.email}</td>
                                         <td>{cus.phone}</td>
                                         <td>{cus.delivery_point}</td>
                                         <td>{cus.first_purchase}</td>
                                         <td>{cus.type}</td>
-                                        <td><button>Update</button></td>
+                                        {/* <td><button>Update</button></td> */}
+                                        <td><button onClick={generateUpdateForm}>Update</button></td>
                                         <td><button>Delete</button></td>
                                     </tr>
                                 );

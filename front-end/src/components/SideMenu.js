@@ -10,12 +10,12 @@ const SideMenu = () => {
                 <div id="bottom"></div>
             </div> */}
             <div id="Menu">
-                <div class="OptionList">
-                    <div class="Option">Item 1</div>
-                    <div class="Option">Item 2</div>
-                    <div class="Option">Item 3</div>
-                    <div class="Option">Item 4</div>
-                    <div class="Option">Item 5</div>
+                <div className="OptionList">
+                    <div className="Option">Item 1</div>
+                    <div className="Option">Item 2</div>
+                    <div className="Option">Item 3</div>
+                    <div className="Option">Item 4</div>
+                    <div className="Option">Item 5</div>
                 </div>
             </div>
         </div>
