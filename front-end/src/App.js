@@ -62,6 +62,9 @@ function App() {
           <Route exact path="/product/user/profile">
             <Home title="profile" nav="profile" />
           </Route>
+          <Route exact path="/product/user/edit">
+            <Home title="profile-edit" nav="profile" />
+          </Route>
         </Switch>
       </Router>
     </>

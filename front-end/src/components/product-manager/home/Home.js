@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ProfileSideNavbar from "../screens/ProfileSideNavbar";
 import Profile from "../user-channel/Profile";
+import EditProfile from "../user-channel/EditProfile";
 
 const Home = ({ title, nav }) => {
   const history = useHistory();
@@ -46,45 +47,44 @@ const Home = ({ title, nav }) => {
           )}
 
           {(() => {
-            if (title === "dashboard" && nav === "common") {
+            if (title === "dashboard") {
               return <Dashboard></Dashboard>;
-            } else if (title === "add-product" && nav === "common") {
+            } else if (title === "add-product") {
               return <AddProduct></AddProduct>;
-            } else if (title === "product-list" && nav === "common") {
+            } else if (title === "product-list") {
               return <ProductList></ProductList>;
-            } else if (title === "product-edit" && nav === "common") {
+            } else if (title === "product-edit") {
               return <EditProduct></EditProduct>;
-            } else if (title === "faulty-product-list" && nav === "common") {
+            } else if (title === "faulty-product-list") {
               return <FaultyProductList></FaultyProductList>;
-            } else if (title === "product-stocks" && nav === "common") {
+            } else if (title === "product-stocks") {
               return <Stocks></Stocks>;
-            } else if (title === "product-transfer" && nav === "common") {
+            } else if (title === "product-transfer") {
               return <TransferProduct></TransferProduct>;
-            } else if (title === "product-statistics" && nav === "common") {
+            } else if (title === "product-statistics") {
               //return <ProductStatistics></ProductStatistics>;
-            } else if (title === "add-warehouse" && nav === "common") {
+            } else if (title === "add-warehouse") {
               return <AddWarehouse></AddWarehouse>;
-            } else if (title === "warehouse-list" && nav === "common") {
+            } else if (title === "warehouse-list") {
               return <WarehouseList></WarehouseList>;
-            } else if (title === "warehouse-edit" && nav === "common") {
+            } else if (title === "warehouse-edit") {
               return <EditWarehouse></EditWarehouse>;
-            } else if (title === "warehouse-statistics" && nav === "common") {
+            } else if (title === "warehouse-statistics") {
               //return <WarehouseStatistics></WarehouseStatistics>;
-            } else if (title === "user-leave" && nav === "common") {
+            } else if (title === "user-leave") {
               return <LeaveRequest></LeaveRequest>;
-            } else if (title === "user-myLeave" && nav === "common") {
+            } else if (title === "user-myLeave") {
               return <MyLeaveRequest></MyLeaveRequest>;
-            } else if (title === "user-activities" && nav === "common") {
+            } else if (title === "user-activities") {
               return <ActivityList></ActivityList>;
-            } else if (title === "administration" && nav === "common") {
+            } else if (title === "administration") {
               return <Administration></Administration>;
-            } else if (
-              title === "administration-myIssues" &&
-              nav === "common"
-            ) {
+            } else if (title === "administration-myIssues") {
               return <MyAdministrationIssue></MyAdministrationIssue>;
-            } else if (title === "profile" && nav === "profile") {
+            } else if (title === "profile") {
               return <Profile></Profile>;
+            } else if (title === "profile-edit") {
+              return <EditProfile></EditProfile>;
             }
           })()}
         </div>

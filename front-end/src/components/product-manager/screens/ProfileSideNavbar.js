@@ -36,16 +36,19 @@ const ProfileSideNavbar = () => {
             {localStorage.getItem("username")}
           </div>{" "}
           <hr></hr>
-          <Link to="/product/create" className="btn btn-primary btn-sm mb-2">
+          <Link to="/product/user/edit" className="btn btn-primary btn-sm mb-2">
             Edit Profile
           </Link>{" "}
           <br></br>
-          <Link to="/product/list" className="btn btn-warning btn-sm mb-2">
+          <Link
+            to="/product/user/edit/profilepicture"
+            className="btn btn-warning btn-sm mb-2"
+          >
             Change Profile Picture
           </Link>{" "}
           <br></br>
           <Link
-            to="/product/list/faulty"
+            to="/product/user/edit/changePassword"
             className="btn btn-danger btn-sm mb-2"
           >
             Change Password
