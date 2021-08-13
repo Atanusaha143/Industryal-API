@@ -45,9 +45,10 @@ class SalesOrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $id)
     {
-        //
+        $order = SalesOrders::find($id);
+        return $order;        
     }
 
     /**
@@ -57,19 +58,41 @@ class SalesOrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        //
+        $order = SalesOrders::find($id);
+        $order->update([
+            $order->customer_id = $request->customer_id,
+            $order->order_description = $request->order_description,
+            $order->total_amount = $request->total_amount,
+            $order->status = $request->status,
+            $order->delivered_on = $request->delivered_on,
+            $order->type = $request->type,
+        ]);
+
+        return $order;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\SalesOrders  $salesCustomers
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
-        //
+        return SalesOrders::destroy($id);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\SalesOrders  $salesCustomers
+     * @return \Illuminate\Http\Response
+     */
+    public function search(string $name)
+    {
+        // return gettype($id);
+        return SalesOrders::where('name', 'like', '%'.$name.'%')->get();
     }
 }
