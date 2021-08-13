@@ -47,4 +47,29 @@ class ProductManagerController extends Controller
             return "Incorrect current passowrd!";
         }
     }
+
+    public function updateProfilePicture(Request $req, $username)
+    {
+        $img = $req->file('profile_pic');
+        $info = User::where('username',$username)->first();
+        if($info->pass == $req->pass)
+        {
+            $info->profile_pic = $username.'.'.$img->getClientOriginalExtension();
+            $result = $info->save();
+            $img->move('upload/Users', $username.'.'.$img->getClientOriginalExtension());
+            if($result)
+            {
+                return response()->json($info);
+            }
+            else
+            {
+                return response('Failed to update profile picture!', 400)
+                    ->header('Content-Type', 'text/plain');
+            }
+        }
+        else
+        {
+            return "Incorrect current passowrd!";
+        }
+    }
 }
