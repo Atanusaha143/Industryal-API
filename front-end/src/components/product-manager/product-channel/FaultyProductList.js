@@ -162,23 +162,27 @@ const FaultyProductList = () => {
   }
 
   const searchProduct = () => {
-    setLoading(true);
-    const searchUrl =
-      "http://127.0.0.1:8000/api/product/search/faulty/" + search;
-    axios
-      .get(searchUrl)
-      .then((response) => {
-        setList(response.data);
-        setLoading(false);
-        if (response.data.length === 0) {
-          setErrorMessage("No faulty not found!");
-        } else {
-          setErrorMessage("");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (search.length === 0) {
+      setErrorMessage("Please enter a product name!");
+    } else {
+      setLoading(true);
+      const searchUrl =
+        "http://127.0.0.1:8000/api/product/search/faulty/" + search;
+      axios
+        .get(searchUrl)
+        .then((response) => {
+          setList(response.data);
+          setLoading(false);
+          if (response.data.length === 0) {
+            setErrorMessage("No faulty product found!");
+          } else {
+            setErrorMessage("");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
