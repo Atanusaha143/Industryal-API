@@ -14,6 +14,7 @@ const EditWarehouse = () => {
   const [phone, setPhone] = useState("");
   const [quantity, setQuantity] = useState("");
   const [status, setStatus] = useState("Open");
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
   const { id: wId } = useParams();
 
@@ -36,25 +37,51 @@ const EditWarehouse = () => {
   }, []);
 
   const updateWarehouse = () => {
-    let data = {
-      warehouse_id,
-      name,
-      description,
-      address,
-      zip_code,
-      city,
-      country,
-      phone,
-      quantity,
-      status,
-    };
+    if (warehouse_id.length === 0) {
+      setErrorMessage("Warehouse ID can't be empty!");
+    } else if (name.length === 0) {
+      setErrorMessage("Warehouse name can't be empty!");
+    } else if (description.length === 0) {
+      setErrorMessage("Warehouse description can't be empty!");
+    } else if (address.length === 0) {
+      setErrorMessage("Warehouse address can't be empty!");
+    } else if (zip_code.length === 0) {
+      setErrorMessage("Warehouse zip code can't be empty!");
+    } else if (!Number(zip_code)) {
+      setErrorMessage("Warehouse zip code must be a number!");
+    } else if (city.length === 0) {
+      setErrorMessage("Warehouse city can't be empty!");
+    } else if (country.length === 0) {
+      setErrorMessage("Warehouse country can't be empty!");
+    } else if (phone.length === 0) {
+      setErrorMessage("Warehouse phone can't be empty!");
+    } else if (quantity.length === 0) {
+      setErrorMessage("Warehouse quantity can't be empty!");
+    } else if (!Number(quantity)) {
+      setErrorMessage("Warehouse quantity must be a number!");
+    } else if (status.length === 0) {
+      setErrorMessage("Warehouse status can't be empty!");
+    } else {
+      let data = {
+        warehouse_id,
+        name,
+        description,
+        address,
+        zip_code,
+        city,
+        country,
+        phone,
+        quantity,
+        status,
+      };
 
-    axios
-      .put("http://127.0.0.1:8000/api/warehouse/edit/" + wId, data)
-      .then((response) => {
-        history.goBack();
-        //console.log(response.data);
-      });
+      axios
+        .put("http://127.0.0.1:8000/api/warehouse/edit/" + wId, data)
+        .then((response) => {
+          history.goBack();
+          //console.log(response.data);
+        });
+    }
   };
   return (
     <>
@@ -64,6 +91,14 @@ const EditWarehouse = () => {
             <h3>Edit Warehouse</h3>
           </center>
           <hr></hr>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           <div className="row justify-content-center">
             <div className="col-10">
               <div className="container">
