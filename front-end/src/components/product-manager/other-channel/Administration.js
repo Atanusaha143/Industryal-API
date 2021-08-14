@@ -7,24 +7,30 @@ const Administration = () => {
   const [issue_name, setIssueName] = useState("");
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
-
+  const [errorMessage, setErrorMessage] = useState("");
   const createIssue = () => {
-    const formData = new FormData();
-    formData.append("issue_name", issue_name);
-    formData.append("description", description);
+    if (issue_name.length === 0) {
+      setErrorMessage("Please provide a issue name!");
+    } else if (description.length === 0) {
+      setErrorMessage("Please provide a description!");
+    } else {
+      const formData = new FormData();
+      formData.append("issue_name", issue_name);
+      formData.append("description", description);
 
-    axios
-      .post(
-        "http://127.0.0.1:8000/api/product/user/administration/create",
-        formData
-      )
-      .then((response) => {
-        setMessage("Issue has been sent!");
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axios
+        .post(
+          "http://127.0.0.1:8000/api/product/user/administration/create",
+          formData
+        )
+        .then((response) => {
+          setMessage("Issue has been sent!");
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <>
@@ -55,6 +61,14 @@ const Administration = () => {
               {" "}
               <div class="alert alert-success col-8" role="alert">
                 {message}
+              </div>{" "}
+            </center>
+          )}
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
               </div>{" "}
             </center>
           )}
