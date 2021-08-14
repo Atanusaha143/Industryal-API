@@ -21,6 +21,7 @@ const AddProduct = () => {
   const [tax, setTax] = useState("Excluding Tax");
   const [product_image, setPhoto] = useState("");
   const [warehouseList, setWarehouseList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -32,32 +33,48 @@ const AddProduct = () => {
   }, []);
 
   const addProduct = () => {
-    const formData = new FormData();
-    formData.append("product_image", product_image);
-    formData.append("product_id", product_id);
-    formData.append("product_name", product_name);
-    formData.append("status_sell", status_sell);
-    formData.append("status_purchase", status_purchase);
-    formData.append("product_description", product_description);
-    formData.append("warehouse_name", warehouse_name);
-    formData.append("stock", stock);
-    formData.append("nature", nature);
-    formData.append("weight", weight);
-    formData.append("weight_unit", weight_unit);
-    formData.append("dimention", dimention);
-    formData.append("dimention_unit", dimention_unit);
-    formData.append("selling_price", selling_price);
-    formData.append("tax", tax);
+    if (product_id.length === 0) {
+      setErrorMessage("Product id can't be empty!");
+    } else if (product_name.length === 0) {
+      setErrorMessage("Product name can't be empty!");
+    } else if (product_description.length === 0) {
+      setErrorMessage("Product description can't be empty!");
+    } else if (stock.length === 0) {
+      setErrorMessage("Product stock can't be empty!");
+    } else if (weight.length === 0) {
+      setErrorMessage("Product weight can't be empty!");
+    } else if (dimention.length === 0) {
+      setErrorMessage("Product dimention can't be empty!");
+    } else if (selling_price.length === 0) {
+      setErrorMessage("Product selling price can't be empty!");
+    } else {
+      const formData = new FormData();
+      formData.append("product_image", product_image);
+      formData.append("product_id", product_id);
+      formData.append("product_name", product_name);
+      formData.append("status_sell", status_sell);
+      formData.append("status_purchase", status_purchase);
+      formData.append("product_description", product_description);
+      formData.append("warehouse_name", warehouse_name);
+      formData.append("stock", stock);
+      formData.append("nature", nature);
+      formData.append("weight", weight);
+      formData.append("weight_unit", weight_unit);
+      formData.append("dimention", dimention);
+      formData.append("dimention_unit", dimention_unit);
+      formData.append("selling_price", selling_price);
+      formData.append("tax", tax);
 
-    axios
-      .post("http://127.0.0.1:8000/api/product/create", formData)
-      .then((response) => {
-        console.log(response);
-        history.push("/product/list");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axios
+        .post("http://127.0.0.1:8000/api/product/create", formData)
+        .then((response) => {
+          console.log(response);
+          history.push("/product/list");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <>
@@ -70,6 +87,14 @@ const AddProduct = () => {
             </h3>
           </center>
           <hr></hr>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           <div className="row justify-content-center">
             <div className="col-10">
               <div className="container">
