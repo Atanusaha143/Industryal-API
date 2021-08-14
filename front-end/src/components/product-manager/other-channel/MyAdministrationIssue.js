@@ -33,6 +33,9 @@ const MyAdministrationIssue = () => {
 `;
 
   const searchIssue = () => {
+    if (search.length === 0) {
+      setErrorMessage("Please provide a issue name!");
+    }
     setLoading(true);
     const searchUrl =
       "http://127.0.0.1:8000/api/product/user/administration/myissue/search/" +
@@ -68,7 +71,7 @@ const MyAdministrationIssue = () => {
             type="text"
             className="form-control mt-3 mb-5"
             style={{ width: "50%" }}
-            placeholder="Search By Warehouse Name..."
+            placeholder="Search By Issue Name..."
             onChange={(e) => setSearch(e.target.value)}
           ></input>
           <button
