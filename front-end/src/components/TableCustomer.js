@@ -11,10 +11,11 @@ const TableCustomer = () => {
     const[error, setError] = useState(null);
     const[isLoaded, setIsLoaded] = useState(false);
     const[items, setItems] = useState([]);
+    const[updateForm, formState] = useState(false);
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/sales/customers")
-        .then(res=>res.json())
+        .then(result=>result.json())
         .then(
             (result)=>{
                 setIsLoaded(true);
@@ -30,9 +31,13 @@ const TableCustomer = () => {
         )
     }, [])
 
+    let id_ = 0;
+
     const generateUpdateForm = (id) => {
         // setItems(null)
-        console.log(id)
+        console.log(id);
+        id_=id;
+        formState(!updateForm);
     }
 
     if(error){
@@ -43,6 +48,7 @@ const TableCustomer = () => {
     }
     else if(items !== null)
     {
+
         return (
             <div>
                 <table className="CusTable">
@@ -70,8 +76,8 @@ const TableCustomer = () => {
                                         <td>{cus.first_purchase}</td>
                                         <td>{cus.type}</td>
                                         {/* <td><button>Update</button></td> */}
-                                        {/* <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to='/sales/customers/update'>Update</Link></td> */}
-                                        <td><Link className="UpdateBtn" to='/sales/update/customer'>Update</Link></td>
+                                        <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to='/sales/customers/'>Update</Link></td>
+                                        {/* <td><Link className="UpdateBtn" to='/sales/update/customer'>Update</Link></td> */}
                                         <td><button>Delete</button></td>
                                     </tr>
                                 );
@@ -79,6 +85,9 @@ const TableCustomer = () => {
                         }
                     </tbody>
                 </table>
+                {updateForm && (
+                    <FormUpdateCustomer id={id_}/>
+                )}
             </div>
         )
     }
