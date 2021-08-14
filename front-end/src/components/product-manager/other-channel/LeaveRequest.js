@@ -3,29 +3,41 @@ import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaWalking } from "react-icons/fa";
+import { DatasetController } from "chart.js";
 
 const LeaveRequest = () => {
   const [type, setType] = useState("Sick leave");
   const [start_time, setStartTime] = useState("");
   const [end_time, setEndTime] = useState("");
   const [request_description, setDescription] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   const createLeave = () => {
-    const formData = new FormData();
-    formData.append("type", type);
-    formData.append("start_time", start_time);
-    formData.append("end_time", end_time);
-    formData.append("request_description", request_description);
+    if (start_time.length === 0) {
+      setErrorMessage("Please setect a start date");
+    } else if (end_time.length === 0) {
+      setErrorMessage("Please select an end date");
+    } else if (request_description.length === 0) {
+      setErrorMessage("Plase provide leave description!");
+    } else if (start_time > end_time) {
+      setErrorMessage("Start time can't be greater than end time!");
+    } else {
+      const formData = new FormData();
+      formData.append("type", type);
+      formData.append("start_time", start_time);
+      formData.append("end_time", end_time);
+      formData.append("request_description", request_description);
 
-    axios
-      .post("http://127.0.0.1:8000/api/product/user/leave/create", formData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axios
+        .post("http://127.0.0.1:8000/api/product/user/leave/create", formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -39,6 +51,14 @@ const LeaveRequest = () => {
             </h3>
             <hr></hr>
           </center>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           <div className="row align-items-start mb-2">
             <div class="col"></div>
             <div class="col-7"></div>
