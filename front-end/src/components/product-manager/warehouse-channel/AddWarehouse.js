@@ -15,32 +15,59 @@ const AddWarehouse = () => {
   const [phone, setPhone] = useState("");
   const [quantity, setQuantity] = useState("");
   const [status, setStatus] = useState("Open");
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   useEffect(() => {}, []);
 
   const createWarehouse = () => {
-    const formData = new FormData();
-    formData.append("warehouse_id", warehouse_id);
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("address", address);
-    formData.append("zip_code", zip_code);
-    formData.append("city", city);
-    formData.append("country", country);
-    formData.append("phone", phone);
-    formData.append("quantity", quantity);
-    formData.append("status", status);
+    if (warehouse_id.length === 0) {
+      setErrorMessage("Warehouse ID can't be empty!");
+    } else if (name.length === 0) {
+      setErrorMessage("Warehouse name can't be empty!");
+    } else if (description.length === 0) {
+      setErrorMessage("Warehouse description can't be empty!");
+    } else if (address.length === 0) {
+      setErrorMessage("Warehouse address can't be empty!");
+    } else if (zip_code.length === 0) {
+      setErrorMessage("Warehouse zip code can't be empty!");
+    } else if (!Number(zip_code)) {
+      setErrorMessage("Warehouse zip code must be a number!");
+    } else if (city.length === 0) {
+      setErrorMessage("Warehouse city can't be empty!");
+    } else if (country.length === 0) {
+      setErrorMessage("Warehouse country can't be empty!");
+    } else if (phone.length === 0) {
+      setErrorMessage("Warehouse phone can't be empty!");
+    } else if (quantity.length === 0) {
+      setErrorMessage("Warehouse quantity can't be empty!");
+    } else if (!Number(quantity)) {
+      setErrorMessage("Warehouse quantity must be a number!");
+    } else if (status.length === 0) {
+      setErrorMessage("Warehouse status can't be empty!");
+    } else {
+      const formData = new FormData();
+      formData.append("warehouse_id", warehouse_id);
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("address", address);
+      formData.append("zip_code", zip_code);
+      formData.append("city", city);
+      formData.append("country", country);
+      formData.append("phone", phone);
+      formData.append("quantity", quantity);
+      formData.append("status", status);
 
-    axios
-      .post("http://127.0.0.1:8000/api/warehouse/create", formData)
-      .then((response) => {
-        console.log(response);
-        history.push("/warehouse/list");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axios
+        .post("http://127.0.0.1:8000/api/warehouse/create", formData)
+        .then((response) => {
+          console.log(response);
+          history.push("/warehouse/list");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -54,6 +81,14 @@ const AddWarehouse = () => {
             </h3>
           </center>
           <hr></hr>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           {/* component */}
           <div className="row justify-content-center">
             <div className="col-10">
