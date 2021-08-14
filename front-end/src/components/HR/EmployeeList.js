@@ -2,8 +2,10 @@ import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const EmployeeList=()=>{
+    const[searchEmp,setSearchEmp] = useState('');
     const[list,setList] = useState([]);
     useEffect( async ()=>{
         let result = await fetch("http://127.0.0.1:8000/api/HR/employee/list");
@@ -11,8 +13,28 @@ const EmployeeList=()=>{
         setList(result);
     },[])
 
+    function search()
+    {
+        axios.get("http://127.0.0.1:8000/api/HR/employee/search/"+searchEmp)
+        .then(function (response) {
+            const result = response.data;
+            setList(result);
+        });
+    }
+
     return(
         <>
+            <div className="title text-center mb-3">
+                <h3 className="font-width-border">Employee List</h3>
+            </div>
+            <hr></hr>
+            <div className="input-group">
+                <input className="form-control"type="text" placeholder="Find By Employee Name..." name="search"  onChange={(e)=>{setSearchEmp(e.target.value)}}></input>
+                <div className="input-group-append">
+                    <button onClick={search} type="submit" className="btn btn-success">Search</button>
+                </div>
+            </div>
+            <br></br>
             <div className="row align-items-start mb-2">
                 <div className="col">
                 </div>

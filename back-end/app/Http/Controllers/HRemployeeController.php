@@ -69,6 +69,11 @@ class HRemployeeController extends Controller
                   ->header('Content-Type', 'text/plain');                 
     }
 
+    function searchEmp($employee_name)
+    {
+        return Employee::where("employee_name",$employee_name)->get();
+    }
+
     public function getEmpByEmpId($employee_id)
     {
         return Employee::where('employee_id', $employee_id)->first();

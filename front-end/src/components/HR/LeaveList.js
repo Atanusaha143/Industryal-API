@@ -12,6 +12,10 @@ const LeaveList=()=>{
     },[])
     return(
         <>
+            <div className="title text-center mb-3">
+                <h3 className="font-width-border">Leave Request List</h3>
+            </div>
+            <hr></hr>
             <Table  className="table table-hover ">
                 <thead>
                     <tr>

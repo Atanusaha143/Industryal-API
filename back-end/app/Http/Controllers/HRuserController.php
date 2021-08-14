@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 
 class HRuserController extends Controller
 {
     public function addUser(Request $req)
     {
-        //$img = $req->file('profile_image');
-
+        //$img = $req->file('profile_pic');
         $user=new User;
         $user->firstname=$req->firstname;
         $user->lastname=$req->lastname;
@@ -25,21 +25,13 @@ class HRuserController extends Controller
         $user->pass=$req->pass;
         $user->work_hour=$req->work_hour;
         //$user->organization_id=$req->organization_id;
-        //$user->profile_pic = $req->user_name.'.'.$img->getClientOriginalExtension();
-        //$img->move('upload/Users', $req->user_name.'.'.$img->getClientOriginalExtension());
-
-       
+        //$user->profile_pic = $req->username.'.'.$img->getClientOriginalExtension();
+        //$img->move('upload/Users', $req->username.'.'.$img->getClientOriginalExtension());
         $user->save();
-        return response('User Added', 200)
+
+         return response('User Added', 200)
                   ->header('Content-Type', 'text/plain'); 
-        /* if($result)
-        {
-            return ["Result"=>"Data has been saved"];
-        }
-        else
-        {
-            return ["Result"=>"Failed to save data"];
-        }    */          
+                  
     }
     public function getUserList()
     {
@@ -80,6 +72,10 @@ class HRuserController extends Controller
         return response('User Updated', 200)
                   ->header('Content-Type', 'text/plain'); 
 
+    }
+    function searchUser($username)
+    {
+        return User::where("username",$username)->get();
     }
 
     public function getUserById($id)

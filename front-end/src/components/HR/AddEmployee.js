@@ -32,6 +32,10 @@ const AddEmployee=()=>{
     return(
        
         <>
+            <div className="title text-center mb-3">
+                <h3 className="font-width-border">New Employee</h3>
+            </div>
+            <hr></hr>
             <div className="borber w-50  m-auto">
             
                 <div className="form-group">

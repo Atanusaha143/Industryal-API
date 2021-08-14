@@ -31,4 +31,33 @@ class HRexpenseController extends Controller
         return response('Not Found', 404)
                   ->header('Content-Type', 'text/plain');
     }
+
+    public function updateExpense(Request $req,$id)
+    {
+        $expense=Expense::find($id);
+        $expense->name=$req->name;
+        $expense->catagory=$req->catagory;
+        $expense->amount=$req->amount;
+        $expense->description=$req->description;
+        $expense->expense_date=$req->expense_date;
+        
+        $expense->save();
+        return response('Expense Report Updated', 200)
+                  ->header('Content-Type', 'text/plain'); 
+    }
+    public function deleteExpense($id)
+    {
+        if(Expense::destroy($id)){
+            return response('Expense Deleted', 200)
+                  ->header('Content-Type', 'text/plain');
+        }
+        return response('Not Found', 404)
+                  ->header('Content-Type', 'text/plain');                 
+    }
+
+    public function getExpenseById($id)
+    {
+        return Expense::find($id);
+    }
+    
 }

@@ -13,6 +13,19 @@ const ExpenseList=()=>{
 
     return(
         <>
+            <div className="title text-center mb-3">
+                <h3 className="font-width-border">Expense Report List</h3>
+            </div>
+            <hr></hr>
+            <div className="row align-items-start mb-2">
+                <div className="col">
+                </div>
+                <div className="col-10"> 
+                </div>
+                <div classname="col">
+                    <a href="#" class="btn btn-primary rounded p-1 mr-3 text-right">Download</a>
+                </div>
+            </div>
             <Table  className="table table-hover ">
                 <thead>
                     <tr>

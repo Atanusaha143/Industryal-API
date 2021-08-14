@@ -57,6 +57,10 @@ const EditUser=()=>{
     const gen=["male","female"];
     return(
         <>
+            <div className="title text-center mb-3">
+                <h3 className="font-width-border"> Update User </h3>
+            </div>
+            <hr></hr>
             <div className=" w-50  m-auto">
     
                 <div className="form-group">

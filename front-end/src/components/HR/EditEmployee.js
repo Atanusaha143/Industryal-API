@@ -49,6 +49,10 @@ const EditEmployee=()=>{
     const gen=["male","female"];
     return(
         <>
+        <div className="title text-center mb-3">
+            <h3 className="font-width-border">Update Employee Information</h3>
+        </div>
+        <hr></hr>
         <div className="borber w-50  m-auto">
             
             <div className="form-group">

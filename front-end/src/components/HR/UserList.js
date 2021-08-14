@@ -2,16 +2,28 @@ import { useHistory} from 'react-router-dom'
 import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const UserList=()=>{
     const history = useHistory();
+    const[searchUser,setSearchUser] = useState('');
     const[list,setList] = useState([]);
     useEffect( async ()=>{
         let result = await fetch("http://127.0.0.1:8000/api/HR/user/list");
         result = await result.json();
         setList(result);
     },[])
+
+    function search()
+    {
+        axios.get("http://127.0.0.1:8000/api/HR/user/search/"+searchUser)
+        .then(function (response) {
+            const result = response.data;
+            setList(result);
+        });
+    }
+
 
     function deleteUser(id)
     {
@@ -28,7 +40,18 @@ const UserList=()=>{
         }
     }
     return(
-        <Table  className="table table-hover ">
+        <>
+        <div className="text-center mb-3">
+            <h3 className="font-width-border"> User List</h3>
+        </div>
+        <hr></hr>
+        <div className="input-group">
+            <input className="form-control"type="text" placeholder="Find By Username..." name="search" onChange={(e)=>{setSearchUser(e.target.value)}}></input>
+            <div className="input-group-append">
+                <button onClick={search} type="submit" className="btn btn-success">Search</button>
+            </div>
+        </div>
+        <Table  className="table table-hover" size="sm">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -73,6 +96,7 @@ const UserList=()=>{
                 
             </tbody>
         </Table>
+        </>
     )
 }
 export default UserList;

@@ -29,6 +29,7 @@ Route::get('/HR/user/list',[HRuserController::class,'getUserList']);
 Route::delete('/HR/user/delete/{id}',[HRuserController::class,'deleteUser']);
 Route::put('/HR/user/update/{id}',[HRuserController::class,'updateUser']);
 Route::get("/HR/user/{id}",[HRuserController::class,'getUserById']);
+Route::get("/HR/user/search/{username}",[HRuserController::class,'searchUser']);
 
 //Employee
 Route::Post('/HR/employee/create',[HRemployeeController::class,'addEmployee']);
@@ -38,6 +39,7 @@ Route::delete('/HR/employee/delete/{employee_id}',[HRemployeeController::class,'
 Route::Post('/HR/employee/group',[HRgroupController::class,'createGroup']);
 Route::get('/HR/employee/{employee_id}',[HRemployeeController::class,'getEmpByEmpId']);
 Route::get('/HR/emp/schedule',[HRempScheduleController::class,'schedule']);
+Route::get("/HR/employee/search/{employee_name}",[HRemployeeController::class,'searchEmp']);
 //Leave
 
 Route::Post('/HR/leave/request',[HRleaveController::class,'verifyLeave']);
@@ -48,6 +50,9 @@ Route::get("/HR/leave/{id}",[HRleaveController::class,'getLeaveById']);
 //Expense
 Route::post('/HR/expense/report',[HRexpenseController::class,'create']);
 Route::get('/HR/expense/list',[HRexpenseController::class,'getExpenseList']);
+Route::put('/HR/expense/update/{id}',[HRexpenseController::class,'updateExpense']);
+Route::delete('/HR/expense/delete/{id}',[HRexpenseController::class,'deleteExpense']);
+Route::get("/HR/expense/{id}",[HRexpenseController::class,'getExpenseById']);
 
 
 

@@ -24,6 +24,10 @@ const MyLeave=()=>{
 
     return(
         <>
+            <div className="title text-center mb-3">
+                <h3 className="font-width-border">My Leave Request</h3>
+            </div>
+            <hr></hr>
             <div className=" w-50   m-auto">
                 <div className="form-group">
                     <label>Type</label>

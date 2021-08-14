@@ -19,6 +19,9 @@ import Approve from './Approve';
 import Reject from './Reject';
 import Expense from './Expense';
 import ExpenseList from './ExpenseList';
+import EditExpense from './EditExpense';
+import DeleteExp from './DeleteExp';
+import ExpenseState from './ExpenseState';
 
 const Navb=({title})=>{
     return(
@@ -32,7 +35,7 @@ const Navb=({title})=>{
                         <Nav className="me-auto">
                             </Nav>
                             <Nav>
-                            <Nav.Link href="#home">Profile</Nav.Link>
+                            <Nav.Link href="/HR/user/profile">Profile</Nav.Link>
                             <Nav.Link href="#link">Logout</Nav.Link>
                             
                         </Nav>
@@ -63,10 +66,7 @@ const Navb=({title})=>{
                 </div>
                 <div className="col-10">
                     <div className="info-section p-3 text-black ">
-                        <div className="title text-center mb-3">
-                            <h3 className="font-width-border">{title}</h3>
-                        </div>
-                        <hr></hr>
+                        
                         {(()=>{
                             if(title === 'Pie Chart')
                             {
@@ -163,6 +163,23 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <ExpenseList />
+                                )
+                            }
+                            else if(title==='Update Expense Report')
+                            {
+                                return(
+                                    <EditExpense />
+                                )
+                            }
+                            else if(title==='Delete Expense Report')
+                            {
+                                return(
+                                    <DeleteExp />
+                                )
+                            }
+                            else{
+                                return(
+                                    <ExpenseState />
                                 )
                             }
                         })()}

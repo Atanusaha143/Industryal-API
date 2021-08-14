@@ -1,4 +1,5 @@
 import Navb from './components/HR/Navbar';
+import ProNav from './components/HR/ProfileNav';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -53,6 +54,18 @@ function App() {
         </Route>
         <Route exact path='/HR/expense/list'>
           <Navb title='Expense Report List' />
+        </Route>
+        <Route exact path='/HR/expense/edit/:id'>
+          <Navb title='Update Expense Report' />
+        </Route>
+        <Route exact path='/HR/expense/delete/:id'>
+          <Navb title='Delete Expense Report' />
+        </Route>
+        <Route exact path='/HR/expense/statistic'>
+          <Navb title='Expense Report Statistic' />
+        </Route>
+        <Route exact path='/HR/user/profile'>
+          <ProNav />
         </Route>
       </Switch>
     </Router>
