@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FormUpdateCustomer from './FormUpdateCustomer';
+import axios from 'axios'
 // import Popup from 'reactjs-popup';
 // import '../styles/styles.css'
 
@@ -9,46 +10,36 @@ const TableCustomer = () => {
 
 
     const[error, setError] = useState(null);
-    const[isLoaded, setIsLoaded] = useState(false);
+    // const[isLoaded, setIsLoaded] = useState(false);
     const[items, setItems] = useState([]);
     const[updateForm, formState] = useState(false);
-
-    useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/sales/customers")
-        .then(result=>result.json())
-        .then(
-            (result)=>{
-                setIsLoaded(true);
-                setItems(result);
-            },
-            (error) => {
-                setIsLoaded(true);
-                setError(error);
-            }
-        )
-        .catch(
+    
+    useEffect(()=>{
+        axios.get("http://127.0.0.1:8000/api/sales/customers")
+            .then(response=>{
+                setItems(response.data);
+            })
+            .catch(
+                setItems(null)
+            );
             
-        )
     }, [])
 
     let id_ = 0;
 
     const generateUpdateForm = (id) => {
-        // setItems(null)
         console.log(id);
-        id_=id;
-        formState(!updateForm);
     }
-
-    if(error){
-        return <div>Error:{error.message}</div>;
-    }
-    else if(!isLoaded){
-        return <div>Loading...</div>;
+    
+    if(items == null)
+    {
+        return (
+            <div>Error receiving data</div>
+        )
     }
     else if(items !== null)
     {
-
+        console.log(items);
         return (
             <div>
                 <table className="CusTable">
@@ -85,10 +76,8 @@ const TableCustomer = () => {
                         }
                     </tbody>
                 </table>
-                {updateForm && (
-                    <FormUpdateCustomer id={id_}/>
-                )}
             </div>
+            
         )
     }
 }
