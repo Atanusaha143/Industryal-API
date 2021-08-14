@@ -41,12 +41,18 @@ const AddProduct = () => {
       setErrorMessage("Product description can't be empty!");
     } else if (stock.length === 0) {
       setErrorMessage("Product stock can't be empty!");
+    } else if (!Number(stock)) {
+      setErrorMessage("Product stock value must be a number!");
     } else if (weight.length === 0) {
       setErrorMessage("Product weight can't be empty!");
     } else if (dimention.length === 0) {
       setErrorMessage("Product dimention can't be empty!");
     } else if (selling_price.length === 0) {
       setErrorMessage("Product selling price can't be empty!");
+    } else if (!Number(selling_price)) {
+      setErrorMessage("Product selling price must be a number!");
+    } else if (product_image.length === 0) {
+      setErrorMessage("Product image can't be empty!");
     } else {
       const formData = new FormData();
       formData.append("product_image", product_image);
@@ -257,7 +263,7 @@ const AddProduct = () => {
                         <td>Selling Price</td>
                         <td>
                           <input
-                            type="number"
+                            type="text"
                             class="form-control"
                             name="product_selling_price"
                             onChange={(e) => setSellingPrice(e.target.value)}
