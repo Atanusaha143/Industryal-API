@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import FormUpdateCustomer from './FormUpdateCustomer';
 // import Popup from 'reactjs-popup';
 // import '../styles/styles.css'
 
@@ -29,8 +30,9 @@ const TableCustomer = () => {
         )
     }, [])
 
-    const generateUpdateForm = () => {
+    const generateUpdateForm = (id) => {
         // setItems(null)
+        console.log(id)
     }
 
     if(error){
@@ -68,7 +70,8 @@ const TableCustomer = () => {
                                         <td>{cus.first_purchase}</td>
                                         <td>{cus.type}</td>
                                         {/* <td><button>Update</button></td> */}
-                                        <td><Link className="UpdateBtn" to='/sales/orders/:id'>Update</Link></td>
+                                        {/* <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to='/sales/customers/update'>Update</Link></td> */}
+                                        <td><Link className="UpdateBtn" to='/sales/update/customer'>Update</Link></td>
                                         <td><button>Delete</button></td>
                                     </tr>
                                 );

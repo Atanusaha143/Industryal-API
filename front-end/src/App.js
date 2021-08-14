@@ -29,6 +29,10 @@ function App() {
             <TableCustomer/>
             {/* customers */}
           </Route>
+          <Route path="/sales/update/customer/">
+            <NavBar/>
+            {/* <TableCustomer/> */}
+          </Route>
           <Route path="/sales/statistics">
             <NavBar/>
             statistics
