@@ -40,23 +40,28 @@ const MyLeaveRequest = () => {
 `;
 
   const searchWarehouse = () => {
-    setLoading(true);
-    const searchUrl =
-      "http://127.0.0.1:8000/api/product/user/leave/myrequest/search/" + search;
-    axios
-      .get(searchUrl)
-      .then((response) => {
-        setList(response.data);
-        setLoading(false);
-        if (response.data.length === 0) {
-          setErrorMessage("Request not found!");
-        } else {
-          setErrorMessage("");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (search.length === 0) {
+      setErrorMessage("Please enter leave description");
+    } else {
+      setLoading(true);
+      const searchUrl =
+        "http://127.0.0.1:8000/api/product/user/leave/myrequest/search/" +
+        search;
+      axios
+        .get(searchUrl)
+        .then((response) => {
+          setList(response.data);
+          setLoading(false);
+          if (response.data.length === 0) {
+            setErrorMessage("Request not found!");
+          } else {
+            setErrorMessage("");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -74,7 +79,7 @@ const MyLeaveRequest = () => {
             type="text"
             className="form-control mt-3 mb-5"
             style={{ width: "50%" }}
-            placeholder="Search By Warehouse Name..."
+            placeholder="Search By Request Description..."
             onChange={(e) => setSearch(e.target.value)}
           ></input>
           <button
