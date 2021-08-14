@@ -14,26 +14,32 @@ const EditProfilePicture = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const updateProfilePicture = () => {
-    const formData = new FormData();
-    formData.append("profile_pic", profile_pic);
-    formData.append("pass", pass);
-    axios
-      .post(
-        "http://127.0.0.1:8000/api/product/user/edit/profilepicture/" +
-          localStorage.getItem("username"),
-        formData
-      )
-      .then((response) => {
-        if (response.data === "Incorrect current passowrd!") {
-          setErrorMessage(response.data);
-        } else {
-          console.log(response.data);
-          history.goBack();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (profile_pic.length === 0) {
+      setErrorMessage("Please select a Profile Picture");
+    } else if (pass.length === 0) {
+      setErrorMessage("Please provide your current password!");
+    } else {
+      const formData = new FormData();
+      formData.append("profile_pic", profile_pic);
+      formData.append("pass", pass);
+      axios
+        .post(
+          "http://127.0.0.1:8000/api/product/user/edit/profilepicture/" +
+            localStorage.getItem("username"),
+          formData
+        )
+        .then((response) => {
+          if (response.data === "Incorrect current passowrd!") {
+            setErrorMessage(response.data);
+          } else {
+            console.log(response.data);
+            history.goBack();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
