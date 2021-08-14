@@ -19,8 +19,9 @@ const EditProduct = () => {
   const [dimention_unit, setDimentionUnit] = useState("m");
   const [selling_price, setSellingPrice] = useState("");
   const [tax, setTax] = useState("Excluding Tax");
-  const [product_condition, setCondition] = useState("");
+  const [product_condition, setCondition] = useState("Good");
   const [warehouseList, setWarehouseList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
   const { id: pId } = useParams();
 
@@ -54,30 +55,56 @@ const EditProduct = () => {
   }, []);
 
   const updateProduct = () => {
-    let data = {
-      product_id,
-      product_name,
-      status_sell,
-      status_purchase,
-      product_description,
-      warehouse_name,
-      stock,
-      nature,
-      weight,
-      weight_unit,
-      dimention,
-      dimention_unit,
-      selling_price,
-      tax,
-      product_condition,
-    };
+    if (product_id.length === 0) {
+      setErrorMessage("Product id can't be empty!");
+    } else if (product_name.length === 0) {
+      setErrorMessage("Product name can't be empty!");
+    } else if (product_description.length === 0) {
+      setErrorMessage("Product description can't be empty!");
+    } else if (stock.length === 0) {
+      setErrorMessage("Product stock can't be empty!");
+    } else if (!Number(stock)) {
+      setErrorMessage("Product stock value must be a number!");
+    } else if (weight.length === 0) {
+      setErrorMessage("Product weight can't be empty!");
+    } else if (!Number(weight)) {
+      setErrorMessage("Product weight value must be a number!");
+    } else if (dimention.length === 0) {
+      setErrorMessage("Product dimention can't be empty!");
+    } else if (!Number(dimention)) {
+      setErrorMessage("Product dimention value must be a number!");
+    } else if (selling_price.length === 0) {
+      setErrorMessage("Product selling price can't be empty!");
+    } else if (!Number(selling_price)) {
+      setErrorMessage("Product selling price must be a number!");
+    } else if (product_condition.length === 0) {
+      setErrorMessage("Product condition can't be empty!");
+    } else {
+      let data = {
+        product_id,
+        product_name,
+        status_sell,
+        status_purchase,
+        product_description,
+        warehouse_name,
+        stock,
+        nature,
+        weight,
+        weight_unit,
+        dimention,
+        dimention_unit,
+        selling_price,
+        tax,
+        product_condition,
+      };
 
-    axios
-      .put("http://127.0.0.1:8000/api/product/edit/" + pId, data)
-      .then((response) => {
-        history.goBack();
-        //console.log(response.data);
-      });
+      axios
+        .put("http://127.0.0.1:8000/api/product/edit/" + pId, data)
+        .then((response) => {
+          history.goBack();
+          //console.log(response.data);
+        });
+    }
   };
   return (
     <>
@@ -90,6 +117,14 @@ const EditProduct = () => {
             </h3>
           </center>
           <hr></hr>
+          {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-8" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+          )}
           <div className="row justify-content-center">
             <div className="col-10">
               <div className="container">
@@ -264,7 +299,7 @@ const EditProduct = () => {
                         <td>Selling Price</td>
                         <td>
                           <input
-                            type="number"
+                            type="text"
                             class="form-control"
                             name="product_selling_price"
                             value={selling_price}
