@@ -33,7 +33,6 @@ const EditProfile = () => {
         setEmail(response.data[0].email);
         setPhoneNumber(response.data[0].phone);
         setAddress(response.data[0].address);
-        setPassword(response.data[0].pass);
         setUserInfo(response.data[0]);
         setLoading(false);
       });
@@ -47,20 +46,41 @@ const EditProfile = () => {
 `;
 
   const updateProfile = () => {
-    const data = { firstName, lastName, email, phoneNumber, address, password };
-    axios
-      .put(
-        "http://127.0.0.1:8000/api/product/user/edit/" +
-          localStorage.getItem("username"),
-        data
-      )
-      .then((response) => {
-        if (response.data === "Incorrect current passowrd!") {
-          setErrorMessage(response.data);
-        } else {
-          history.goBack();
-        }
-      });
+    if (firstName.length === 0) {
+      setErrorMessage("Please provide first name!");
+    } else if (lastName.length === 0) {
+      setErrorMessage("Please provide last name");
+    } else if (email.length === 0) {
+      setErrorMessage("Please provide email address");
+    } else if (address.length === 0) {
+      setErrorMessage("Please provide address!");
+    } else if (phoneNumber.length === 0) {
+      setErrorMessage("Please provide phone number!");
+    } else if (password.length === 0) {
+      setErrorMessage("Please provide current password!");
+    } else {
+      const data = {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address,
+        password,
+      };
+      axios
+        .put(
+          "http://127.0.0.1:8000/api/product/user/edit/" +
+            localStorage.getItem("username"),
+          data
+        )
+        .then((response) => {
+          if (response.data === "Incorrect current passowrd!") {
+            setErrorMessage(response.data);
+          } else {
+            history.goBack();
+          }
+        });
+    }
   };
 
   return (
@@ -131,7 +151,7 @@ const EditProfile = () => {
                           <td>Email</td>
                           <td colSpan="2">
                             <input
-                              type="text"
+                              type="email"
                               className="form-control"
                               name="Email"
                               value={email}
