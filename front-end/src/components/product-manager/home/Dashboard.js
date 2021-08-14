@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Card } from "react-bootstrap";
 import { ScaleLoader } from "react-spinners";
+import { FaThumbtack } from "react-icons/fa";
+
 const Dashboard = () => {
   const [list, setList] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,7 +30,10 @@ const Dashboard = () => {
       <div className="col-5 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Dashboard</h3>
+            <h3>
+              {" "}
+              <FaThumbtack></FaThumbtack> Dashboard
+            </h3>
             <hr></hr>
           </center>
           {/* component */}

@@ -2,6 +2,7 @@ import { Table } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FaWalking } from "react-icons/fa";
 
 const LeaveRequest = () => {
   const [type, setType] = useState("Sick leave");
@@ -32,7 +33,10 @@ const LeaveRequest = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Leave Request</h3>
+            <h3>
+              {" "}
+              <FaWalking></FaWalking> Leave Request
+            </h3>
             <hr></hr>
           </center>
           <div className="row align-items-start mb-2">

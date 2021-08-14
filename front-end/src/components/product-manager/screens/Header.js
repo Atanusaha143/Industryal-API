@@ -2,6 +2,8 @@ import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { FaRegUser } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 
 const Header = () => {
   const history = useHistory();
@@ -33,9 +35,14 @@ const Header = () => {
               <Nav className="me-auto"></Nav>
               <Nav>
                 <Nav.Link onClick={activeProfile}>
+                  {" "}
+                  <FaRegUser></FaRegUser> &nbsp;
                   {localStorage.getItem("username")}
                 </Nav.Link>
-                <Nav.Link onClick={logout}>Logout</Nav.Link>
+                <Nav.Link onClick={logout}>
+                  {" "}
+                  Logout <FiLogOut></FiLogOut>{" "}
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

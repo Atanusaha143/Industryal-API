@@ -5,6 +5,7 @@ import { ScaleLoader } from "react-spinners";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { FaRegListAlt } from "react-icons/fa";
 
 const MyAdministrationIssue = () => {
   const MySwal = withReactContent(Swal);
@@ -57,7 +58,10 @@ const MyAdministrationIssue = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>My Issue List</h3>
+            <h3>
+              {" "}
+              <FaRegListAlt></FaRegListAlt> My Issue List
+            </h3>
           </center>
           <hr></hr>
           <input

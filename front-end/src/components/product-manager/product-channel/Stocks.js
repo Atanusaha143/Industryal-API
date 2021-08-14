@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
 import axios from "axios";
 import ReactExport from "react-data-export";
+import { FaShoppingBasket } from "react-icons/fa";
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -99,7 +100,10 @@ const Stocks = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Product Stocks</h3>
+            <h3>
+              {" "}
+              <FaShoppingBasket></FaShoppingBasket> Product Stocks
+            </h3>
           </center>
           <hr></hr>
           <input

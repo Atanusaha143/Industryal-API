@@ -9,6 +9,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ReactExport from "react-data-export";
+import { FaBox } from "react-icons/fa";
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -185,7 +186,10 @@ const ProductList = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Product List</h3>
+            <h3>
+              {" "}
+              <FaBox></FaBox> Product List
+            </h3>
           </center>
           <hr></hr>
           <input

@@ -2,6 +2,7 @@ import { Table } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FaBoxOpen, FaExchangeAlt } from "react-icons/fa";
 
 const TransferProduct = () => {
   const [warehouseList, setWarehouseList] = useState([]);
@@ -45,7 +46,11 @@ const TransferProduct = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Transfer Product</h3>
+            <h3>
+              {" "}
+              <FaBoxOpen></FaBoxOpen> Transfer Product{" "}
+              <FaExchangeAlt></FaExchangeAlt>{" "}
+            </h3>
             <hr></hr>
           </center>
           {message && (

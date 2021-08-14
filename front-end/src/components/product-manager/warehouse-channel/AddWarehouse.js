@@ -2,6 +2,7 @@ import { Table } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FaWarehouse } from "react-icons/fa";
 
 const AddWarehouse = () => {
   const [warehouse_id, setId] = useState("");
@@ -47,7 +48,10 @@ const AddWarehouse = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Add Warehouse</h3>
+            <h3>
+              {" "}
+              <FaWarehouse></FaWarehouse> Add Warehouse
+            </h3>
           </center>
           <hr></hr>
           {/* component */}

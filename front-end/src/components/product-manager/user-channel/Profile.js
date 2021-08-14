@@ -5,6 +5,7 @@ import { ScaleLoader } from "react-spinners";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { FaUserTie } from "react-icons/fa";
 
 const Profile = () => {
   const MySwal = withReactContent(Swal);
@@ -37,7 +38,10 @@ const Profile = () => {
       <div className="col-5 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Profile</h3>
+            <h3>
+              {" "}
+              <FaUserTie></FaUserTie> Profile
+            </h3>
             <hr></hr>
           </center>
           {/* component */}

@@ -2,6 +2,7 @@ import { Table } from "react-bootstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FaSync } from "react-icons/fa";
 
 const EditProduct = () => {
   const [product_id, setPId] = useState("");
@@ -83,7 +84,10 @@ const EditProduct = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Edit Product</h3>
+            <h3>
+              {" "}
+              <FaSync></FaSync> Edit Product
+            </h3>
           </center>
           <hr></hr>
           <div className="row justify-content-center">

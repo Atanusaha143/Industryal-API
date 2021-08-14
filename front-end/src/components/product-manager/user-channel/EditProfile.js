@@ -5,6 +5,7 @@ import { ScaleLoader } from "react-spinners";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { FaUserEdit } from "react-icons/fa";
 
 const EditProfile = () => {
   const MySwal = withReactContent(Swal);
@@ -67,7 +68,10 @@ const EditProfile = () => {
       <div className="col-5 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3>Edit Profile</h3>
+            <h3>
+              {" "}
+              <FaUserEdit></FaUserEdit> Edit Profile
+            </h3>
             <hr></hr>
           </center>
           {/* component */}
