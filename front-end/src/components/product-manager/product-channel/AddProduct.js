@@ -45,8 +45,12 @@ const AddProduct = () => {
       setErrorMessage("Product stock value must be a number!");
     } else if (weight.length === 0) {
       setErrorMessage("Product weight can't be empty!");
+    } else if (!Number(weight)) {
+      setErrorMessage("Product weight value must be a number!");
     } else if (dimention.length === 0) {
       setErrorMessage("Product dimention can't be empty!");
+    } else if (!Number(dimention)) {
+      setErrorMessage("Product dimention value must be a number!");
     } else if (selling_price.length === 0) {
       setErrorMessage("Product selling price can't be empty!");
     } else if (!Number(selling_price)) {
