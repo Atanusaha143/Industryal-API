@@ -21,25 +21,33 @@ const TransferProduct = () => {
   }, []);
 
   const transferProduct = () => {
-    const data = { product_id, warehouse_name, transfer_quantity };
-    axios
-      .put("http://127.0.0.1:8000/api/product/transfer", data)
-      .then((response) => {
-        const result = response.data;
-        if (result === "Product not found") {
-          setMessage(result);
-        } else if (
-          result === "Requested quantity is bigger than waerhouse quantity"
-        ) {
-          setMessage(result);
-        } else if (result === "You don't have that much product!") {
-          setMessage(result);
-        } else if (result === "You selected the current warehouse!") {
-          setMessage(result);
-        } else if (result === "Transfer Successful") {
-          history.push("/product/stocks");
-        }
-      });
+    if (product_id.length === 0) {
+      setMessage("Product ID can't be empty!");
+    } else if (transfer_quantity.length === 0) {
+      setMessage("Warehouse name can't be empty!");
+    } else if (!Number(transfer_quantity)) {
+      setMessage("Transfer qunatity must be a number!");
+    } else {
+      const data = { product_id, warehouse_name, transfer_quantity };
+      axios
+        .put("http://127.0.0.1:8000/api/product/transfer", data)
+        .then((response) => {
+          const result = response.data;
+          if (result === "Product not found") {
+            setMessage(result);
+          } else if (
+            result === "Requested quantity is bigger than waerhouse quantity"
+          ) {
+            setMessage(result);
+          } else if (result === "You don't have that much product!") {
+            setMessage(result);
+          } else if (result === "You selected the current warehouse!") {
+            setMessage(result);
+          } else if (result === "Transfer Successful") {
+            history.push("/product/stocks");
+          }
+        });
+    }
   };
   return (
     <>
