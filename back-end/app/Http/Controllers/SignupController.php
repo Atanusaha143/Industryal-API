@@ -41,8 +41,8 @@ class SignupController extends Controller
             $user->organization_id = $organization->id;
             $img->move('upload/Users', $user->profile_pic);
             if($user->save()){
-                $errors = array("error"=>"Registration Failed","code"=>"400");
-                return response()->json($errors, 400);
+                $success = array("success"=>"Registration Successfull","code"=>"200");
+                return response()->json($success, 200);
             }
         }
         $errors = array("error"=>"Registration Failed","code"=>"400");
