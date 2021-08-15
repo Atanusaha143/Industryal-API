@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pie, Bar } from "react-chartjs-2";
-import { FaTasks } from "react-icons/fa";
+import { MdPieChart } from "react-icons/md";
+import { AiOutlineBarChart } from "react-icons/ai";
 
 const Chart = () => {
   const history = useHistory();
@@ -84,7 +85,10 @@ const Chart = () => {
           <div class="row align-items-start">
             <div class="col"></div>
             <div class="col-6">
-              <h3>&nbsp; &nbsp; Product Statistics</h3>
+              <h3>
+                <MdPieChart></MdPieChart> &nbsp; Product Statistics &nbsp;{" "}
+                <AiOutlineBarChart></AiOutlineBarChart>
+              </h3>
             </div>
             <div class="col-2"></div>
           </div>

@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pie, Bar, Doughnut } from "react-chartjs-2";
-import { FaTasks } from "react-icons/fa";
+import { FaChartPie } from "react-icons/fa";
+import { BiDoughnutChart } from "react-icons/bi";
 import { ScaleLoader } from "react-spinners";
 
 const WarehouseChart = () => {
@@ -93,7 +94,11 @@ const WarehouseChart = () => {
         <div className="container">
           <div className="row justify-content-center">
             <center>
-              <h3> &nbsp; &nbsp; Warehouse Statistics</h3>
+              <h3>
+                {" "}
+                <FaChartPie></FaChartPie> &nbsp; Warehouse Statistics &nbsp;
+                <BiDoughnutChart></BiDoughnutChart>
+              </h3>
             </center>
           </div>
           <hr className="mb-4"></hr>
