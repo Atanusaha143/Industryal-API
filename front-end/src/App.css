@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: row;
   background-image: linear-gradient(to right, var(--blue-3), var(--blue-2));
+  position: sticky;
+  top: 0px;
 }
 
 .NavLinkContainer
