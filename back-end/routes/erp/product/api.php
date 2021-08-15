@@ -65,3 +65,5 @@ Route::get("/product/user/administration/myissue/search/{name}",[OtherController
 Route::get("product/user/profile/{username}",[ProductManagerController::class,'getUserInfo']);
 Route::put("product/user/edit/{username}",[ProductManagerController::class,'updateUserInfo']);
 Route::post("product/user/edit/profilepicture/{username}",[ProductManagerController::class,'updateProfilePicture']);
+Route::post("product/user/changePassword/otp/verify",[ProductManagerController::class,'changePasswordVerify']);
+Route::post("product/user/changePassword/otp/verify/confirmation",[ProductManagerController::class,'verificationVerify']);
