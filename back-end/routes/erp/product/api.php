@@ -47,6 +47,7 @@ Route::get("warehouse/{id}",[WarehouseController::class,'getWarehouseById']);
 Route::put("warehouse/edit/{id}",[WarehouseController::class,'updateWarehouse']);
 Route::get("/warehouse/list/names",[WarehouseController::class,'getWarehouseNames']);
 Route::get("warehouse/chart/pie",[WarehouseController::class,'piChartWarehouse']);
+Route::get("warehouse/chart/doughnut",[WarehouseController::class,'doughnutChartWarehouse']);
 
 
                                     //Other

@@ -43,6 +43,9 @@ function App() {
           <Route exact path="/warehouse/edit/:id">
             <Home title="warehouse-edit" nav="common" />
           </Route>
+          <Route exact path="/warehouse/statistics">
+            <Home title="warehouse-chart" nav="common" />
+          </Route>
 
           {/* Other */}
           <Route exact path="/product/user/leave">
