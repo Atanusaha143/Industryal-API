@@ -266,5 +266,45 @@ class ProductController extends Controller
         }
     }
 
+    public function piChartProduct()
+    {
+        // Product chart
+        $products = product_table::all();
+        $allProducts = array(); // all types of products
+        foreach($products as $item)
+        {
+            $currProduct = $item->product_name;
+            $check = FALSE; 
+            foreach($allProducts as $product)
+            {
+                if($product == $currProduct)
+                {
+                    $check = TRUE;
+                    break;
+                }
+            }
+            if(!$check)
+            {
+                array_push($allProducts,$currProduct);  
+            }
+        }
+
+        $productCnt = []; // product wise stock
+        foreach($allProducts as $currProduct)
+        {
+            $cnt = 0;
+            foreach($products as $item)
+            {
+                if($item->product_name == $currProduct)
+                {
+                    $cnt += $item->stock;
+                }
+            }
+            $productCnt += [$currProduct => $cnt];
+        }
+
+        return response()->json($productCnt);
+    }
+
     
 }
