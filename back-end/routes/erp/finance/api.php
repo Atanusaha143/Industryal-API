@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::group(['middleware'=>['finance_user']], function(){
 Route::get('financedashboard/{id}', ['as'=>'financedashboard.index', 'uses'=>'FinanceController@index']);
 
 //BUDGETING
@@ -62,3 +63,4 @@ Route::post('financeprofile/{id}', ['as'=>'financeprofile.update', 'uses'=>'Fina
 Route::get('financeexport/{id}', ['as'=>'financeexport.export', 'uses'=>'FinanceImportExportController@export']);
 Route::get('financeexporthistory/{id}', ['as'=>'financeexporthistory.history', 'uses'=>'FinanceImportExportController@index_history']);
 Route::post('financeimport/{id}', ['as'=>'financeimport.import', 'uses'=>'FinanceImportExportController@import']);
+});
