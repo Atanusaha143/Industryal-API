@@ -306,5 +306,45 @@ class ProductController extends Controller
         return response()->json($productCnt);
     }
 
+    public function barChartProduct()
+    {
+        // Column Chart, Product - Price
+        // Product chart
+        $products = product_table::all();
+        $allProducts = array(); // all types of products
+        foreach($products as $item)
+        {
+            $currProduct = $item->product_name;
+            $check = FALSE; 
+            foreach($allProducts as $product)
+            {
+                if($product == $currProduct)
+                {
+                    $check = TRUE;
+                    break;
+                }
+            }
+            if(!$check)
+            {
+                array_push($allProducts,$currProduct);  
+            }
+        }
+        $productPrice = []; // product wise price
+        foreach($allProducts as $currProduct)
+        {
+            $cnt = 0;
+            foreach($products as $item)
+            {
+                if($item->product_name == $currProduct)
+                {
+                    $cnt += $item->selling_price;
+                }
+            }
+            $productPrice += [$currProduct => $cnt];
+        }
+        asort($productPrice);
+        return response()->json($productPrice);
+    }
+
     
 }
