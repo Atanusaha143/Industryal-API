@@ -13,7 +13,6 @@ function App() {
         <Switch>
           <Route exact path="/sales/">
             <NavBar/>
-            {/* <SideMenu/> */}
             home
           </Route>
           <Route path="/sales/orders">
@@ -27,12 +26,10 @@ function App() {
             <NavBar/>
             <SideMenu/>
             <TableCustomer/>
-            {/* customers */}
           </Route>
           <Route path="/sales/update/customer/">
             <NavBar/>
-            {/* <TableCustomer/> */}
-            <FormUpdateCustomer/>
+            <FormUpdateCustomer id="6"/>
           </Route>
           <Route path="/sales/statistics">
             <NavBar/>

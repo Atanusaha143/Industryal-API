@@ -1,16 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import FormUpdateCustomer from './FormUpdateCustomer';
 import axios from 'axios'
-// import Popup from 'reactjs-popup';
-// import '../styles/styles.css'
 
 const TableCustomer = () => {
 
-
-    const[error, setError] = useState(null);
-    // const[isLoaded, setIsLoaded] = useState(false);
     const[items, setItems] = useState([]);
     const[updateForm, formState] = useState(false);
     
