@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const UserList=()=>{
     const history = useHistory();
+    const [errorMessage,setErrorMessage] = useState("");
     const[searchUser,setSearchUser] = useState('');
     const[list,setList] = useState([]);
     useEffect( async ()=>{
@@ -17,11 +18,19 @@ const UserList=()=>{
 
     function search()
     {
-        axios.get("http://127.0.0.1:8000/api/HR/user/search/"+searchUser)
-        .then(function (response) {
+        if(searchUser.length===0)
+        {
+            setErrorMessage("Please Enter User name for search");
+        }
+        else{
+            axios.get("http://127.0.0.1:8000/api/HR/user/search/"+searchUser)
+           .then(function (response) {
             const result = response.data;
             setList(result);
-        });
+            setErrorMessage("");
+            });
+        }
+        
     }
 
 
@@ -45,6 +54,14 @@ const UserList=()=>{
             <h3 className="font-width-border"> User List</h3>
         </div>
         <hr></hr>
+        {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-5" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+        )}
         <div className="input-group">
             <input className="form-control"type="text" placeholder="Find By Username..." name="search" onChange={(e)=>{setSearchUser(e.target.value)}}></input>
             <div className="input-group-append">

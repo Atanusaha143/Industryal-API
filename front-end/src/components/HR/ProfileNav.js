@@ -3,8 +3,9 @@ import { Container } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { React } from 'react';
+import Profile from './Profile';
 
-const ProfileNav=()=>{
+const ProfileNav=({title})=>{
     return(
         <>
             <header>
@@ -39,12 +40,12 @@ const ProfileNav=()=>{
                 <div className="col-10">
                     <div className="info-section p-3 text-black ">
                         {(()=>{
-                            /* if(title === 'Pie Chart')
+                             if(title === 'Profile')
                             {
                                 return(
-                                    <Home />
+                                    <Profile />
                                 )
-                            } */
+                            } 
                         })()} 
 
                     </div>

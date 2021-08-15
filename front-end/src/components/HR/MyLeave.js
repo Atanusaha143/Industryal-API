@@ -4,21 +4,47 @@ import { React } from 'react';
 import axios from 'axios';
 
 const MyLeave=()=>{
+    const [errorMessage,setErrorMessage] = useState("");
     const [type,setType] = useState("");
     const [start_date,setStartDate] = useState("");
     const [end_date,setEndDate] = useState("");
     const [description,setDescription] = useState("");
     const history = useHistory();
-
-    const myLeave = async () => {
-        await axios.post('http://127.0.0.1:8000/api/HR/leave/request', {
+    
+    
+const myLeave = async () => {
+        if(type.length===0){
+            setErrorMessage("Type Can't be empty");
+        }else if(start_date.length===0)
+        {
+            setErrorMessage("Start date can't be empty");
+        }
+        else if(end_date.length===0){
+            setErrorMessage("End date can't be empty");
+        }
+        else if(description.length===0)
+        {
+            setErrorMessage("Description can't be empty");
+        }
+        else if(start_date>end_date)
+        {
+            setErrorMessage("Start date must be smaller than End date");
+        }
+        
+        else{
+            await axios.post('http://127.0.0.1:8000/api/HR/leave/request', {
            type,start_date,end_date,description
         },{
             headers: {
                 'ContentType': 'application/json'
             }
-        })
-        history.push('/HR/leave/request/list');
+        }).then((response)=>{
+            console.log(response.data);
+            history.push('/HR/leave/request/list');
+        });
+        
+        }
+        
     }
 
 
@@ -28,6 +54,14 @@ const MyLeave=()=>{
                 <h3 className="font-width-border">My Leave Request</h3>
             </div>
             <hr></hr>
+            {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-5" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+            )}
             <div className=" w-50   m-auto">
                 <div className="form-group">
                     <label>Type</label>

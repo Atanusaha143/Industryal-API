@@ -4,20 +4,34 @@ import { React } from 'react';
 import axios from 'axios';
 
 const AddGroup=()=>{
+    const [errorMessage,setErrorMessage] = useState("");
     const [employee_id,setEmployeeId] = useState("");
     const [employee_group,setGroup] = useState("");
     const history = useHistory();
 
     const addGroup = async () => {
-        await axios.post('http://127.0.0.1:8000/api/HR/employee/group', {
+        if(employee_id.length===0)
+        {
+            setErrorMessage("Please Enter your Id");
+        }
+        else if(employee_group.length===0){
+            setErrorMessage("Please select group");
+        }
+        else{
+            await axios.post('http://127.0.0.1:8000/api/HR/employee/group', {
             employee_id,employee_group
             
-        },{
-            headers: {
-                'ContentType': 'application/json'
-            }
-        })
-        history.push('/HR/employee/list');
+            },{
+                headers: {
+                    'ContentType': 'application/json'
+                }
+            }).then((response)=>{
+                console.log(response.data);
+                history.push('/HR/employee/list');
+            });
+       
+        }
+        
     }
     return(
         <>
@@ -25,6 +39,14 @@ const AddGroup=()=>{
                 <h3 className="font-width-border">New Group</h3>
             </div>
             <hr></hr>
+            {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-5" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+            )}
             <div className="w-50  m-auto">
                 <div className="form-group">
                     <label >Employee ID</label> 

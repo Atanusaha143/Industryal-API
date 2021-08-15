@@ -65,7 +65,7 @@ function App() {
           <Navb title='Expense Report Statistic' />
         </Route>
         <Route exact path='/HR/user/profile'>
-          <ProNav />
+          <ProNav title='Profile' />
         </Route>
       </Switch>
     </Router>

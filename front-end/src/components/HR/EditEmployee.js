@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const EditEmployee=()=>{
+    const [errorMessage,setErrorMessage] = useState("");
     const [employee_id,setEmployeeId] = useState("");
     const [employee_name,setEmployeeName] = useState("");
     const [gender,setGender] = useState("");
@@ -36,7 +37,68 @@ const EditEmployee=()=>{
     },[])
 
     const updateEmp = async () => {
-        await axios.put('http://127.0.0.1:8000/api/HR/employee/update/'+eid, {
+        if(employee_id.length===0)
+        {
+            setErrorMessage("Please Enter employee Id");
+        }
+        else if(!Number(employee_id))
+        {
+            setErrorMessage("Employee Id must be number");
+        }else if(employee_name.length===0){
+            setErrorMessage("Please Enter employee name");
+        }else if(gender.length===0)
+        {
+            setErrorMessage("Please select your gender");
+        }else if(supervisor.length===0){
+            setErrorMessage("Please select supervisor");
+        }
+        else if(present_address.length===0){
+            setErrorMessage("Address Can't be empty");
+        }
+        else if(phone.length===0){
+            setErrorMessage("Please enter your phone number");
+        }
+        else if(phone.length<11){
+            setErrorMessage("Phone length must be 11 charecter");
+        }
+        else if(!Number(phone))
+        {
+            setErrorMessage("Phone must be number");
+        }
+        else if(job_position.length===0)
+        {
+            setErrorMessage("Enter your job position");
+        }
+        else if(start_time.length==0)
+        {
+            setErrorMessage("Start time can't be empty");
+        }
+        else if(end_time.length==0){
+            setErrorMessage("End time can't be empty");
+        }
+        else if(start_time>end_time)
+        {
+            setErrorMessage("Start time must be smaller than End time");
+        }
+        else if(end_time<start_time){
+            setErrorMessage("End time must be grater than Start time");
+        }
+        else if(start_time==end_time){
+            setErrorMessage("Start time and End time can't same");
+        }else if(hour_worked.length===0)
+        {
+            setErrorMessage("Hour work Can't be empty");
+        }
+        else if(!Number(hour_worked))
+        {
+            setErrorMessage("Hour work must be a number");
+        }
+        else if(employment_start_date.length===0)
+        {
+            setErrorMessage("Employemet Start date Can't be empty");
+        }else{
+           
+            await axios.put('http://127.0.0.1:8000/api/HR/employee/update/'+eid, {
             employee_id,employee_name,gender,supervisor,present_address,
             phone,job_position,start_time,end_time,hour_worked,employment_start_date
         },{
@@ -45,6 +107,8 @@ const EditEmployee=()=>{
             }
         })
         history.push('/HR/employee/list');
+        }
+        
     }
     const gen=["male","female"];
     return(
@@ -53,11 +117,19 @@ const EditEmployee=()=>{
             <h3 className="font-width-border">Update Employee Information</h3>
         </div>
         <hr></hr>
+        {errorMessage && (
+            <center>
+              {" "}
+              <div class="alert alert-danger col-5" role="alert">
+                {errorMessage}
+              </div>{" "}
+            </center>
+        )}
         <div className="borber w-50  m-auto">
             
             <div className="form-group">
                 <label>Employee ID</label> 
-                <input type="number" class="form-control" id="employeeid" name="employee_id" value={employee_id} onChange={(e)=>setEmployeeId(e.target.value)}></input>
+                <input type="text" class="form-control" id="employeeid" name="employee_id" value={employee_id} onChange={(e)=>setEmployeeId(e.target.value)}></input>
             </div>
         
             <div className="form-group">
@@ -79,6 +151,7 @@ const EditEmployee=()=>{
             <div className="form-group">
             <label>Supervisor</label>
             <select name="supervisor" id="super" className="form-control" value={supervisor} onChange={(e)=>setSupervisor(e.target.value)}>
+                <option >Please Select</option>
                 <option value="Super admin">Super admin</option>
                 <option value="HR manager">HR manager</option>
                 <option value="Product Manager">Product manager</option>
@@ -93,7 +166,7 @@ const EditEmployee=()=>{
             </div>
             <div className="from-group">
                 <label>Phone</label>
-                <input type="number" className="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value={phone} onChange={(e)=>setPhone(e.target.value)}></input>
+                <input type="text" className="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value={phone} onChange={(e)=>setPhone(e.target.value)}></input>
             </div>
             <div className="from-group">
                 <label>Job Position</label> 

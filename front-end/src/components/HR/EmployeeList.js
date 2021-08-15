@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 
 const EmployeeList=()=>{
+    const [errorMessage,setErrorMessage] = useState("");
     const[searchEmp,setSearchEmp] = useState('');
     const[list,setList] = useState([]);
     useEffect( async ()=>{
@@ -15,11 +16,19 @@ const EmployeeList=()=>{
 
     function search()
     {
-        axios.get("http://127.0.0.1:8000/api/HR/employee/search/"+searchEmp)
-        .then(function (response) {
+        if(searchEmp.length===0)
+        {
+            setErrorMessage("Please Enter employee name for search");
+        }
+        else{
+            axios.get("http://127.0.0.1:8000/api/HR/employee/search/"+searchEmp)
+            .then(function (response) {
             const result = response.data;
             setList(result);
-        });
+            setErrorMessage("");
+            });
+        }
+        
     }
 
     return(
@@ -28,6 +37,14 @@ const EmployeeList=()=>{
                 <h3 className="font-width-border">Employee List</h3>
             </div>
             <hr></hr>
+            {errorMessage && (
+                <center>
+                {" "}
+                <div class="alert alert-danger col-5" role="alert">
+                    {errorMessage}
+                </div>{" "}
+                </center>
+            )}
             <div className="input-group">
                 <input className="form-control"type="text" placeholder="Find By Employee Name..." name="search"  onChange={(e)=>{setSearchEmp(e.target.value)}}></input>
                 <div className="input-group-append">
