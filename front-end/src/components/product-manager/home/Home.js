@@ -24,6 +24,7 @@ import EditProfile from "../user-channel/EditProfile";
 import EditProfilePicture from "../user-channel/EditProfilePicture";
 import Chart from "../product-channel/Chart";
 import WarehouseChart from "../warehouse-channel/WarehouseChart";
+import ChangePassword from "../user-channel/ChangePassword";
 
 const Home = ({ title, nav }) => {
   const history = useHistory();
@@ -94,6 +95,8 @@ const Home = ({ title, nav }) => {
               return <Chart></Chart>;
             } else if (title === "warehouse-chart") {
               return <WarehouseChart></WarehouseChart>;
+            } else if (title === "profile-change-password") {
+              return <ChangePassword></ChangePassword>;
             }
           })()}
         </div>

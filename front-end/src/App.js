@@ -74,6 +74,9 @@ function App() {
           <Route exact path="/product/user/edit/profilepicture">
             <Home title="profile-picture-edit" nav="profile" />
           </Route>
+          <Route exact path="/product/user/edit/changePassword">
+            <Home title="profile-change-password" nav="profile" />
+          </Route>
         </Switch>
       </Router>
     </>
