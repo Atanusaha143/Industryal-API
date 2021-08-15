@@ -8,6 +8,7 @@ use App\Http\Controllers\HRgroupController;
 use App\Http\Controllers\HRempScheduleController;
 use App\Http\Controllers\HRleaveController;
 use App\Http\Controllers\HRexpenseController;
+use App\Http\Controllers\HRuserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +40,10 @@ Route::delete('/HR/employee/delete/{employee_id}',[HRemployeeController::class,'
 Route::Post('/HR/employee/group',[HRgroupController::class,'createGroup']);
 Route::get('/HR/employee/{employee_id}',[HRemployeeController::class,'getEmpByEmpId']);
 Route::get('/HR/emp/schedule',[HRempScheduleController::class,'schedule']);
-Route::get("/HR/employee/search/{employee_name}",[HRemployeeController::class,'searchEmp']);
+Route::get('/HR/employee/search/{employee_name}',[HRemployeeController::class,'searchEmp']);
 //Leave
 
-Route::Post('/HR/leave/request',[HRleaveController::class,'verifyLeave']);
+Route::Post('/HR/leave/request/{username}',[HRleaveController::class,'verifyLeave']);
 Route::get('/HR/leave/request/list',[HRleaveController::class,'getLeaveList']);
 Route::put('/HR/leave/approve/{id}',[HRleaveController::class,'VerifyApprove']);
 Route::put('/HR/leave/reject/{id}',[HRleaveController::class,'VerifyReject']);
@@ -52,7 +53,13 @@ Route::post('/HR/expense/report',[HRexpenseController::class,'create']);
 Route::get('/HR/expense/list',[HRexpenseController::class,'getExpenseList']);
 Route::put('/HR/expense/update/{id}',[HRexpenseController::class,'updateExpense']);
 Route::delete('/HR/expense/delete/{id}',[HRexpenseController::class,'deleteExpense']);
-Route::get("/HR/expense/{id}",[HRexpenseController::class,'getExpenseById']);
+Route::get('/HR/expense/{id}',[HRexpenseController::class,'getExpenseById']);
+
+Route::get('/HR/profile/{username}',[HRuserProfileController::class,'details']);
+Route::put('/HR/profile/update/{username}',[HRuserProfileController::class,'profileUpdate']);
+Route::put('/HR/change/password/{username}',[HRuserProfileController::class,'passwordUpdate']);
+
+
 
 
 

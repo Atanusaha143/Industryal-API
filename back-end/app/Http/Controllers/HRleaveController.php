@@ -9,10 +9,10 @@ use App\Models\User;
 
 class HRleaveController extends Controller
 {
-    public function verifyLeave(Request $req)
+    public function verifyLeave(Request $req,$username)
     {
-       // $username = $req->session()->get('username');
-        $user = User::where('username', 'atanusaha143')->first();
+       
+        $user = User::where('username', $username)->first();
         $emp_id = $user->id;
         $emp_type = $user->type;
         

@@ -11,7 +11,7 @@ class HRuserController extends Controller
 {
     public function addUser(Request $req)
     {
-        //$img = $req->file('profile_pic');
+        $img = $req->file('profile_pic');
         $user=new User;
         $user->firstname=$req->firstname;
         $user->lastname=$req->lastname;
@@ -25,8 +25,8 @@ class HRuserController extends Controller
         $user->pass=$req->pass;
         $user->work_hour=$req->work_hour;
         //$user->organization_id=$req->organization_id;
-        //$user->profile_pic = $req->username.'.'.$img->getClientOriginalExtension();
-        //$img->move('upload/Users', $req->username.'.'.$img->getClientOriginalExtension());
+        $user->profile_pic = $req->username.'.'.$img->getClientOriginalExtension();
+        $img->move('upload/Users', $req->username.'.'.$img->getClientOriginalExtension());
         $user->save();
 
          return response('User Added', 200)
@@ -49,8 +49,11 @@ class HRuserController extends Controller
             return response('User Deleted', 200)
                   ->header('Content-Type', 'text/plain');
         }
-        return response('User Not Found', 404)
-                  ->header('Content-Type', 'text/plain');                 
+        else{
+            return response('User Not Found', 404)
+                  ->header('Content-Type', 'text/plain');
+        }
+                         
     }
 
     public function updateUser(Request $req,$id)
