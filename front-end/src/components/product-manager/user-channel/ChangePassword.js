@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { FaWalking } from "react-icons/fa";
+import { RiLockPasswordLine } from "react-icons/ri";
 import Recaptcha from "react-recaptcha";
 
 const ChangePassword = () => {
@@ -43,28 +43,34 @@ const ChangePassword = () => {
         .then(function (response) {
           if (response.data[0].pass === currentPass) {
             //Proceed
-            setErrorMessage("correct current password!");
+            const username = localStorage.getItem("username");
+            const formData = new FormData();
+            formData.append("currPass", currentPass);
+            formData.append("newPass", newPass);
+            formData.append("confirmNewPass", confirmNewPass);
+            formData.append("username", username);
+            axios
+              .post(
+                "http://127.0.0.1:8000/api/product/user/changePassword/otp/verify",
+                formData
+              )
+              .then((response) => {
+                if (response.data !== "NOT OK") {
+                  localStorage.setItem("vcode", response.data);
+                  localStorage.setItem("pass", newPass);
+                  history.push("/product/user/edit/changePassword/verify");
+                } else {
+                  console.log("Not Sent");
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           } else {
             setErrorMessage("Incorrect current password!");
           }
         });
     }
-    // else {
-    //   const formData = new FormData();
-    //   formData.append("type", type);
-    //   formData.append("start_time", start_time);
-    //   formData.append("end_time", end_time);
-    //   formData.append("request_description", request_description);
-
-    //   axios
-    //     .post("http://127.0.0.1:8000/api/product/user/leave/create", formData)
-    //     .then((response) => {
-    //       console.log(response);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
   };
 
   return (
@@ -72,7 +78,10 @@ const ChangePassword = () => {
       <div className="col-12 col-lg-9 border border-dark rounded p-3">
         <div className="row justify-content-center">
           <center>
-            <h3> Chnage Password</h3>
+            <h3>
+              {" "}
+              <RiLockPasswordLine></RiLockPasswordLine> &nbsp; Change Password
+            </h3>
             <hr></hr>
           </center>
           {errorMessage && (

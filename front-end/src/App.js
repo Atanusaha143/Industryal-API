@@ -77,6 +77,9 @@ function App() {
           <Route exact path="/product/user/edit/changePassword">
             <Home title="profile-change-password" nav="profile" />
           </Route>
+          <Route exact path="/product/user/edit/changePassword/verify">
+            <Home title="profile-change-password-verify" nav="profile" />
+          </Route>
         </Switch>
       </Router>
     </>
