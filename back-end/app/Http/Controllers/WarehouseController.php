@@ -124,4 +124,19 @@ class WarehouseController extends Controller
 
         return response()->json($allWarehouseNames);
     }
+
+    public function piChartWarehouse()
+    {
+        // Warehouse chart
+        $warehouses = warehouse_table::all();
+        $warehouseCnt = []; // warehouse wise remaining quantity
+        foreach($warehouses as $item)
+        {
+            $currWarehouse = $item->name;
+            $currWarehouseQuantity = $item->remaining_quantity;
+            $warehouseCnt += [$currWarehouse => $currWarehouseQuantity];
+        }
+
+        return response()->json($warehouseCnt);
+    }
 }
