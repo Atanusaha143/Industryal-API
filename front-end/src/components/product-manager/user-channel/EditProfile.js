@@ -188,7 +188,7 @@ const EditProfile = () => {
                           <td>Current Password</td>
                           <td colSpan="2">
                             <input
-                              type="text"
+                              type="password"
                               className="form-control"
                               name="password"
                               onChange={(e) => setPassword(e.target.value)}
