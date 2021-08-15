@@ -33,10 +33,10 @@ const TableCustomer = () => {
     }
     else if(items !== null)
     {
-        console.log(items);
+        // console.log(items);
         return (
             <div>
-                <table className="CusTable">
+                {/* <table className="CusTable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -60,16 +60,37 @@ const TableCustomer = () => {
                                         <td>{cus.delivery_point}</td>
                                         <td>{cus.first_purchase}</td>
                                         <td>{cus.type}</td>
-                                        {/* <td><button>Update</button></td> */}
                                         <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to='/sales/customers/'>Update</Link></td>
-                                        {/* <td><Link className="UpdateBtn" to='/sales/update/customer'>Update</Link></td> */}
                                         <td><button>Delete</button></td>
                                     </tr>
                                 );
                             })
                         }
                     </tbody>
-                </table>
+                </table> */}
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
+                <h1>ABC</h1>
             </div>
             
         )
