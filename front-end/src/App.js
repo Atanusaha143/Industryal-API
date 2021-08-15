@@ -1,7 +1,7 @@
 import NavBar from './components/NavBar'
-import SideMenu from './components/SideMenu';
 import TableCustomer from './components/TableCustomer';
 import FormUpdateCustomer from './components/FormUpdateCustomer';
+import SideMenuCustomer from './components/SideMenuCustomer';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import './App.css'
 // import './styles/styles.css'
@@ -24,10 +24,19 @@ function App() {
           </Route>
           <Route path="/sales/customers">
             <NavBar/>
-            <SideMenu/>
+            <SideMenuCustomer/>
             <TableCustomer/>
           </Route>
+          <Route path="/sales/customers">
+            <NavBar/>
+            <SideMenuCustomer/>
+            <FormAddCustomer/>
+          </Route>
           <Route path="/sales/update/customer/">
+            <NavBar/>
+            <FormUpdateCustomer id="6"/>
+          </Route>
+          <Route path="/sales/customers/add">
             <NavBar/>
             <FormUpdateCustomer id="6"/>
           </Route>
