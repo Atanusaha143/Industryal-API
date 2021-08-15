@@ -29,6 +29,9 @@ function App() {
           <Route exact path="/product/transfer">
             <Home title="product-transfer" nav="common" />
           </Route>
+          <Route exact path="/product/statistics">
+            <Home title="product-chart" nav="common" />
+          </Route>
 
           {/* Warehouse */}
           <Route exact path="/warehouse/create">

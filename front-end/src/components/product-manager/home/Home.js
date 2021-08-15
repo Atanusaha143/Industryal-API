@@ -22,6 +22,7 @@ import ProfileSideNavbar from "../screens/ProfileSideNavbar";
 import Profile from "../user-channel/Profile";
 import EditProfile from "../user-channel/EditProfile";
 import EditProfilePicture from "../user-channel/EditProfilePicture";
+import Chart from "../product-channel/Chart";
 
 const Home = ({ title, nav }) => {
   const history = useHistory();
@@ -88,6 +89,8 @@ const Home = ({ title, nav }) => {
               return <EditProfile></EditProfile>;
             } else if (title === "profile-picture-edit") {
               return <EditProfilePicture></EditProfilePicture>;
+            } else if (title === "product-chart") {
+              return <Chart></Chart>;
             }
           })()}
         </div>
