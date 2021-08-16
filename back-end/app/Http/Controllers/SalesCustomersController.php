@@ -31,11 +31,20 @@ class SalesCustomersController extends Controller
             'email'=>'required',
             'phone'=>'required',
             'delivery_point'=>'required',
-            'first_purchase'=>'required',
+            // 'first_purchase'=>'required',
             'type'=>'required',
         ]);
+        // $request->first_purchase = date("Y-m-d H:i:s");
         
-        return SalesCustomers::create($request->all());
+        // return SalesCustomers::create($request->all());
+        return SalesCustomers::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'delivery_point'=>$request->delivery_point,
+            'first_purchase'=>date("Y-m-d H:i:s"),
+            'type'=>$request->type
+        ]);
     }
 
     /**
