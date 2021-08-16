@@ -14,8 +14,11 @@ const FormUpdateCustomer = (props) => {
         setCustomer({...customer, [attribute]:val})
     }
 
-    useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/sales/customers/4"+props.id)
+    var parts = window.location.href.split('/');
+    var answer = parts[parts.length - 1];
+
+    // useEffect(() => {
+        axios.get("http://127.0.0.1:8000/api/sales/customers/"+answer)
             .then(
                 // (result=>console.log(result.data))
                 result=>setCustomer(result.data)
@@ -23,7 +26,8 @@ const FormUpdateCustomer = (props) => {
             .then(
                 
             )
-    }, [])
+            // console.log(window.location.href);
+    // }, [])
 
     return (
         <div>

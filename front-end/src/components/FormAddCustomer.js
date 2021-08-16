@@ -1,10 +1,29 @@
+import axios from 'axios';
 import React from 'react'
+import { useState } from 'react';
 
 const FormAddCustomer = () => {
 
+    const [formData, setFormData] = useState([])
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Form Submitted');
+        console.log(event.target);
+
+        axios.post("http://127.0.0.1:8000/api/sales/customers", {
+            'name': event.target[0].value,
+            'email': event.target[1].value,
+            'phone': event.target[2].value,
+            'delivery_point': event.target[3].value,
+            'type': event.target[4].value,
+        })
+            .then((response)=>{
+                console.log(response.data)
+            })
+            .catch(
+                (err)=>console.log(err.toJSON())
+            )
+
     }
 
     return (
