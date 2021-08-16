@@ -60,7 +60,7 @@ body{
 #SubMenu
 {
   height: 50px;
-  background-color: rgb(61, 95, 181);
+  background-color: var(--blue-2);
   display: flex;
   flex-direction: row;
 }

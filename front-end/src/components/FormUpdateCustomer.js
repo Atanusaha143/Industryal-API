@@ -5,7 +5,11 @@ import axios from 'axios'
 
 
 const FormUpdateCustomer = (props) => {
-    const[customer, setCustomer] = useState({name:'', email:'', phone:'', delivery_point:'', type:''})
+    const[customer, setCustomer] = useState({name:'',
+                                             email:'', 
+                                             phone:'', 
+                                             delivery_point:'', 
+                                             type:''})
     const history = useHistory()
 
     const handleInputChange = (event) =>{
@@ -17,7 +21,7 @@ const FormUpdateCustomer = (props) => {
     var parts = window.location.href.split('/');
     var answer = parts[parts.length - 1];
 
-    // useEffect(() => {
+    useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/sales/customers/"+answer)
             .then(
                 // (result=>console.log(result.data))
@@ -27,7 +31,7 @@ const FormUpdateCustomer = (props) => {
                 
             )
             // console.log(window.location.href);
-    // }, [])
+    }, [])
 
     return (
         <div>
