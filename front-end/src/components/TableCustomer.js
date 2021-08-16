@@ -36,7 +36,7 @@ const TableCustomer = () => {
         // console.log(items);
         return (
             <div>
-                {/* <table className="CusTable">
+                <table className="CusTable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -67,7 +67,8 @@ const TableCustomer = () => {
                             })
                         }
                     </tbody>
-                </table> */}
+                </table>
+                {/* <h1>ABC</h1>
                 <h1>ABC</h1>
                 <h1>ABC</h1>
                 <h1>ABC</h1>
@@ -89,8 +90,7 @@ const TableCustomer = () => {
                 <h1>ABC</h1>
                 <h1>ABC</h1>
                 <h1>ABC</h1>
-                <h1>ABC</h1>
-                <h1>ABC</h1>
+                <h1>ABC</h1> */}
             </div>
             
         )

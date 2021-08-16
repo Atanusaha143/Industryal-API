@@ -57,6 +57,42 @@ body{
   padding-left: 10px;
 }
 
+.SideMenu
+{
+  
+}
+
+.OptionList
+{
+  height: 50px;
+  background-color: rgb(61, 95, 181);
+  display: flex;
+  flex-direction: row;
+}
+
+.SubLinkContainer
+{
+  padding-top: 20px;
+}
+
+.SubLink
+{
+  text-decoration: none;
+  color: var(--white-1);
+  padding: 10px 10px 10px 10px;
+  font-size: 15px;
+  border-radius: 7px;
+  font-weight:600;
+  transition: background-color 500ms, color 500ms;
+}
+
+.SubLink:hover
+{
+  background-color: var(--blue-2);
+  /* background-image: radial-gradient(circle, rgb(16, 10, 130), rgb(79, 129, 221)); */
+  color: var(--blue-3);
+}
+
 .CusTable
 {
   border:1px solid black;
