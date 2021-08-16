@@ -31,25 +31,25 @@ const FormAddCustomer = () => {
             <form className="Form" onSubmit={handleSubmit}>
                 <div className="Label-Input">
                     <label>Name:</label>
-                    <input type="text" name="name"/>
+                    <input type="text"/>
                 </div>
                 <div className="Label-Input">
                     <label>Email:</label>
-                    <input type="text" name="email"/>
+                    <input type="text"/>
                     
                 </div>
                 <div className="Label-Input">
                    <label>Phone:</label>
-                    <input type="text" name="phone"/>
+                    <input type="text"/>
                     
                 </div>
                 <div className="Label-Input">
                     <label>Delivery Location:</label>
-                    <input type="text" name="delivery_point"/>
+                    <input type="text"/>
                 </div>
                 <div className="Label-Input">
                     <label>Type:</label>
-                    <input type="text" name="type"/>
+                    <input type="text"/>
                 </div>
                 <div className="Form-Button">
                     <button>Confirm</button>
