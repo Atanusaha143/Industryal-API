@@ -6,17 +6,28 @@ import axios from 'axios'
 const TableCustomer = () => {
 
     const[items, setItems] = useState([]);
-    const[updateForm, formState] = useState(false);
+    const[error, setError] = useState();
     
     useEffect(()=>{
         axios.get("http://127.0.0.1:8000/api/sales/customers")
             .then(response=>{
-                setItems(response.data);
+                setItems(response.data)
+                // setError(false)
+                // setError(false)
             })
-            .catch(
-                setItems(null)
-            );
-            
+            .catch((error)=>{
+                console.log(error.request.statusText);
+                setError('404');
+                // setItems(null);
+                // setItems(null)
+            }
+                // error=>setError(true)
+                // setItems(null),
+                // setError(true)
+            );            
+        
+            console.log("This is error: " + error)
+            console.log("This is list: " + items)
     }, [])
 
     let id_ = 0;
@@ -25,7 +36,7 @@ const TableCustomer = () => {
         console.log(id);
     }
     
-    if(items == null)
+    if(error === '404')
     {
         return (
             <div>Error receiving data</div>
@@ -60,7 +71,7 @@ const TableCustomer = () => {
                                         <td>{cus.delivery_point}</td>
                                         <td>{cus.first_purchase}</td>
                                         <td>{cus.type}</td>
-                                        <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to='/sales/customers/'>Update</Link></td>
+                                        <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to={'/sales/customer/update/'+cus.id}>Update</Link></td>
                                         <td><button>Delete</button></td>
                                     </tr>
                                 );

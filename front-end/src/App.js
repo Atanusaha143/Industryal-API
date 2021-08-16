@@ -28,11 +28,15 @@ function App() {
             <SubMenuCustomer/>
             <TableCustomer/>
           </Route>
-          <Route path="/sales/customers">
+          <Route path="/sales/customer/update/:id">
             <NavBar/>
             <SubMenuCustomer/>
-            <FormAddCustomer/>
+            <FormUpdateCustomer/>
           </Route>
+          <Route path="/sales/update/customer/">
+            <NavBar/>
+            <FormUpdateCustomer id="6"/>
+          </Route> */
           <Route path="/sales/customer/add">
             <NavBar/>
             <SubMenuCustomer/>

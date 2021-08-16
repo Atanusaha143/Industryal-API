@@ -15,7 +15,7 @@ const FormUpdateCustomer = (props) => {
     }
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/sales/customers/"+props.id)
+        axios.get("http://127.0.0.1:8000/api/sales/customers/4"+props.id)
             .then(
                 // (result=>console.log(result.data))
                 result=>setCustomer(result.data)
