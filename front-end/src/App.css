@@ -91,7 +91,7 @@ body{
 {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 600px;
   /* border: 1px solid black; */
   margin: 0 auto;
 }
@@ -112,7 +112,7 @@ body{
   border-style: inset;
   border-color: var(--blue-2);
   background-color: aliceblue;
-  width: 200px;
+  width: 220px;
   transition: background-color 500ms;
 }
 
@@ -142,6 +142,16 @@ body{
   background-color: var(--white-1);
   color: var(--blue-3);
   cursor: pointer;
+}
+
+.Form .errMsg
+{
+  color: red;
+  display: inline-block;
+  /* margin-left:0px; */
+  padding: 2px 5px 2px 5px;
+  width: 150px;
+  /* background-color: aqua; */
 }
 
 .CusTable
