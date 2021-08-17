@@ -8,6 +8,11 @@ const Administration = () => {
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    document.title = "Administration";
+  });
+
   const createIssue = () => {
     if (issue_name.length === 0) {
       setErrorMessage("Please provide a issue name!");

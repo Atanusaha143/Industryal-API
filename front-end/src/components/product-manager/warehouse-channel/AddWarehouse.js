@@ -18,7 +18,9 @@ const AddWarehouse = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    document.title = "Create Warehouse";
+  }, []);
 
   const createWarehouse = () => {
     if (warehouse_id.length === 0) {

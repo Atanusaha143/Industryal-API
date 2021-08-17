@@ -24,6 +24,7 @@ const FaultyProductList = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(async () => {
+    document.title = "Faulty Product";
     setLoading(true);
     axios
       .get("http://127.0.0.1:8000/api/product/list/faulty")

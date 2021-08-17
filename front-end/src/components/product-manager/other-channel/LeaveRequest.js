@@ -13,6 +13,10 @@ const LeaveRequest = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
+  useEffect(() => {
+    document.title = "Leave Request";
+  });
+
   const createLeave = () => {
     if (start_time.length === 0) {
       setErrorMessage("Please setect a start date");

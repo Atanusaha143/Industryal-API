@@ -13,6 +13,7 @@ const TransferProduct = () => {
   const history = useHistory();
 
   useEffect(() => {
+    document.title = "Transfer Product";
     axios
       .get("http://127.0.0.1:8000/api/warehouse/list/names")
       .then(function (response) {

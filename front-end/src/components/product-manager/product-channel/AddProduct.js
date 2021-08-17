@@ -25,6 +25,7 @@ const AddProduct = () => {
   const history = useHistory();
 
   useEffect(() => {
+    document.title = "Create Product";
     axios
       .get("http://127.0.0.1:8000/api/warehouse/list/names")
       .then(function (response) {

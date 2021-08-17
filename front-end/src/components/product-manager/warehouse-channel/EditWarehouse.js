@@ -19,6 +19,7 @@ const EditWarehouse = () => {
   const { id: wId } = useParams();
 
   useEffect(() => {
+    document.title = "Update Warehouse";
     axios
       .get("http://127.0.0.1:8000/api/warehouse/" + wId)
       .then(function (response) {

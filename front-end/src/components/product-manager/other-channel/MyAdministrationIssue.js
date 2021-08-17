@@ -16,6 +16,7 @@ const MyAdministrationIssue = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(async () => {
+    document.title = "My Issue List";
     setLoading(true);
     axios
       .get("http://127.0.0.1:8000/api/product/user/administration/myissue")

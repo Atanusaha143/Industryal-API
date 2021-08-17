@@ -21,6 +21,7 @@ const EditProfile = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
+    document.title = "Update Profile";
     setLoading(true);
     axios
       .get(

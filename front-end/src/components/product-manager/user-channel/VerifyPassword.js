@@ -9,6 +9,10 @@ const ChangePassword = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
+  useEffect(() => {
+    document.title = "Verify Password";
+  });
+
   const changePassword = () => {
     if (vcode.length === 0) {
       setErrorMessage("Verification code can't be empty!");

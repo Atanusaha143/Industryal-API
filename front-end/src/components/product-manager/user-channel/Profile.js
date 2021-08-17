@@ -14,6 +14,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
+    document.title = "Profile";
     setLoading(true);
     axios
       .get(

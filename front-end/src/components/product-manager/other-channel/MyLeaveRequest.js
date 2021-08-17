@@ -23,6 +23,7 @@ const MyLeaveRequest = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(async () => {
+    document.title = "My Leave List";
     setLoading(true);
     axios
       .get("http://127.0.0.1:8000/api/product/user/leave/myrequest")

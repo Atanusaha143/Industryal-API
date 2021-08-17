@@ -14,6 +14,7 @@ const Chart = () => {
   const [barCount, setBarCount] = useState([]);
 
   useEffect(() => {
+    document.title = "Product Statistics";
     if (!localStorage.getItem("username")) {
       history.push("/");
     } else {

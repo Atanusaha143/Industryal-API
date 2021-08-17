@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
+    document.title = "Dashbaord";
     setLoading(true);
     axios
       .get("http://127.0.0.1:8000/api/product/dashboard/current-affairs")

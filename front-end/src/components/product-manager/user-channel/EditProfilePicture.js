@@ -13,6 +13,10 @@ const EditProfilePicture = () => {
   const [pass, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    document.title = "Update Profile Picture";
+  });
+
   const updateProfilePicture = () => {
     if (profile_pic.length === 0) {
       setErrorMessage("Please select a Profile Picture");

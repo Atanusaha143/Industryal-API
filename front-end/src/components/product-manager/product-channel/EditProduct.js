@@ -26,6 +26,7 @@ const EditProduct = () => {
   const { id: pId } = useParams();
 
   useEffect(() => {
+    document.title = "Update Product";
     axios
       .get("http://127.0.0.1:8000/api/product/" + pId)
       .then(function (response) {

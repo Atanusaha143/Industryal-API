@@ -20,6 +20,7 @@ const Stocks = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(async () => {
+    document.title = "Product Stocks";
     setLoading(true);
     axios
       .get("http://127.0.0.1:8000/api/product/list")

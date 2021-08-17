@@ -14,6 +14,10 @@ const ChangePassword = () => {
   const [recaptcha, setRecaptcha] = useState(false);
   const history = useHistory();
 
+  useEffect(() => {
+    document.title = "Update Password";
+  });
+
   function verifyCallback(response) {
     if (response) {
       setRecaptcha(true);

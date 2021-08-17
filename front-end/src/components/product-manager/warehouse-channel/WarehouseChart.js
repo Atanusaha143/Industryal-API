@@ -16,6 +16,7 @@ const WarehouseChart = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    document.title = "Warehouse Statistics";
     if (!localStorage.getItem("username")) {
       history.push("/");
     } else {
