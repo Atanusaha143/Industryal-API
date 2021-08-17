@@ -42,21 +42,17 @@ const LeaveList=()=>{
                             <td>{leave.request_description}</td>
                             <td>{leave.request_made}</td>
                             <td>
-                                {/*  if({leave.status}==='Pending')
-                                {
-                                    <span className="text-primary font-weight-bold">{leave.status}</span>
+                                {leave.status ==="Pending" ?(
+                                    <span className="text-primary"><b>{leave.status}</b></span>
+                                ) : leave.status==="Approved" ? (
+                                    <span className="text-success"><b>{leave.status}</b></span>
+                                ): (
+                                    <span className="text-danger"><b>{leave.status}</b></span>
+                                )
                                 }
-                                else if({leave.status}=='Approved')
-                                {
-                                    <span className="text-success font-weight-bold">{leave.status}</span>
-                                }
-                                else
-                                {
-                                    <span className="text-danger font-weight-bold">{leave.status}</span>
-                                }  */}
-
-                                  {leave.status}  
+                            
                             </td>
+                        
                             <td>
                                 <Link to={`/HR/leave/approve/${leave.id}`} class="btn btn-success btn-block m-1">Approve </Link>
                                 <Link to={`/HR/leave/reject/${leave.id}`} class="btn btn-danger btn-block mx-2 m-1"> Reject </Link>

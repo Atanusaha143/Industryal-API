@@ -67,7 +67,7 @@ const myLeave = async () => {
             <div className=" w-50   m-auto">
                 <div className="form-group">
                     <label>Type</label>
-                    <select name="type" id="type" className="form-control" onChange={(e)=>setType(e.target.value)}>
+                    <select name="type" id="type" className="form-select" onChange={(e)=>setType(e.target.value)}>
                         <option>Plese Select</option>
                         <option value="sick">Sick Leave</option>
                         <option value="other">Other leave</option>

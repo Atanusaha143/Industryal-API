@@ -139,7 +139,7 @@ const AddEmployee=()=>{
                 </div>
                 <div className="form-group">
                     <label>Supervisor</label>
-                    <select name="supervisor" id="super" className="form-control" onChange={(e)=>setSupervisor(e.target.value)}>
+                    <select name="supervisor" id="super" className="form-select" onChange={(e)=>setSupervisor(e.target.value)}>
                         <option >Please Select</option>
                         <option value="Super admin">Super admin</option>
                         <option value="HR manager">HR manager</option>

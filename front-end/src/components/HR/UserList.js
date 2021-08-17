@@ -82,7 +82,7 @@ const UserList=()=>{
                     <th>Email</th>
                     <th>Job Position</th>
                     <th>Image</th>
-                    <th>Employment Start date</th>
+                   {/*  <th>Employment Start date</th> */}
                     <th>Action</th>
                 </tr>    
             </thead>
@@ -102,7 +102,7 @@ const UserList=()=>{
                              <td>
                              <img src={`http://127.0.0.1:8000/upload/Users/${user.profile_pic}`} alt="profile"  width="100" height="100"></img>
                             </td> 
-                            <td>{user.created_at}</td>
+                           {/*  <td>{user.created_at}</td> */}
                             
                             <td>
                                 <Link to={`/HR/user/edit/${user.id}`} className='btn btn-primary btn-block mx-2 m-1'> Edit </Link>

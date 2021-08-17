@@ -184,7 +184,7 @@ const AddUser=()=>{
                 
                 <div className="form-group">
                     <label>User Type</label>
-                        <select name="type" id="super" class="form-control" onChange={(e)=>setType(e.target.value)}>
+                        <select name="type" id="super" class="form-select" onChange={(e)=>setType(e.target.value)}>
                         <option >Please Select</option>   
                         <option value="product">Product manager</option>
                         <option value="hr">HR manager</option>
@@ -192,7 +192,7 @@ const AddUser=()=>{
                         <option value="sales">Sales manager</option>
                         </select>
                 </div>
-                <div className="foem-group">
+                <div className="from-group">
                     <label>Present address</label>
                     <input type="text" className="form-control" id="presentaddress" name="address" onChange={(e)=>setAddress(e.target.value)}></input>
                 </div>

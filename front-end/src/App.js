@@ -1,12 +1,16 @@
 import Navb from './components/HR/Navbar';
 import ProNav from './components/HR/ProfileNav';
 import 'bootstrap/dist/css/bootstrap.css';
+import Signin from './components/HR/Signin';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path='/'>
+          <Signin />
+        </Route>
         <Route exact path='/HR'>
           <Navb title='Pie Chart' />
         </Route>

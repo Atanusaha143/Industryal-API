@@ -34,6 +34,12 @@ const Navb=({title})=>{
             history.push('/');
         }
     },[])
+
+    function logout()
+    {
+        localStorage.clear();
+        history.push('/');
+    }
    
     
     return(
@@ -48,7 +54,7 @@ const Navb=({title})=>{
                             </Nav>
                             <Nav>
                             <Link to="/HR/user/profile" className="navbar-brand">Profile</Link>
-                            <Link to="#link" className="navbar-brand">Logout</Link>
+                            <Nav.Link onClick={logout} className="navbar-brand">Logout</Nav.Link>
                             
                         </Nav>
                         </Navbar.Collapse>

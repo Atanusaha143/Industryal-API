@@ -54,20 +54,15 @@ const Approve=()=>{
                         <td>{list.request_description}</td>
                         <td>{list.request_made}</td>
                         <td>
-                            {/*  if({leave.status}==='Pending')
-                            {
-                                <span className="text-primary font-weight-bold">{leave.status}</span>
-                            }
-                            else if({leave.status}=='Approved')
-                            {
-                                <span className="text-success font-weight-bold">{leave.status}</span>
-                            }
-                            else
-                            {
-                                <span className="text-danger font-weight-bold">{leave.status}</span>
-                            }  */}
-
-                                {list.status}  
+                        {
+                            list.status ==='Pending' ?(
+                                <span className="text-primary"><b>{list.status}</b></span>
+                            ):list.status==='Approved' ? (
+                                <span className="text-success"><b>{list.status}</b></span>
+                            ): (
+                                <span className="text-danger"><b>{list.status}</b></span>
+                            )
+                        }
                         </td>
                     </tr>
                 
