@@ -284,6 +284,13 @@ class ProductController extends Controller
             $new_warehouse->remaining_quantity -= $transfer_quantity;
             $new_warehouse->save();
 
+            // activity
+            $activity = new activities_table;
+            $activity->type = "Transfer Product";
+            $activity->description = "Product Id: ".$product->product_id.", "."Product Name: ".$product->product_name.", "."From Warehouse: ".$product->warehouse_name.", "."To Warehouse: ".$req->warehouse_name.", "."Quantity: ".$req->transfer_quantity;
+            $activity->activity_time = date("Y-m-d H:i:s");
+            $activity->save();
+
             return "Transfer Successful";
         }
     }
