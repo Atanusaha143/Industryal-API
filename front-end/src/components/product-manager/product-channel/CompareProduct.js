@@ -1,29 +1,20 @@
-import { Navbar } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
 import { Table } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ScaleLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 import axios from "axios";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import ReactExport from "react-data-export";
 import { BiGitCompare } from "react-icons/bi";
 
 const CompareProduct = () => {
-  const MySwal = withReactContent(Swal);
-  const history = useHistory();
   const [productNames, setProductNames] = useState([]);
   const [product1, setProduct1] = useState("");
   const [product2, setProduct2] = useState("");
   const [product1Deatils, setProduct1Details] = useState([]);
   const [product2Deatils, setProduct2Details] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(async () => {
-    document.title = "Activity List";
+    document.title = "Compare Products";
     setLoading(true);
     axios
       .get("http://127.0.0.1:8000/api/product/list/names")
@@ -37,13 +28,13 @@ const CompareProduct = () => {
   align-items: center;
   justify-content: center;    
   border-color: red;
+  margin-top: 25px
 `;
 
   const product_1 = () => {
     axios
       .get("http://127.0.0.1:8000/api/product/search/" + product1)
       .then(function (response) {
-        console.log(response.data[0]);
         setProduct1Details(response.data);
       });
   };
@@ -51,7 +42,6 @@ const CompareProduct = () => {
     axios
       .get("http://127.0.0.1:8000/api/product/search/" + product2)
       .then(function (response) {
-        console.log(response.data[0]);
         setProduct2Details(response.data);
       });
   };
@@ -67,14 +57,6 @@ const CompareProduct = () => {
             </h3>
           </center>
           <hr></hr>
-          {errorMessage && (
-            <center>
-              {" "}
-              <div class="alert alert-danger col-8" role="alert">
-                {errorMessage}
-              </div>{" "}
-            </center>
-          )}
           {/* component */}
           <div class="container mt-4">
             <div class="row">
@@ -162,7 +144,14 @@ const CompareProduct = () => {
                       </Table>
                     ))}
                   </div>
-                ) : null}
+                ) : (
+                  <PropagateLoader
+                    css={override}
+                    size={15}
+                    color={"#475869"}
+                    loading={loading}
+                  />
+                )}
               </div>
 
               <div class="col-6">
@@ -249,7 +238,14 @@ const CompareProduct = () => {
                       </Table>
                     ))}
                   </div>
-                ) : null}
+                ) : (
+                  <PropagateLoader
+                    css={override}
+                    size={15}
+                    color={"#475869"}
+                    loading={loading}
+                  />
+                )}
               </div>
             </div>
           </div>
