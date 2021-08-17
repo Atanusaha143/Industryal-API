@@ -125,12 +125,18 @@ class ProductController extends Controller
         $product->tax = $req->tax;
         $product->product_condition = $req->product_condition;
         $product->last_updated = date('Y-m-d');
-        $result = $product->save();
-        return $product;
+        $result1 = $product->save();
+
+        // activity
+        $activity = new activities_table;
+        $activity->type = "Update Product";
+        $activity->description = "Product Id: ".$req->product_id.", "."Product Name: ".$req->product_name;
+        $activity->activity_time = date("Y-m-d H:i:s");
+        $result2 = $activity->save();
  
-         if($result)
+         if($result1 && $result2)
          {
-             return response()->json($result);
+             return response()->json($result1);
          }
          else
          {
