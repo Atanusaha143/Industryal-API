@@ -66,16 +66,12 @@ const Home = ({ title, nav }) => {
               return <Stocks></Stocks>;
             } else if (title === "product-transfer") {
               return <TransferProduct></TransferProduct>;
-            } else if (title === "product-statistics") {
-              //return <ProductStatistics></ProductStatistics>;
             } else if (title === "add-warehouse") {
               return <AddWarehouse></AddWarehouse>;
             } else if (title === "warehouse-list") {
               return <WarehouseList></WarehouseList>;
             } else if (title === "warehouse-edit") {
               return <EditWarehouse></EditWarehouse>;
-            } else if (title === "warehouse-statistics") {
-              //return <WarehouseStatistics></WarehouseStatistics>;
             } else if (title === "user-leave") {
               return <LeaveRequest></LeaveRequest>;
             } else if (title === "user-myLeave") {
