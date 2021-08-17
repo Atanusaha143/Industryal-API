@@ -94,11 +94,18 @@ class WarehouseController extends Controller
         $warehouse->quantity = $req->quantity;
         $warehouse->status = $req->status;
         $warehouse->last_updated = date('Y-m-d');
-        $result = $warehouse->save();
+        $result1 = $warehouse->save();
+
+        // activity
+        $activity = new activities_table;
+        $activity->type = "Update Warehouse";
+        $activity->description = "Id: ".$id.", "."Warehouse Name: ".$req->name;
+        $activity->activity_time = date("Y-m-d H:i:s");
+        $result2 = $activity->save();
  
-         if($result)
+         if($result1 && $result2)
          {
-             return response()->json($result);
+             return response()->json($result1);
          }
          else
          {
