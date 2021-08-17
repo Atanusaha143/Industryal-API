@@ -10,6 +10,7 @@ use App\Http\Controllers\HRleaveController;
 use App\Http\Controllers\HRexpenseController;
 use App\Http\Controllers\HRuserProfileController;
 use App\Http\Controllers\HRhomeController;
+use App\Http\Controllers\SigninController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ use App\Http\Controllers\HRhomeController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//login
+Route::post('/login', [SigninController::class,'verify']);
+//home
 Route::get('/HR/employee/ratio',[HRhomeController::class,'index']);
 //User
 
@@ -62,7 +66,7 @@ Route::get('/HR/amount/statistic',[HRexpenseController::class,'statistic']);
 Route::get('/HR/profile/{username}',[HRuserProfileController::class,'details']);
 Route::put('/HR/profile/update/{username}',[HRuserProfileController::class,'profileUpdate']);
 Route::put('/HR/change/password/{username}',[HRuserProfileController::class,'passwordUpdate']);
-Route::put('/HR/upload/image/{username}',[HRuserProfileController::class,'imageUpdate']);
+Route::post('/HR/upload/image/{username}',[HRuserProfileController::class,'imageUpdate']);
 
 
 

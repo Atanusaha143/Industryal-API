@@ -59,11 +59,11 @@ class HRuserProfileController extends Controller
             $user->save();
             $img->move('upload/Users', $username.'.'.$img->getClientOriginalExtension());
             return response('Updated', 200)
-                    ->header('Content-Type', 'text/plain'); 
+                    ->header('Content-Type', 'text/plain');
         } 
          else
         {
-            return response('Not Found', 404)
+            return response('Password not match', 404)
                   ->header('Content-Type', 'text/plain');
         } 
 
