@@ -67,15 +67,23 @@ class ProductController extends Controller
     {
         $deletedProduct = product_table::find($id);
         $img_path = "upload/Product/".$deletedProduct['image'];
+
         if(File::exists($img_path)) 
         {
             File::delete($img_path);
         }
-        $result = $deletedProduct->delete();
+        $result1 = $deletedProduct->delete();
 
-        if($result)
+        // activity
+        $activity = new activities_table;
+        $activity->type = "Delete Product";
+        $activity->description = "Id: ".$id."\r\n"."Product Name: ".$deletedProduct->product_name;
+        $activity->activity_time = date("Y-m-d H:i:s");
+        $result2 = $activity->save();
+
+        if($result1 && $result2)
         {
-            return response()->json($result);
+            return response()->json($result1);
         }
         else
         {
