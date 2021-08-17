@@ -34,6 +34,9 @@ function App() {
           <Route exact path="/product/statistics">
             <Home title="product-chart" nav="common" />
           </Route>
+          <Route exact path="/product/compare">
+            <Home title="product-compare" nav="common" />
+          </Route>
 
           {/* Warehouse */}
           <Route exact path="/warehouse/create">

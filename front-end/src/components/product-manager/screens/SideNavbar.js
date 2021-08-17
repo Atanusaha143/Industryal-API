@@ -48,6 +48,13 @@ const SideNavbar = () => {
           >
             Statistics
           </Link>
+          <br></br>
+          <Link
+            to="/product/compare"
+            className="btn btn-outline-dark btn-sm mb-2"
+          >
+            Compare
+          </Link>
         </div>
         <hr></hr>
         <div className="text-left mt-2">
