@@ -2,6 +2,8 @@ import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { FaListAlt } from "react-icons/fa";
+
 
 const ExpenseList=()=>{
     const[list,setList] = useState([]);
@@ -14,7 +16,7 @@ const ExpenseList=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Expense Report List</h3>
+                <h3 className="font-width-border"><FaListAlt />Expense Report List</h3>
             </div>
             <hr></hr>
             <div className="row align-items-start mb-2">

@@ -1,6 +1,7 @@
 import { useHistory, useParams} from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaUserEdit } from "react-icons/fa";
 
 const EditEmployee=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -69,11 +70,11 @@ const EditEmployee=()=>{
         {
             setErrorMessage("Enter your job position");
         }
-        else if(start_time.length==0)
+        else if(start_time.length===0)
         {
             setErrorMessage("Start time can't be empty");
         }
-        else if(end_time.length==0){
+        else if(end_time.length===0){
             setErrorMessage("End time can't be empty");
         }
         else if(start_time>end_time)
@@ -83,7 +84,7 @@ const EditEmployee=()=>{
         else if(end_time<start_time){
             setErrorMessage("End time must be grater than Start time");
         }
-        else if(start_time==end_time){
+        else if(start_time===end_time){
             setErrorMessage("Start time and End time can't same");
         }else if(hour_worked.length===0)
         {
@@ -114,7 +115,7 @@ const EditEmployee=()=>{
     return(
         <>
         <div className="title text-center mb-3">
-            <h3 className="font-width-border">Update Employee Information</h3>
+            <h3 className="font-width-border"><FaUserEdit/>Update Employee Information</h3>
         </div>
         <hr></hr>
         {errorMessage && (

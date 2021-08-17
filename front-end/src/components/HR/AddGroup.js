@@ -2,6 +2,8 @@ import { useHistory} from 'react-router-dom'
 import { useState } from 'react';
 import { React } from 'react';
 import axios from 'axios';
+import { FaUsers } from "react-icons/fa";
+
 
 const AddGroup=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -36,7 +38,7 @@ const AddGroup=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">New Group</h3>
+                <h3 className="font-width-border"><FaUsers/>New Group</h3>
             </div>
             <hr></hr>
             {errorMessage && (

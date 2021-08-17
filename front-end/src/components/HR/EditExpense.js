@@ -1,6 +1,7 @@
 import { useHistory, useParams} from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaSyncAlt } from "react-icons/fa";
 
 const EditExpense=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -64,7 +65,7 @@ const EditExpense=()=>{
     return(
         <>
         <div className="title text-center mb-3">
-            <h3 className="font-width-border">Update Expense Report</h3>
+            <h3 className="font-width-border"><FaSyncAlt />Update Expense Report</h3>
         </div>
         <hr></hr>
         {errorMessage && (

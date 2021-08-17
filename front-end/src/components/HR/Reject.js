@@ -3,6 +3,8 @@ import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { FaTimesCircle } from "react-icons/fa";
+
 
 const Reject=()=>{
     const history = useHistory();
@@ -29,7 +31,7 @@ const Reject=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Reject Leave Request</h3>
+                <h3 className="font-width-border"><FaTimesCircle />Reject Leave Request</h3>
             </div>
             <hr></hr>
             <Table  className="table table-hover ">

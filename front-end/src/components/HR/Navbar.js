@@ -23,20 +23,21 @@ import EditExpense from './EditExpense';
 import DeleteExp from './DeleteExp';
 import ExpenseState from './ExpenseState';
 
+
 const Navb=({title})=>{
     return(
         <>
             <header>
                 <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
                     <Container>
-                        <Navbar.Brand href="/HR">Industryal</Navbar.Brand>
+                        <Link to ="/HR" className="navbar-brand" >Industryal</Link>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             </Nav>
                             <Nav>
-                            <Nav.Link href="/HR/user/profile">Profile</Nav.Link>
-                            <Nav.Link href="#link">Logout</Nav.Link>
+                            <Link to="/HR/user/profile" className="navbar-brand">Profile</Link>
+                            <Link to="#link" className="navbar-brand">Logout</Link>
                             
                         </Nav>
                         </Navbar.Collapse>

@@ -67,6 +67,15 @@ function App() {
         <Route exact path='/HR/user/profile'>
           <ProNav title='Profile' />
         </Route>
+        <Route exact path='/HR/user/profile/edit'>
+          <ProNav title='Update Profile' />
+        </Route>
+        <Route exact path='/HR/user/change/password'>
+          <ProNav title='Change Password' />
+        </Route>
+        <Route exact path='/HR/user/upload/image'>
+          <ProNav title='Upload Image' />
+        </Route>
       </Switch>
     </Router>
 

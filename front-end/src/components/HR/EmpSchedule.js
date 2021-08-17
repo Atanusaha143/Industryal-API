@@ -2,6 +2,8 @@ import { useHistory} from 'react-router-dom'
 import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
+import { FaClock } from "react-icons/fa";
+
 
 
 const EmpSchedule=()=>{
@@ -15,7 +17,7 @@ const EmpSchedule=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Employees Schedule</h3>
+                <h3 className="font-width-border"><FaClock/>Employees Schedule</h3>
             </div>
             <hr></hr>
             <Table  className="table table-hover ">

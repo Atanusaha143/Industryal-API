@@ -4,6 +4,9 @@ import { Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { React } from 'react';
 import Profile from './Profile';
+import EditProfile from './EditProfile';
+import ChangePass from './ChangePass';
+import UploadImage from './UploadImage';
 
 const ProfileNav=({title})=>{
     return(
@@ -11,14 +14,14 @@ const ProfileNav=({title})=>{
             <header>
                 <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
                     <Container>
-                        <Navbar.Brand href="/HR">Industryal</Navbar.Brand>
+                        <Link to ="/HR" className="navbar-brand" >Industryal</Link>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             </Nav>
                             <Nav>
-                            <Nav.Link href="#home">Profile</Nav.Link>
-                            <Nav.Link href="#link">Logout</Nav.Link>
+                            <Link to="/HR/user/profile" className="navbar-brand">Profile</Link>
+                            <Link to="#link" className="navbar-brand">Logout</Link>
                             
                         </Nav>
                         </Navbar.Collapse>
@@ -30,9 +33,9 @@ const ProfileNav=({title})=>{
                 <br></br>
                     <Nav className=" navbar border-dark">
                         <ul className="navbar-nav ml-2">
-                            <li className="nav-item"><Link to='#' className="nav-link btn btn-outline-dark btn-block btm-sm ml-5 mt-2 " >Edit Profile</Link></li>
-                            <li className="nav-item"><Link to='#' className="nav-link btn btn-outline-dark btn-block mt-2" >Change Password</Link></li>
-                            <li className="nav-item"><Link to='#' className="nav-link btn btn-outline-dark btn-block mt-2" >Upload Profile Pic</Link></li>
+                            <li className="nav-item"><Link to='/HR/user/profile/edit' className="nav-link btn btn-outline-dark btn-block btm-sm ml-5 mt-2 " >Edit Profile</Link></li>
+                            <li className="nav-item"><Link to='/HR/user/change/password' className="nav-link btn btn-outline-dark btn-block mt-2" >Change Password</Link></li>
+                            <li className="nav-item"><Link to='/HR/user/upload/image' className="nav-link btn btn-outline-dark btn-block mt-2" >Upload Profile Pic</Link></li>
                             
                         </ul>
                     </Nav>
@@ -40,17 +43,51 @@ const ProfileNav=({title})=>{
                 <div className="col-10">
                     <div className="info-section p-3 text-black ">
                         {(()=>{
-                             if(title === 'Profile')
+                            if(title === 'Profile')
                             {
                                 return(
                                     <Profile />
+                                )
+                            }
+                            else if(title==='Update Profile')
+                            {
+                                return(
+                                    <EditProfile />
+                                )
+                               
+                            }
+                            else if(title==='Change Password')
+                            {
+                                return(
+                                    <ChangePass />
+                                )
+                               
+                            }
+                            else{
+                                return(
+                                    <UploadImage />
                                 )
                             } 
                         })()} 
 
                     </div>
                 </div>
-            </div>        
+            </div>
+            <br></br><br></br><br></br>
+            <footer className="bg-dark text-white mt-2 p-2">
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                        <p class="lead text-center">
+                            Copyright &copy; &nbsp;
+                            <span id="year">2020-2021</span> -
+                            Industryal
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </footer> 
+
             
         
         </>

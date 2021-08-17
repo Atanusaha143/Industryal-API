@@ -3,6 +3,7 @@ import { useState , useEffect } from 'react';
 import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { FaThumbsUp } from "react-icons/fa";
 
 const Approve=()=>{
     const history = useHistory();
@@ -29,7 +30,7 @@ const Approve=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Approve Leave Request</h3>
+                <h3 className="font-width-border"><FaThumbsUp />Approve Leave Request</h3>
             </div>
             <hr></hr>
             <Table  className="table table-hover ">

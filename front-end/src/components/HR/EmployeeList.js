@@ -3,6 +3,7 @@ import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { FaListAlt } from "react-icons/fa";
 
 const EmployeeList=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -34,7 +35,7 @@ const EmployeeList=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Employee List</h3>
+                <h3 className="font-width-border"><FaListAlt/>Employee List</h3>
             </div>
             <hr></hr>
             {errorMessage && (

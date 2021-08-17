@@ -4,6 +4,7 @@ import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { FaAddressBook } from "react-icons/fa";
 
 const UserList=()=>{
     const history = useHistory();
@@ -51,7 +52,7 @@ const UserList=()=>{
     return(
         <>
         <div className="text-center mb-3">
-            <h3 className="font-width-border"> User List</h3>
+            <h3 className="font-width-border"><FaAddressBook /> User List</h3>
         </div>
         <hr></hr>
         {errorMessage && (
@@ -80,6 +81,7 @@ const UserList=()=>{
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Job Position</th>
+                    <th>Image</th>
                     <th>Employment Start date</th>
                     <th>Action</th>
                 </tr>    
@@ -97,9 +99,9 @@ const UserList=()=>{
                             <td>{user.phone}</td>
                             <td>{user.email}</td>
                             <td>{user.position}</td>
-                            {/* <td>
-                                <img src="/upload/Users/{{$user['profile_pic']}}" alt="Profile" width="100" height="100"></img> 
-                            </td> */}
+                             <td>
+                             <img src={`http://127.0.0.1:8000/upload/Users/${user.profile_pic}`} alt="profile"  width="100" height="100"></img>
+                            </td> 
                             <td>{user.created_at}</td>
                             
                             <td>

@@ -2,9 +2,7 @@ import { useHistory} from 'react-router-dom'
 import { useState } from 'react';
 import { React } from 'react';
 import axios from 'axios';
-
-
-
+import { FaPlusSquare } from "react-icons/fa";
 
 const AddUser=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -20,7 +18,7 @@ const AddUser=()=>{
     const [pass,setPassword] = useState("");
     const [confirm_password,setConfirmPassword] = useState("");
     const [work_hour,setHour] = useState("");
-    //const [profile_pic,setPhoto] = useState("");
+    //const [profile_pic,setProfilePic] = useState(""); 
     const history = useHistory();
 
     
@@ -40,12 +38,12 @@ const AddUser=()=>{
        history.push('/HR/user/list');
     } */
     const addUser = async () => {
-        if(firstname.length===0)
+         if(firstname.length===0)
         {
             setErrorMessage("Please Enter your first name");
         }else if(lastname.length===0){
             setErrorMessage("Please Enter your last name");
-        }else if(username.length==0){
+        }else if(username.length===0){
             setErrorMessage("Please Enter your user name");
         }
         else if(pass.length===0)
@@ -59,7 +57,7 @@ const AddUser=()=>{
         {
             setErrorMessage("Confirm Password required");
         }
-        else if(pass!=confirm_password)
+        else if(pass!==confirm_password)
         {
             setErrorMessage("Password and Confirm password Must be same");
         }
@@ -99,7 +97,7 @@ const AddUser=()=>{
         {
             setErrorMessage("Hour work must be a number");
         }
-        else{
+        else{ 
             await axios.post('http://127.0.0.1:8000/api/HR/user/create', {
             firstname,
             lastname,
@@ -111,28 +109,30 @@ const AddUser=()=>{
             position,
             type,
             pass,
-            work_hour
+            work_hour 
+            //profile_pic
            
-            
-            },{
+           },{
                 headers: {
                     'ContentType': 'application/json'
                 }
             }).then((response)=>{
                 console.log(response.data);
+               
                 history.push('/HR/user/list');
             });
+        
         }
         
  
-        //console.log(profile_pic.name);
+      
 
     }
     const gen=["male","female"];
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Add User</h3>
+                <h3 className="font-width-border"><FaPlusSquare />Add User</h3>
             </div>
             <hr></hr>
             {errorMessage && (
@@ -215,7 +215,7 @@ const AddUser=()=>{
                 <br></br>
                 <div className="from-group">
                     <td>Upload Image: </td>
-                    <td colspan='2'>
+                    <td colSpan='2'>
                     <input type="file" name="profile_pic"></input>
                     </td>
                 </div>

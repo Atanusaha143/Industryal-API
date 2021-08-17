@@ -1,6 +1,8 @@
 import { useHistory, useParams} from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaUserEdit } from "react-icons/fa";
+
 
 const EditUser=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -56,7 +58,7 @@ const EditUser=()=>{
         {
             setErrorMessage("Confirm Password required");
         }
-        else if(pass!=confirm_password)
+        else if(pass!==confirm_password)
         {
             setErrorMessage("Password and Confirm password Must be same");
         }
@@ -124,7 +126,7 @@ const EditUser=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border"> Update User </h3>
+                <h3 className="font-width-border"><FaUserEdit/> Update User </h3>
             </div>
             <hr></hr>
             {errorMessage && (

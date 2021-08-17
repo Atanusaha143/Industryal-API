@@ -2,6 +2,8 @@ import { useHistory} from 'react-router-dom'
 import { useState } from 'react';
 import { React } from 'react';
 import axios from 'axios';
+import { FaWalking } from "react-icons/fa";
+
 
 const MyLeave=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -32,7 +34,7 @@ const myLeave = async () => {
         }
         
         else{
-            await axios.post('http://127.0.0.1:8000/api/HR/leave/request', {
+            await axios.post('http://127.0.0.1:8000/api/HR/leave/request/'+localStorage.getItem('username'), {
            type,start_date,end_date,description
         },{
             headers: {
@@ -51,7 +53,7 @@ const myLeave = async () => {
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">My Leave Request</h3>
+                <h3 className="font-width-border"><FaWalking />My Leave Request</h3>
             </div>
             <hr></hr>
             {errorMessage && (

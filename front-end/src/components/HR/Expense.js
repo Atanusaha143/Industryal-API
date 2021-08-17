@@ -2,6 +2,8 @@ import { useHistory} from 'react-router-dom'
 import { useState } from 'react';
 import { React } from 'react';
 import axios from 'axios';
+import { FaPlusSquare } from "react-icons/fa";
+
 
 const Expense=()=>{
     const [errorMessage,setErrorMessage] = useState("");
@@ -54,7 +56,7 @@ const Expense=()=>{
     return(
         <>
             <div className="title text-center mb-3">
-                <h3 className="font-width-border">Expense Report</h3>
+                <h3 className="font-width-border"><FaPlusSquare />Expense Report</h3>
             </div>
             <hr></hr>
             {errorMessage && (
