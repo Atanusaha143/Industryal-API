@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Product\product_table;
 use App\Models\Product\warehouse_table;
+use App\Models\Product\activities_table;
 
 class ProductController extends Controller
 {
@@ -33,13 +34,20 @@ class ProductController extends Controller
         $product->product_condition = "Good";
         $product->date_added = date('Y-m-d');
         $product->last_updated = date('Y-m-d');
-        $result = $product->save();
+        $result1 = $product->save();
         $img->move('upload/Product', $req->product_id.'.'.$img->getClientOriginalExtension());
 
+        // activity
+        $activity = new activities_table;
+        $activity->type = "Create Product";
+        $activity->description = "Product Id: ".$req->product_id.", "."Product Name: ".$req->product_name;
+        $activity->activity_time = date("Y-m-d H:i:s");
+        $result2 = $activity->save();
 
-        if($result)
+
+        if($result1 && $result2)
         {
-            return response()->json($result);
+            return response()->json($result1);
         }
         else
         {
