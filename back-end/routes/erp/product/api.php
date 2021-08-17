@@ -36,6 +36,7 @@ Route::get("product/warehouse/names",[ProductController::class,'getWarehouseName
 Route::put("product/transfer",[ProductController::class,'transferProduct']);
 Route::get("product/chart/pie",[ProductController::class,'piChartProduct']);
 Route::get("product/chart/bar",[ProductController::class,'barChartProduct']);
+Route::get("/product/list/names",[ProductController::class,'getProductNames']);
 
 
                                     //Warehouse

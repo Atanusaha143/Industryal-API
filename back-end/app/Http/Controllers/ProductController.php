@@ -375,5 +375,17 @@ class ProductController extends Controller
         return response()->json($productPrice);
     }
 
+    public function getProductNames()
+    {
+        $allProducts = product_table::all();
+        $allProductNames = array();
+        foreach($allProducts as $currProduct)
+        {
+            array_push($allProductNames,$currProduct->product_name);
+        }
+
+        return response()->json($allProductNames);
+    }
+
     
 }
