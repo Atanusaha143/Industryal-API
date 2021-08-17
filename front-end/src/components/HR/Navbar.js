@@ -22,9 +22,20 @@ import ExpenseList from './ExpenseList';
 import EditExpense from './EditExpense';
 import DeleteExp from './DeleteExp';
 import ExpenseState from './ExpenseState';
+import { useEffect } from 'react';
+import { useHistory} from 'react-router-dom'
 
 
 const Navb=({title})=>{
+    const history = useHistory();
+    useEffect(()=>{
+        if(!localStorage.getItem('username'))
+        {
+            history.push('/');
+        }
+    },[])
+   
+    
     return(
         <>
             <header>

@@ -51,7 +51,12 @@ const ExpenseState = () => {
             </div>
             <hr></hr>
             <Card className="border border-dark mr-5 ">
-                 <center> <div style={{width:450}}><Pie data={data}/> </div></center> 
+                <div><b className="text-left m-4">Monthly Expense Report</b></div>
+                 <center>
+                     
+                    <div style={{width:450}}><Pie data={data}/> </div>
+                    
+                </center> 
                  <br></br>
             </Card>
         </>

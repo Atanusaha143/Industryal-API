@@ -7,8 +7,17 @@ import Profile from './Profile';
 import EditProfile from './EditProfile';
 import ChangePass from './ChangePass';
 import UploadImage from './UploadImage';
+import { useEffect } from 'react';
+import { useHistory} from 'react-router-dom'
 
 const ProfileNav=({title})=>{
+    const history = useHistory();
+    useEffect(()=>{
+        if(!localStorage.getItem('username'))
+        {
+            history.push('/');
+        }
+    },[])
     return(
         <>
             <header>

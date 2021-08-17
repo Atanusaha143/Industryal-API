@@ -40,6 +40,7 @@ const Home=()=>{
             </div>
             <hr></hr>
             <Card className="border border-dark mr-5 ">
+            <div><b className="text-left m-3">Number Of male and female employee</b></div>
                 <center> <div style={{width:450}}><Doughnut data={data}/></div></center>
                 <br></br>
             </Card>

@@ -4,16 +4,50 @@ import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { FaListAlt } from "react-icons/fa";
+import ReactExport from 'react-data-export';
+
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+
 
 const EmployeeList=()=>{
     const [errorMessage,setErrorMessage] = useState("");
     const[searchEmp,setSearchEmp] = useState('');
     const[list,setList] = useState([]);
+    const [exporData, setExportData] = useState([]);
     useEffect( async ()=>{
         let result = await fetch("http://127.0.0.1:8000/api/HR/employee/list");
         result = await result.json();
         setList(result);
+        setExportData(result);
     },[])
+
+    const DataSet = [
+        {
+            columns: [
+                {title: "Employee Id"}, // width in pixels
+                {title: "Employee Name"}, // width in characters
+                {title: "Gender"}, // width in pixels
+                {title: "Supervisor"}, // width in pixels
+                {title: "Address"}, // width in pixels
+                {title: "Phone"}, // width in pixels
+                {title: "Job Position"}, // width in characters
+                {title: "Group"}, // width in pixels
+            ],
+            data: exporData.map((res) => [
+                {value: res.employee_id},
+                {value: res.employee_name},
+                {value: res.gender},
+                {value: res.supervisor},
+                {value: res.present_address},
+                {value: res.phone},
+                {value: res.job_position},
+                {value: res.employee_group},
+                
+            ])
+        }
+    ]
 
     function search()
     {
@@ -53,15 +87,13 @@ const EmployeeList=()=>{
                 </div>
             </div>
             <br></br>
-            <div className="row align-items-start mb-2">
-                <div className="col">
-                </div>
-                <div className="col-10"> 
-                </div>
-                <div classname="col">
-                    <a href="#" class="btn btn-primary rounded p-1 mr-3 text-right">Download</a>
-                </div>
-            </div>
+            {exporData.length !== 0 ? (
+                <ExcelFile 
+                filename="Employee List" 
+                element={<button type="button" className="btn btn-primary float-right m-3">Download</button>}>
+                    <ExcelSheet dataSet={DataSet} name="Employee List"/>
+                </ExcelFile>
+            ): null}    
             <Table  className="table table-hover ">
                 <thead>
                     <tr>

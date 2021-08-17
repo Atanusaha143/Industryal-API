@@ -69,7 +69,7 @@ const UserList=()=>{
                 <button onClick={search} type="submit" className="btn btn-success">Search</button>
             </div>
         </div>
-        <Table  className="table table-hover" size="sm">
+        <Table  className="table table-hover" size="sm" responsive="sm">
             <thead>
                 <tr>
                     <th>First Name</th>

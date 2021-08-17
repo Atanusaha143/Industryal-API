@@ -3,15 +3,41 @@ import { React } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { FaListAlt } from "react-icons/fa";
+import ReactExport from 'react-data-export';
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
 
 const ExpenseList=()=>{
     const[list,setList] = useState([]);
+    const [exporData, setExportData] = useState([]);
     useEffect( async ()=>{
         let result = await fetch("http://127.0.0.1:8000/api/HR/expense/list");
         result = await result.json();
         setList(result);
+        setExportData(result);
     },[])
+
+    
+    const DataSet = [
+        {
+            columns: [
+                {title: "Name"}, // width in pixels
+                {title: "Catagory"}, // width in characters
+                {title: "Amount"}, // width in pixels
+                {title: "Description"}, // width in pixels
+                {title: "Expense Date"}, // width in pixels
+            ],
+            data: exporData.map((res) => [
+                {value: res.name},
+                {value: res.catagory},
+                {value: res.amount},
+                {value: res.description},
+                {value: res.expense_date},   
+            ])
+        }
+    ]
 
     return(
         <>
@@ -19,19 +45,17 @@ const ExpenseList=()=>{
                 <h3 className="font-width-border"><FaListAlt />Expense Report List</h3>
             </div>
             <hr></hr>
-            <div className="row align-items-start mb-2">
-                <div className="col">
-                </div>
-                <div className="col-10"> 
-                </div>
-                <div classname="col">
-                    <a href="#" class="btn btn-primary rounded p-1 mr-3 text-right">Download</a>
-                </div>
-            </div>
+            {exporData.length !== 0 ? (
+                <ExcelFile 
+                filename="Expense Report" 
+                element={<button type="button" className="btn btn-primary float-right m-3">Download</button>}>
+                    <ExcelSheet dataSet={DataSet} name="Expense Report"/>
+                </ExcelFile>
+            ): null} 
             <Table  className="table table-hover ">
                 <thead>
                     <tr>
-                        <th> Name</th>
+                        <th>Name</th>
                         <th>Catagory</th>
                         <th>Amount</th>
                         <th>Description</th>

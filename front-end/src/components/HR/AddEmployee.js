@@ -88,8 +88,12 @@ const AddEmployee=()=>{
             headers: {
                 'ContentType': 'application/json'
             }
-        })
-        history.push('/HR/employee/list');
+        }).then((response)=>{
+            console.log(response.data);
+           
+            history.push('/HR/employee/list');
+        });
+       
 
         }
         
