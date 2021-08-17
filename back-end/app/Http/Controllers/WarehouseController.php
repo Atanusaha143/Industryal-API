@@ -69,6 +69,13 @@ class WarehouseController extends Controller
         $deletedWarehouse = warehouse_table::find($id);
         $result = $deletedWarehouse->delete();
 
+        // activity
+        $activity = new activities_table;
+        $activity->type = "Delete Warehouse";
+        $activity->description = "Warehouse Id: ".$id."\r\n"."Warehouse Name: ".$deletedWarehouse->name;
+        $activity->activity_time = date("Y-m-d H:i:s");
+        $result2 = $activity->save();
+
         if($result)
         {
             return response()->json($result);
