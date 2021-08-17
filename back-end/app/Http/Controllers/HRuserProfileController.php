@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class HRuserProfileController extends Controller
 {
@@ -46,5 +47,26 @@ class HRuserProfileController extends Controller
             return response('Not Found', 404)
                   ->header('Content-Type', 'text/plain');
         }
+    }
+    public function imageUpdate(Request $req,$username)
+    {
+        $curr_pass = $req->current_password;
+        $user = User::where('username', $username)->first();
+        if($curr_pass == $user->pass)
+        {
+            $img = $req->file('profile_pic');
+            $user->profile_pic = $username.'.'.$img->getClientOriginalExtension();
+            $user->save();
+            $img->move('upload/Users', $username.'.'.$img->getClientOriginalExtension());
+            return response('Updated', 200)
+                    ->header('Content-Type', 'text/plain'); 
+        } 
+         else
+        {
+            return response('Not Found', 404)
+                  ->header('Content-Type', 'text/plain');
+        } 
+
+        
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use Illuminate\Support\Facades\DB;
+
 
 class HRexpenseController extends Controller
 {
@@ -58,6 +60,18 @@ class HRexpenseController extends Controller
     public function getExpenseById($id)
     {
         return Expense::find($id);
+    }
+    public function statistic()
+    {
+        $result=DB::select(DB::raw("SELECT sum(amount)as amount,catagory from expenses group by catagory"));
+        //dd($result);
+         $chartData=[];
+        foreach($result as $list)
+        {
+            $chartData += [$list->catagory=>$list->amount];
+        }  
+        
+        return $chartData;
     }
     
 }
