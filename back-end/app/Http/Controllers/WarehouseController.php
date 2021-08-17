@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product\warehouse_table;
+use App\Models\Product\activities_table;
 
 class WarehouseController extends Controller
 {
@@ -23,11 +24,18 @@ class WarehouseController extends Controller
         $warehouse->status = $req->status;
         $warehouse->date_added = date('Y-m-d');
         $warehouse->last_updated = date('Y-m-d');
-        $result = $warehouse->save();
+        $result1 = $warehouse->save();
 
-        if($result)
+        // activity
+        $activity = new activities_table;
+        $activity->type = "Create Warehouse";
+        $activity->description = "Warehouse Id: ".$req->warehouse_id.", "."Warehouse Name: ".$req->warehouse_name;
+        $activity->activity_time = date("Y-m-d H:i:s");
+        $result2 = $activity->save();
+
+        if($result1 && $result2)
         {
-            return response()->json($result);
+            return response()->json($result1);
         }
         else
         {
