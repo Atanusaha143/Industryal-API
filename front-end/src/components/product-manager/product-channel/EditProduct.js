@@ -102,8 +102,11 @@ const EditProduct = () => {
       axios
         .put("http://127.0.0.1:8000/api/product/edit/" + pId, data)
         .then((response) => {
-          history.goBack();
-          //console.log(response.data);
+          if (response.data === "Stock not available!") {
+            setErrorMessage(response.data);
+          } else {
+            history.goBack();
+          }
         });
     }
   };
