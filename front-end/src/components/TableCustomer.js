@@ -12,9 +12,10 @@ const TableCustomer = () => {
         axios.get("http://127.0.0.1:8000/api/sales/customers")
             .then(response=>{
                 setItems(response.data)
+                setError("success");
             })
             .catch((error)=>{
-                setError('404');
+                setError("failed");
             }
             );            
     }, [])
@@ -84,9 +85,13 @@ const TableCustomer = () => {
                 </thead>
                 <tbody>
                     {
+                        error=="failed"
+                        ?
+                        <tr><td colSpan="7">Failed to Load</td></tr>
+                        :
                         items == false
                         ?
-                        <tr><td>Loading</td></tr>
+                        <tr><td colSpan="7">Loading</td></tr>
                         :
                         items.length>0
                         ?
@@ -106,7 +111,7 @@ const TableCustomer = () => {
                             );
                         })
                         :
-                        <tr><td>No such customer exists</td></tr>
+                        <tr><td colSpan="7">No such customer exists</td></tr>
                     }
                 </tbody>
             </table>
