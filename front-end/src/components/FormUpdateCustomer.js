@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -29,7 +30,6 @@ const FormUpdateCustomer = (props) => {
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/sales/customers/"+answer)
             .then(
-                // (result=>console.log(result.data))
                 result=>setCustomer(result.data)
             )
             .then(
@@ -87,6 +87,7 @@ const FormUpdateCustomer = (props) => {
                 {/* <button type='submit'>Confirm</button>   */}
                 <div className="Form-Button">
                     <button type='submit'>Confirm</button>
+                    <Link className="LinkBtn" to="/sales/customers">Go Back</Link>
                 </div>
             </form>
         </div>
