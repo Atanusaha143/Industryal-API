@@ -35,6 +35,7 @@ const TableCustomer = () => {
             })
             .catch((error)=>{
                 setError('404');
+                setItems(false);
             }
             ); 
         }
@@ -83,7 +84,11 @@ const TableCustomer = () => {
                 </thead>
                 <tbody>
                     {
-                        items
+                        items == false
+                        ?
+                        <tr><td>Loading</td></tr>
+                        :
+                        items.length>0
                         ?
                         items.map(cus=>{
                             return (
@@ -95,13 +100,13 @@ const TableCustomer = () => {
                                     <td>{cus.delivery_point}</td>
                                     <td>{cus.first_purchase}</td>
                                     <td>{cus.type}</td>
-                                    <td><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to={'/sales/customer/update/'+cus.id}>Update</Link></td>
-                                    <td><button>Delete</button></td>
+                                    <td className="btnCell"><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to={'/sales/customer/update/'+cus.id}>Update</Link></td>
+                                    <td className="btnCell"><button>Delete</button></td>
                                 </tr>
                             );
                         })
                         :
-                        <div>None</div>
+                        <tr><td>No such customer exists</td></tr>
                     }
                 </tbody>
             </table>
