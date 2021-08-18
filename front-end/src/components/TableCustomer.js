@@ -55,13 +55,15 @@ const TableCustomer = () => {
                 
     }
 
-    
-    
+    const handleSearchSubmit = (event) =>
+    {
+        event.preventDefault();
+    }
     
     return (
         <div>
             <div className="searchBar">
-                <form>
+                <form onSubmit={handleSearchSubmit}>
                     <input type="text" className="searchBarInput" placeholder="Enter Name" onChange={onSearchInput}/>
                     <button type="submit" className="searchBtn">
                     </button>
