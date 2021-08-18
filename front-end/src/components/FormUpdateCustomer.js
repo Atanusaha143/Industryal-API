@@ -10,7 +10,12 @@ const FormUpdateCustomer = (props) => {
                                              phone:'', 
                                              delivery_point:'', 
                                              type:''})
-    const history = useHistory()
+    const [errName, setErrName] = useState("");
+    const [errEmail, setErrEmail] = useState("");
+    const [errPhone, setErrPhone] = useState("");
+    const [errDeliv, setErrDeliv] = useState("");
+    const [errType, setErrType] = useState("");
+    const [postMsg, setPostMsg] = useState("");
 
     const handleInputChange = (event) =>{
         const attribute = event.target.name;
@@ -53,17 +58,35 @@ const FormUpdateCustomer = (props) => {
     return (
         <div>
             <form className="Form" onSubmit={handleSubmission}>
-                <label>Name:</label>
-                <input name="name" id="name" value={customer.name} onChange={handleInputChange}/>
-                <label>Email:</label>
-                <input name="email" id="email" value={customer.email} onChange={handleInputChange}/>
-                <label>Phone Number:</label>
-                <input name="phone" id="phone" value={customer.phone} onChange={handleInputChange}/>
-                <label>Delivery Location:</label>
-                <input name="delivery_point" id="delivery_point" value={customer.delivery_point} onChange={handleInputChange}/>
-                <label>Type:</label>
-                <input name="type" id="type" value={customer.type} onChange={handleInputChange}/>
-                <button type='submit'>Confirm</button>  
+                <div className="Label-Input">
+                    <label>Name:</label>
+                    <input className="inputBox" type="text" name="name" id="name" value={customer.name} onChange={handleInputChange}/>
+                    <div className="errMsg">{errName}</div>
+                </div>
+                <div className="Label-Input">
+                    <label>Email:</label>
+                    <input className="inputBox" type="text" name="email" id="email" value={customer.email} onChange={handleInputChange}/>
+                    <div className="errMsg">{errEmail}</div>
+                </div>
+                <div className="Label-Input">
+                    <label>Phone Number:</label>
+                    <input className="inputBox" type="text" name="phone" id="phone" value={customer.phone} onChange={handleInputChange}/>
+                    <div className="errMsg">{errPhone}</div>
+                </div>
+                <div className="Label-Input">
+                    <label>Delivery Location:</label>
+                    <input className="inputBox" type="text" name="delivery_point" id="delivery_point" value={customer.delivery_point} onChange={handleInputChange}/>
+                    <div className="errMsg">{errDeliv}</div>
+                </div>
+                <div className="Label-Input">
+                    <label>Type:</label>
+                    <input className="inputBox" type="text" name="type" id="type" value={customer.type} onChange={handleInputChange}/>
+                    <div className="errMsg">{errType}</div>
+                </div>
+                {/* <button type='submit'>Confirm</button>   */}
+                <div className="Form-Button">
+                    <button type='submit'>Confirm</button>
+                </div>
             </form>
         </div>
     )
