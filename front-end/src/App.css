@@ -280,18 +280,39 @@ body{
 
 .UpdateBtn
 {
-  background-color: rgb(12, 107, 63);
-  color: antiquewhite;
+  background-color: var(--blue-3);
+  color: blanchedalmond;
   border-width: 1px;
   border-style: solid;
   border-color: black;
   border-radius: 10px;
   text-decoration: none;
-  padding: 5px 10px 5px 10px;
+  padding: 7px 10px 7px 10px;
+  transition: background-color 500ms, color 500ms;
 }
 
 .UpdateBtn:hover
 {
   background-color: blanchedalmond;
   color: green;
+}
+
+.DeleteBtn
+{
+  background-color: rgb(184, 50, 1);
+  color: antiquewhite;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  text-decoration: none;
+  padding: 7px 10px 7px 10px;
+  transition: background-color 500ms, color 500ms;
+}
+
+.DeleteBtn:hover
+{
+  background-color: blanchedalmond;
+  color: rgb(184, 50, 1);
+  cursor: pointer;
 }

@@ -106,7 +106,7 @@ const TableCustomer = () => {
                                     <td>{cus.first_purchase}</td>
                                     <td>{cus.type}</td>
                                     <td className="btnCell"><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to={'/sales/customer/update/'+cus.id}>Update</Link></td>
-                                    <td className="btnCell"><button>Delete</button></td>
+                                    <td className="btnCell"><button className="DeleteBtn">Delete</button></td>
                                 </tr>
                             );
                         })
