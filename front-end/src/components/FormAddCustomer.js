@@ -161,7 +161,7 @@ const FormAddCustomer = () => {
                     <div className="errMsg">{errType}</div>
                 </div>
                 <div className="Form-Button">
-                    <button>Confirm</button>
+                    <button type='submit'>Confirm</button>
                 </div>
                 <label className="postMsg">{postMsg}</label>
             </form>
