@@ -12,6 +12,14 @@ class ProductController extends Controller
 {
     public function addProduct(Request $req)
     {
+        //check warehoue availability
+        $warehouseDetails = warehouse_table::where("name",$req->warehouse_name)->first();
+        $warehouseStock = $warehouseDetails->remaining_quantity;
+        if($warehouseStock < $req->stock)
+        {
+            return "Stock not available!";
+        }
+
         $img = $req->file('product_image');
 
         $product = new product_table;
@@ -36,14 +44,6 @@ class ProductController extends Controller
         $product->last_updated = date('Y-m-d');
         $result1 = $product->save();
         $img->move('upload/Product', $req->product_id.'.'.$img->getClientOriginalExtension());
-
-        //check warehoue availability
-        $warehouseDetails = warehouse_table::where("name",$req->warehouse_name)->first();
-        $warehouseStock = $warehouseDetails->remaining_quantity;
-        if($warehouseStock < $req->stock)
-        {
-            return "Stock not available!";
-        }
 
         // activity
         $activity = new activities_table;
@@ -116,6 +116,14 @@ class ProductController extends Controller
 
     public function updateProduct(Request $req, $id)
     {
+        //check warehoue availability
+        $warehouseDetails = warehouse_table::where("name",$req->warehouse_name)->first();
+        $warehouseStock = $warehouseDetails->remaining_quantity;
+        if($warehouseStock < $req->stock)
+        {
+            return "Stock not available!";
+        }
+
         $product = product_table::find($id);
         $product->product_id = $req->product_id;
         $product->product_name = $req->product_name;
@@ -134,14 +142,6 @@ class ProductController extends Controller
         $product->product_condition = $req->product_condition;
         $product->last_updated = date('Y-m-d');
         $result1 = $product->save();
-
-        //check warehoue availability
-        $warehouseDetails = warehouse_table::where("name",$req->warehouse_name)->first();
-        $warehouseStock = $warehouseDetails->remaining_quantity;
-        if($warehouseStock < $req->stock)
-        {
-            return "Stock not available!";
-        }
 
         // activity
         $activity = new activities_table;
