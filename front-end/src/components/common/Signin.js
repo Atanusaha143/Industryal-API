@@ -11,6 +11,7 @@ import { FormLabel } from "react-bootstrap";
 
 export default function Signin() {
   //setPageTitle("Login | Industryal");
+  document.title = "Industryal";
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
