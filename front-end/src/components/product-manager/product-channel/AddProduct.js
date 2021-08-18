@@ -79,8 +79,12 @@ const AddProduct = () => {
       axios
         .post("http://127.0.0.1:8000/api/product/create", formData)
         .then((response) => {
-          console.log(response);
-          history.push("/product/list");
+          console.log(response.data);
+          if (response.data === "Stock not available!") {
+            setErrorMessage(response.data);
+          } else {
+            history.push("/product/list");
+          }
         })
         .catch((error) => {
           console.log(error);
