@@ -39,20 +39,21 @@ const FormUpdateCustomer = (props) => {
 
     const handleSubmission = (event) => {
         event.preventDefault();
-        // axios.put("http://127.0.0.1:8000/api/sales/customers", customer)
-        //     .then((response)=>{
-        //         console.log(response.data)
-        //         // setPostMsg("Created customer successfully")
-        //     })
-        //     .catch(
-        //         ((err)=>{
-        //             if(err.toJSON().message == "Request failed with status code 422")
-        //             {
-        //                 // setPostMsg("Error 422: Cannot process data to system")
-        //             }
-        //         })
-        //     )
-        console.log(event.target.value)
+        axios.put("http://127.0.0.1:8000/api/sales/customers/"+answer, customer)
+            .then((response)=>{
+                console.log(response.data)
+                // setPostMsg("Created customer successfully")
+            })
+            .catch(
+                ((err)=>{
+                    if(err.toJSON().message == "Request failed with status code 422")
+                    {
+                        // setPostMsg("Error 422: Cannot process data to system")
+                    }
+                })
+            )
+        console.log(customer)
+        // console.log(event)
     }
 
     return (
