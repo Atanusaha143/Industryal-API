@@ -23,14 +23,23 @@ const FormAddCustomer = () => {
 
     const handleSubmission = (event) => {
         event.preventDefault();
-        //Name
+        console.log(/^[a-zA-Z ]*$/.test(formData.name))
         if(formData.name == "")
         {
             setErrName("Required");
         }
         else if(formData.name != "")
         {
-            setErrName("");
+            // if(formData.name.toString().match(/^[a-zA-Z ]*$/))
+            if(!(/^[a-zA-Z ]*$/.test(formData.name)))
+            {
+                setErrName("Only alphabets and space are allowed");
+            }
+            else
+            {
+                setErrName("")
+            }
+            // setErrName("");
         }
         //email
         if(formData.email == "")
@@ -39,7 +48,14 @@ const FormAddCustomer = () => {
         }
         else if(formData.email != "")
         {
-            setErrEmail("");
+            if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)))
+            {
+                setErrEmail("Invalid email address");
+            }
+            else
+            {
+                setErrEmail("");
+            }
         }
         //phone
         if(formData.phone == "")
