@@ -10,7 +10,6 @@ class SalesCustomers extends Model
     protected $table = 'customers';
     public $timestamps = false;
     protected $fillable = [
-        'id',
         'name',
         'email',
         'phone',

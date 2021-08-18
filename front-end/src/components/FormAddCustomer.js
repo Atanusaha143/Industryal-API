@@ -7,7 +7,7 @@ const FormAddCustomer = () => {
 
     const [formData, setFormData] = useState({name:'',
                                              email:'', 
-                                             phone:'', 
+                                             phone:'+88', 
                                              delivery_point:'', 
                                              type:''})
     const [errName, setErrName] = useState("");

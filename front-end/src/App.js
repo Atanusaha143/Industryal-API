@@ -4,7 +4,9 @@ import FormUpdateCustomer from './components/FormUpdateCustomer';
 import FormAddCustomer from './components/FormAddCustomer'
 import SubMenuCustomer from './components/SubMenuCustomer';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import './App.css'
+import SalesChart from './components/SalesChart';
 // import './styles/styles.css'
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
           <Route exact path="/sales/">
             <NavBar/>
             home
+            <SalesChart/>
           </Route>
           <Route path="/sales/orders">
             <NavBar/>
