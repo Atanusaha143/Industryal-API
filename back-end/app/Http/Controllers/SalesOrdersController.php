@@ -28,6 +28,7 @@ class SalesOrdersController extends Controller
     {
         $request->validate([
             'customer_id'=>'required',
+            'description' => 'required',
             'total_amount'=>'required',
             'status'=>'required',
             'type'=>'required',
