@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Finance\User;
-use App\Http\Requests\Common\LoginRequest;
+use App\Models\Product\User;
 
 class SigninController extends Controller
 {
     //Dummy Verifcation
-    public function verify(LoginRequest $req){
-
+    public function verify(Request $req){
         $user = User::where('email',$req->email)->where('pass',$req->pass)->first();
         if($user)
         {
