@@ -37,6 +37,14 @@ class ProductController extends Controller
         $result1 = $product->save();
         $img->move('upload/Product', $req->product_id.'.'.$img->getClientOriginalExtension());
 
+        //check warehoue availability
+        $warehouseDetails = warehouse_table::where("name",$req->warehouse_name)->first();
+        $warehouseStock = $warehouseDetails->remaining_quantity;
+        if($warehouseStock < $req->stock)
+        {
+            return "Stock not available!";
+        }
+
         // activity
         $activity = new activities_table;
         $activity->type = "Create Product";
