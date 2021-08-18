@@ -91,14 +91,9 @@ body{
 {
   display: flex;
   flex-direction: column;
-  width: 650px;
+  width: 620px;
   border: 1px solid black;
   margin: 0px auto;
-}
-
-.Form .Label-Input
-{
-  /* background-color: blue; */
 }
 
 .Form label
@@ -109,7 +104,7 @@ body{
   padding: 10px 10px 5px 0px;
 }
 
-.Form input[type="text"].inputBox
+.Form input[type="text"]
 {
   padding: 3px 5px 3px 10px;
   border-radius: 10px;
@@ -118,30 +113,6 @@ body{
   border-color: var(--blue-2);
   background-color: aliceblue;
   width: 200px;
-  transition: background-color 500ms;
-}
-
-.Form select.phoneMenu
-{
-  padding: 3px 0px 3px 0px;
-  border-radius: 10px;
-  border-width: 3px;
-  border-style: inset;
-  border-color: var(--blue-2);
-  background-color: aliceblue;
-  width: 60px;
-  transition: background-color 500ms;
-}
-
-.Form input[type="text"].phoneBox
-{
-  padding: 3px 5px 3px 10px;
-  border-radius: 10px;
-  border-width: 3px;
-  border-style: inset;
-  border-color: var(--blue-2);
-  background-color: aliceblue;
-  width: 155px;
   transition: background-color 500ms;
 }
 

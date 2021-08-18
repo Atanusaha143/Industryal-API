@@ -16,11 +16,17 @@ const FormAddCustomer = () => {
     const [errDeliv, setErrDeliv] = useState("");
     const [errType, setErrType] = useState("");
     const [postMsg, setPostMsg] = useState("");
+    // const [phoneCode, setPhoneCode] = useState({code:''});
 
     const handleInputChange = (event) => {
-        const {name, value} = event.target
+        // const {name, value} = event.target
         setFormData({...formData, [event.target.name]:event.target.value})
     }
+
+    // const handlePhoneCode = (event) => {
+    //     console.log(event.target.value)
+    //     setPhoneCode({phoneCode, code:event.target.value})
+    // }
 
     const handleSubmission = (event) => {
         event.preventDefault();
@@ -128,11 +134,6 @@ const FormAddCustomer = () => {
                 </div>
                 <div className="Label-Input">
                     <label>Phone:</label>
-                    <select className="phoneMenu">
-                        <option>BAN</option>
-                        <option>AUS</option>
-                        <option>USA</option>
-                    </select>
                     <input className="phoneBox" name="phone" type="text"
                             placeholder="Enter the customer's phone number"
                             value={formData.phone}
@@ -145,7 +146,7 @@ const FormAddCustomer = () => {
                     <label>Delivery Location:</label>
                     <input className="inputBox" name="delivery_point" type="text"
                             placeholder="Enter the customer's location"
-                            value={formData.delivery_location}
+                            value={formData.delivery_point}
                             onChange={handleInputChange}
                     />
                     <div className="errMsg">{errDeliv}</div>
