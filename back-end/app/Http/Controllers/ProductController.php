@@ -135,6 +135,14 @@ class ProductController extends Controller
         $product->last_updated = date('Y-m-d');
         $result1 = $product->save();
 
+        //check warehoue availability
+        $warehouseDetails = warehouse_table::where("name",$req->warehouse_name)->first();
+        $warehouseStock = $warehouseDetails->remaining_quantity;
+        if($warehouseStock < $req->stock)
+        {
+            return "Stock not available!";
+        }
+
         // activity
         $activity = new activities_table;
         $activity->type = "Update Product";
