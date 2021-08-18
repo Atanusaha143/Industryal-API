@@ -15,6 +15,7 @@ const FormAddCustomer = () => {
     const [errPhone, setErrPhone] = useState("");
     const [errDeliv, setErrDeliv] = useState("");
     const [errType, setErrType] = useState("");
+    const [postMsg, setPostMsg] = useState("");
 
     const handleInputChange = (event) => {
         const {name, value} = event.target
@@ -66,6 +67,7 @@ const FormAddCustomer = () => {
         {
             setErrPhone("");
         }
+        //Delivery point
         if(formData.delivery_point == "")
         {
             setErrDeliv("Required")
@@ -74,6 +76,7 @@ const FormAddCustomer = () => {
         {
             setErrDeliv("");
         }
+        //Type
         if(formData.type == "")
         {
             setErrType("Required")
@@ -82,31 +85,22 @@ const FormAddCustomer = () => {
         {
             setErrType("");
         }
-        else
+        if(errName == errEmail == errPhone == errDeliv == errType == "")
         {
-            // axios.post("http://127.0.0.1:8000/api/sales/customers", formData)
-            // .then((response)=>{
-            //     console.log(response.data)
-            // })
-            // .catch(
-            //     (err)=>console.log(err.toJSON())
-            // )
-            console.log("Done");
+            axios.post("http://127.0.0.1:8000/api/sales/customers", formData)
+            .then((response)=>{
+                console.log(response.data)
+                setPostMsg("Created customer successfully")
+            })
+            .catch(
+                ((err)=>{
+                    if(err.toJSON().message == "Request failed with status code 422")
+                    {
+                        setPostMsg("Error 422: Cannot process data to system")
+                    }
+                })
+            )
         }
-        // axios.post("http://127.0.0.1:8000/api/sales/customers", {
-        //     'name': event.target[0].value,
-        //     'email': event.target[1].value,
-        //     'phone': event.target[2].value,
-        //     'delivery_point': event.target[3].value,
-        //     'type': event.target[4].value,
-        // })
-        //     .then((response)=>{
-        //         console.log(response.data)
-        //     })
-        //     .catch(
-        //         (err)=>console.log(err.toJSON())
-        //     )
-
     }
 
     return (
@@ -114,7 +108,7 @@ const FormAddCustomer = () => {
             <form className="Form" onSubmit={handleSubmission}>
                 <div className="Label-Input">
                     <label>Name:</label>
-                    <input type="text" 
+                    <input className="inputBox" type="text" 
                             name="name"
                             placeholder="Enter the customer's name"
                             value={formData.name}
@@ -124,53 +118,51 @@ const FormAddCustomer = () => {
                 </div>
                 <div className="Label-Input">
                     <label>Email:</label>
-                    <input type="text"
+                    <input className="inputBox" type="text"
                             name="email"
                             placeholder="Enter the customer's email"
                             value={formData.email}
                             onChange={handleInputChange}
-                            // {...register("email", { required: true, maxLength: 20 })}
                     />
                     <div className="errMsg">{errEmail}</div>
-                    {/* {errors?.email?.type === "required" && <p>This field is required</p>}  */}
                 </div>
                 <div className="Label-Input">
-                   <label>Phone:</label>
-                    <input name="phone" type="text"
+                    <label>Phone:</label>
+                    <select className="phoneMenu">
+                        <option>BAN</option>
+                        <option>AUS</option>
+                        <option>USA</option>
+                    </select>
+                    <input className="phoneBox" name="phone" type="text"
                             placeholder="Enter the customer's phone number"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            // {...register("phone", { required: true, maxLength: 20 })}
                     />
                     <div className="errMsg">{errPhone}</div>
-                    {/* {errors?.phone?.type === "required" && <p>This field is required</p>}  */}
                     
                 </div>
                 <div className="Label-Input">
                     <label>Delivery Location:</label>
-                    <input name="delivery_point" type="text"
+                    <input className="inputBox" name="delivery_point" type="text"
                             placeholder="Enter the customer's location"
                             value={formData.delivery_location}
                             onChange={handleInputChange}
-                            // {...register("delivery_location", { required: true, maxLength: 20 })}
                     />
                     <div className="errMsg">{errDeliv}</div>
-                    {/* {errors?.delivery_location?.type === "required" && <p>This field is required</p>}  */}
                 </div>
                 <div className="Label-Input">
                     <label>Type:</label>
-                    <input name="type" type="text"
+                    <input className="inputBox" name="type" type="text"
                             placeholder="Enter the type of customer"
                             value={formData.type}
                             onChange={handleInputChange}
-                            // {...register("type", { required: true, maxLength: 20 })}
                     />
                     <div className="errMsg">{errType}</div>
-                    {/* {errors?.type?.type === "required" && <p>This field is required</p>}  */}
                 </div>
                 <div className="Form-Button">
                     <button>Confirm</button>
                 </div>
+                <label className="postMsg">{postMsg}</label>
             </form>
         </div>
     )

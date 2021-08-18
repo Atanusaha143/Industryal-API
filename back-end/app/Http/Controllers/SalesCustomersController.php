@@ -26,7 +26,7 @@ class SalesCustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $error = $request->validate([
             'name'=>'required',
             'email'=>'required',
             'phone'=>'required',
@@ -37,13 +37,17 @@ class SalesCustomersController extends Controller
         // $request->first_purchase = date("Y-m-d H:i:s");
         
         // return SalesCustomers::create($request->all());
-        return SalesCustomers::create([
+        SalesCustomers::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'phone'=>$request->phone,
             'delivery_point'=>$request->delivery_point,
             'first_purchase'=>date("Y-m-d H:i:s"),
             'type'=>$request->type
+        ]);
+
+        return response()->json([
+            'message'=>"Successfully created customer",
         ]);
     }
 
