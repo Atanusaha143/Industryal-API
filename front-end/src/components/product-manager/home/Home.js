@@ -27,6 +27,7 @@ import WarehouseChart from "../warehouse-channel/WarehouseChart";
 import ChangePassword from "../user-channel/ChangePassword";
 import VerifyPassword from "../user-channel/VerifyPassword";
 import CompareProduct from "../product-channel/CompareProduct";
+import GoogleMap from "../other-channel/GoogleMap";
 
 const Home = ({ title, nav }) => {
   const history = useHistory();
@@ -99,6 +100,8 @@ const Home = ({ title, nav }) => {
               return <VerifyPassword></VerifyPassword>;
             } else if (title === "product-compare") {
               return <CompareProduct></CompareProduct>;
+            } else if (title === "google-map") {
+              return <GoogleMap></GoogleMap>;
             }
           })()}
         </div>

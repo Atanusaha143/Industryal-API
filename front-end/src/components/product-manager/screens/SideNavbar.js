@@ -103,6 +103,10 @@ const SideNavbar = () => {
           >
             Administration
           </Link>
+          <br></br>
+          <Link to="/product/map" className="btn btn-outline-dark btn-sm mb-2">
+            Map
+          </Link>
         </div>
       </div>
     </>

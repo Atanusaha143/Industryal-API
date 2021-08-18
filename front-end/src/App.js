@@ -68,6 +68,9 @@ function App() {
           <Route exact path="/product/user/administration/myissue">
             <Home title="administration-myIssues" nav="common" />
           </Route>
+          <Route exact path="/product/map">
+            <Home title="google-map" nav="common" />
+          </Route>
 
           {/* User */}
           <Route exact path="/product/user/profile">
