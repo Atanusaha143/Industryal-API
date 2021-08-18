@@ -26,7 +26,7 @@ class HRemployeeController extends Controller
         $employee->employment_start_date=$req->employment_start_date;
         
         $employee->save();
-        return response('Employee Added', 200)
+        return response('Employee Added', 201)
                   ->header('Content-Type', 'text/plain'); 
     }
     public function getEmployeeList()

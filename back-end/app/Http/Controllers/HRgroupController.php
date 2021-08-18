@@ -17,7 +17,7 @@ class HRgroupController extends Controller
             $employee1->employee_group = $req->employee_group;
             $employee1->save();          
         }
-        return response('Employee Added to Group', 200)
+        return response('Employee Added to Group', 201)
                   ->header('Content-Type', 'text/plain');
 
     }

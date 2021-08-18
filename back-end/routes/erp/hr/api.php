@@ -52,6 +52,7 @@ Route::get('/HR/employee/search/{employee_name}',[HRemployeeController::class,'s
 
 Route::Post('/HR/leave/request/{username}',[HRleaveController::class,'verifyLeave']);
 Route::get('/HR/leave/request/list',[HRleaveController::class,'getLeaveList']);
+Route::get('/HR/leave/pending/list',[HRleaveController::class,'getPendingList']);
 Route::put('/HR/leave/approve/{id}',[HRleaveController::class,'VerifyApprove']);
 Route::put('/HR/leave/reject/{id}',[HRleaveController::class,'VerifyReject']);
 Route::get("/HR/leave/{id}",[HRleaveController::class,'getLeaveById']);

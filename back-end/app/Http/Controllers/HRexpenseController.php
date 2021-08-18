@@ -20,7 +20,7 @@ class HRexpenseController extends Controller
         $expense->expense_date=$req->expense_date;
         
         $expense->save();
-        return response('Expense Report Created', 200)
+        return response('Expense Report Created', 201)
                   ->header('Content-Type', 'text/plain'); 
         
     }

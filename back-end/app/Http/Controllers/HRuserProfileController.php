@@ -44,8 +44,7 @@ class HRuserProfileController extends Controller
         }
         else
         {
-            return response('Not Found', 404)
-                  ->header('Content-Type', 'text/plain');
+            return 'Password not match';
         }
     }
     public function imageUpdate(Request $req,$username)
@@ -63,8 +62,7 @@ class HRuserProfileController extends Controller
         } 
          else
         {
-            return response('Password not match', 404)
-                  ->header('Content-Type', 'text/plain');
+            return 'Password not match';
         } 
 
         

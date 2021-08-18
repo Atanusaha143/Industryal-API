@@ -27,18 +27,25 @@ class HRleaveController extends Controller
         $leave->status = "Pending";
 
         $leave->save();
-        return response('Leave Request Sent', 200)
+        return response('Leave Request Sent', 201)
                   ->header('Content-Type', 'text/plain'); 
        
     }
     public function getLeaveList()
     {
-        $leaves = Leave::get();
-        if(count($leaves)>0){
+       
+       $leaves = Leave::get();
+      
+       if(count($leaves)>0){
             return response()->json($leaves);
         }
         return response('Not Found', 404)
-                  ->header('Content-Type', 'text/plain');
+                  ->header('Content-Type', 'text/plain'); 
+    }
+    public function getPendingList()
+    {
+        $leave = Leave::where('status', 'Pending')->get();
+        return response()->json($leave);
     }
 
     public function VerifyApprove($id,Request $req)
