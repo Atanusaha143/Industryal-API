@@ -44,6 +44,9 @@ function App() {
         <Route exact path='/HR/leave/request'>
           <Navb title='Leave Request' />
         </Route>
+        <Route exact path='/HR/leave/pending/list'>
+          <Navb title='Pending List' />
+        </Route>
         <Route exact path='/HR/leave/request/list'>
           <Navb title='Leave Request List' />
         </Route>

@@ -14,6 +14,7 @@ import EditEmployee from './EditEmployee';
 import DeleteEmp from './DeleteEmp';
 import EmpSchedule from './EmpSchedule';
 import MyLeave from './MyLeave';
+import PendingList from './PendingList';
 import LeaveList from './LeaveList';
 import Approve from './Approve';
 import Reject from './Reject';
@@ -75,6 +76,7 @@ const Navb=({title})=>{
                             <li className="nav-item"><Link to='/HR/employee/list' className="nav-link btn btn-outline-dark btn-block mt-2" >Employee List</Link></li>
                             <li className="nav-item"><Link to='/HR/employee/schedule' className="nav-link btn btn-outline-dark btn-block mt-2" >Schedules</Link></li>
                             <li className="nav-item"><Link to='/HR/leave/request' className="nav-link btn btn-outline-dark btn-block mt-2" >Leave Request</Link></li>
+                            <li className="nav-item"><Link to='/HR/leave/pending/list' className="nav-link btn btn-outline-dark btn-block mt-2" >Pending List</Link></li>
                             <li className="nav-item"><Link to='/HR/leave/request/list' className="nav-link btn btn-outline-dark btn-block mt-2" >Leave Request List</Link></li>
                             <li className="nav-item"><Link to='/HR/expense/report' className="nav-link btn btn-outline-dark btn-block mt-2" > Expense Report</Link></li>
                             <li className="nav-item"><Link to='/HR/expense/list' className="nav-link btn btn-outline-dark btn-block mt-2" > Expense  Report List</Link></li>
@@ -150,6 +152,12 @@ const Navb=({title})=>{
                             {
                                 return(
                                     <MyLeave />
+                                )
+                            }
+                            else if (title==='Pending List')
+                            {
+                                return(
+                                    <PendingList />
                                 )
                             }
                             else if (title==='Leave Request List')

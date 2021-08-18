@@ -75,7 +75,7 @@ const Approve=()=>{
                 <div className="row justify-content-center">
                 <center>
                     <button onClick={()=>approve(list.id)} className='btn btn-danger btn-block m-1'>Approve</button>
-                    <Link to={`/HR/leave/request/list`} class="btn btn-success m-1"> Back </Link>
+                    <Link to={`/HR/leave/pending/list`} class="btn btn-success m-1"> Back </Link>
                 </center>
                     
                 </div>

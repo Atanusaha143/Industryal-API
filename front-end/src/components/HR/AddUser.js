@@ -18,27 +18,11 @@ const AddUser=()=>{
     const [pass,setPassword] = useState("");
     const [confirm_password,setConfirmPassword] = useState("");
     const [work_hour,setHour] = useState("");
-    //const [profile_pic,setProfilePic] = useState(""); 
+    const [profile_pic,setPhoto] = useState(""); 
     const history = useHistory();
 
-    
-
-   /*  async function addUser()
-    {
-        let user = {firstname,lastname,username,email,phone,address,gender,position,type,pass,work_hour};
-        await fetch('http://127.0.0.1:8000/api/HR/user/create', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user)
-        })
-
-       history.push('/HR/user/list');
-    } */
     const addUser = async () => {
-         if(firstname.length===0)
+        if(firstname.length===0)
         {
             setErrorMessage("Please Enter your first name");
         }else if(lastname.length===0){
@@ -98,35 +82,29 @@ const AddUser=()=>{
             setErrorMessage("Hour work must be a number");
         }
         else{ 
-            await axios.post('http://127.0.0.1:8000/api/HR/user/create', {
-            firstname,
-            lastname,
-            username,
-            email,
-            phone,
-            address,
-            gender,
-            position,
-            type,
-            pass,
-            work_hour 
-            //profile_pic
-           
-           },{
+            const formData = new FormData();
+            formData.append("firstname",firstname);
+            formData.append("lastname",lastname);
+            formData.append("username",username);
+            formData.append("email",email);
+            formData.append("phone",phone);
+            formData.append("address",address);
+            formData.append("gender",gender);
+            formData.append("position",position);
+            formData.append("type",type);
+            formData.append("pass", pass);
+            formData.append("work_hour", work_hour);
+            formData.append("profile_pic", profile_pic);
+            await axios.post('http://127.0.0.1:8000/api/HR/user/create',formData,{
                 headers: {
                     'ContentType': 'application/json'
                 }
             }).then((response)=>{
                 console.log(response.data);
-               
                 history.push('/HR/user/list');
             });
         
         }
-        
- 
-      
-
     }
     const gen=["male","female"];
     return(
@@ -216,7 +194,7 @@ const AddUser=()=>{
                 <div className="from-group">
                     <td>Upload Image: </td>
                     <td colSpan='2'>
-                    <input type="file" name="profile_pic"></input>
+                    <input type="file" name="profile_pic" onChange={(e)=>setPhoto(e.target.files[0])}></input>
                     </td>
                 </div>
                 <div className="from-group">

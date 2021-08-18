@@ -76,7 +76,7 @@ const Reject=()=>{
                 <div className="row justify-content-center">
                 <center>
                     <button onClick={()=>reject(list.id)} className='btn btn-danger btn-block m-1'>Reject</button>
-                    <Link to={`/HR/leave/request/list`} class="btn btn-success m-1"> Back </Link>
+                    <Link to={`/HR/leave/pending/list`} class="btn btn-success m-1"> Back </Link>
                 </center>
                     
                 </div>

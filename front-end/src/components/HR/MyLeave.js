@@ -42,7 +42,7 @@ const myLeave = async () => {
             }
         }).then((response)=>{
             console.log(response.data);
-            history.push('/HR/leave/request/list');
+            history.push('/HR/leave/pending/list');
         });
         
         }
