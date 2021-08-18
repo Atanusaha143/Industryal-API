@@ -124,6 +124,52 @@ body{
   background-color: var(--white-1);
 }
 
+.searchBar
+{
+  margin: 8px 5px 8px 15px;
+}
+
+.searchBar .searchBarInput
+{
+  width: 150px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  border: none;
+  transition: width 500ms;
+}
+
+.searchBar .searchBarInput:hover
+{
+  width: 300px;
+  background-color: var(--white-1);
+  outline: none;
+}
+
+.searchBar .searchBarInput:focus
+{
+  width: 300px;
+  background-color: var(--white-1);
+  outline: none;
+}
+
+.searchBar .searchBtn
+{
+  background-color: var(--blue-2);
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  width: 20px;
+  height: 25px;
+  background-image: url("components/images/search.png");
+  background-size: cover;
+  transition: background-color 500ms;
+}
+
+.searchBar .searchBtn:hover
+{
+  background-color: var(--white-1);
+  cursor:pointer;
+}
+
 .Form-Button
 {
   margin: 0px 50px 0px 150px;

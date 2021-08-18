@@ -6,8 +6,6 @@ import {Link, Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 const SideMenuCustomer = () => {
     return (
         <div id="SubMenu">
-            <div id="Menu">
-            </div>
             <div className="SubLinkContainer">
                 <Link className="SubLink" to="/sales/customers/">
                     All Customer

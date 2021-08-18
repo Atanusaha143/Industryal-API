@@ -47,6 +47,14 @@ const TableCustomer = () => {
         // console.log(items);
         return (
             <div>
+                <div className="searchBar">
+                    <form>
+                        <input type="text" className="searchBarInput" placeholder="Enter something to search"/>
+                        <button type="submit" className="searchBtn">
+                            {/* <img src="/images/search.png"/> */}
+                        </button>
+                    </form>
+                </div>
                 <table className="CusTable">
                     <thead>
                         <tr>
