@@ -208,7 +208,7 @@ body{
 
 .Form-Button .FormBtn:hover 
 {
-  background-color: var(--white-1);
+  background-color: var(--cyan-1);
   color: var(--blue-3);
   cursor: pointer;
 }
@@ -229,7 +229,7 @@ body{
 
 .LinkBtn:hover
 {
-  background-color: var(--white-1);
+  background-color: var(--cyan-1);
   color: var(--blue-3);
   cursor: pointer;
 }
@@ -264,6 +264,8 @@ body{
   background-color: var(--blue-3);
   padding: 5px 10px 5px 10px;
   color: var(--white-1);
+  max-width: 100px;
+  /* width: 100px; */
 }
 
 .CusTable td
@@ -271,6 +273,8 @@ body{
   border:1px solid black;
   padding: 5px 10px 5px 10px;
   background-color: var(--cyan-1);
+  max-width: 250px;
+
 }
 
 .CusTable .btnCell

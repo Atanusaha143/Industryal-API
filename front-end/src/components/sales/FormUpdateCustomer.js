@@ -41,7 +41,7 @@ const FormUpdateCustomer = (props) => {
         event.preventDefault();
         if(customer.name == "")
         {
-
+            setErrName("Required")
         }
         else if(customer.name != "")
         {

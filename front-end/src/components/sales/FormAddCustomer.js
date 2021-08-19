@@ -102,7 +102,7 @@ const FormAddCustomer = () => {
                 ((err)=>{
                     if(err.toJSON().message == "Request failed with status code 422")
                     {
-                        setPostMsg("Error 422: Cannot process data to system")
+                        // setPostMsg("Error 422: Cannot process data to system")
                     }
                 })
             )
@@ -161,7 +161,7 @@ const FormAddCustomer = () => {
                     <div className="errMsg">{errType}</div>
                 </div>
                 <div className="Form-Button">
-                    <button type='submit'>Confirm</button>
+                    <button type='submit' className="LinkBtn">Confirm</button>
                 </div>
                 <label className="postMsg">{postMsg}</label>
             </form>
