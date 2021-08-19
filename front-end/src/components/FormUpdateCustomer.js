@@ -39,10 +39,70 @@ const FormUpdateCustomer = (props) => {
 
     const handleSubmission = (event) => {
         event.preventDefault();
-        axios.put("http://127.0.0.1:8000/api/sales/customers/"+answer, customer)
+        if(customer.name == "")
+        {
+
+        }
+        else if(customer.name != "")
+        {
+            if(!(/^[a-zA-Z ]*$/.test(customer.name)))
+            {
+                setErrName("Only alphabets and space are allowed");
+            }
+            else
+            {
+                setErrName("")
+            }
+        }
+        //email
+        if(customer.email == "")
+        {
+            setErrEmail("Required")
+        }
+        else if(customer.email != "")
+        {
+            if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(customer.email)))
+            {
+                setErrEmail("Invalid email address");
+            }
+            else
+            {
+                setErrEmail("");
+            }
+        }
+        //phone
+        if(customer.phone == "")
+        {
+            setErrPhone("Required")
+        }
+        else if(customer.phone != "")
+        {
+            setErrPhone("");
+        }
+        //Delivery point
+        if(customer.delivery_point == "")
+        {
+            setErrDeliv("Required")
+        }
+        else if(customer.delivery_point != "")
+        {
+            setErrDeliv("");
+        }
+        //Type
+        if(customer.type == "")
+        {
+            setErrType("Required")
+        }
+        else if(customer.type != "")
+        {
+            setErrType("");
+        }
+        if(errName == errEmail == errPhone == errDeliv == errType == "")
+        {
+            axios.put("http://127.0.0.1:8000/api/sales/customers/"+answer, customer)
             .then((response)=>{
                 console.log(response.data)
-                // setPostMsg("Created customer successfully")
+                setPostMsg("Updated customer successfully")
             })
             .catch(
                 ((err)=>{
@@ -52,6 +112,20 @@ const FormUpdateCustomer = (props) => {
                     }
                 })
             )
+            // axios.post("http://127.0.0.1:8000/api/sales/customers", formData)
+            // .then((response)=>{
+            //     console.log(response.data)
+            //     setPostMsg("Created customer successfully")
+            // })
+            // .catch(
+            //     ((err)=>{
+            //         if(err.toJSON().message == "Request failed with status code 422")
+            //         {
+            //             setPostMsg("Error 422: Cannot process data to system")
+            //         }
+            //     })
+            // )
+        }
         console.log(customer)
         // console.log(event)
     }
@@ -84,11 +158,12 @@ const FormUpdateCustomer = (props) => {
                     <input className="inputBox" type="text" name="type" id="type" value={customer.type} onChange={handleInputChange}/>
                     <div className="errMsg">{errType}</div>
                 </div>
-                {/* <button type='submit'>Confirm</button>   */}
                 <div className="Form-Button">
-                    <button type='submit'>Confirm</button>
+                    <button type='submit'className="FormBtn">Confirm</button>
                     <Link className="LinkBtn" to="/sales/customers">Go Back</Link>
                 </div>
+                <label className="postMsg">{postMsg}</label>
+                
             </form>
         </div>
     )
