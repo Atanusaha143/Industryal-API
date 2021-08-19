@@ -61,6 +61,10 @@ const TableCustomer = () => {
     {
         event.preventDefault();
     }
+
+    const deleteCus = (id) => {
+
+    }
     
     return (
         <div>
@@ -105,8 +109,8 @@ const TableCustomer = () => {
                                     <td>{cus.delivery_point}</td>
                                     <td>{cus.first_purchase}</td>
                                     <td>{cus.type}</td>
-                                    <td className="btnCell"><Link className="UpdateBtn" onClick={()=>generateUpdateForm(cus.id)} to={'/sales/customer/update/'+cus.id}>Update</Link></td>
-                                    <td className="btnCell"><button className="DeleteBtn">Delete</button></td>
+                                    <td className="btnCell"><Link className="UpdateBtn" to={'/sales/customer/update/'+cus.id}>Update</Link></td>
+                                    <td className="btnCell"><button className="DeleteBtn" onClick={deleteCus(cus.id)}>Delete</button></td>
                                 </tr>
                             );
                         })
