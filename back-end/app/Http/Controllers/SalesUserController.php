@@ -51,7 +51,28 @@ class SalesUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = SalesUser::find($id);
+        $request->validate([
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'username'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'position'=>'required',
+            'work_hour'=>'required',
+        ]);
+        $user->update([
+            $user->firstname = $request->firstname,
+            $user->lastname = $request->lastname,
+            $user->username = $request->username,
+            $user->email = $request->email,
+            $user->phone = $request->phone,
+            $user->address = $request->address,
+            $user->position = $request->position,
+            $user->work_hour = $request->work_hour,
+        ]);
+
+        return $user;
     }
 
     /**
