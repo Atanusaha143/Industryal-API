@@ -30,8 +30,16 @@ const ChangePassword = () => {
       setErrorMessage("Current password can't be empty!");
     } else if (newPass.length === 0) {
       setErrorMessage("New password can't be empty!");
+    } else if (newPass.length < 8) {
+      setErrorMessage("At least 8 charecters PASSWORD needed! - New Password");
     } else if (confirmNewPass.length === 0) {
       setErrorMessage("Confirm new password can't be empty!");
+    } else if (confirmNewPass.length < 8) {
+      setErrorMessage(
+        "At least 8 charecters PASSWORD needed! - Confirm New Password"
+      );
+    } else if (newPass !== confirmNewPass) {
+      setErrorMessage("Password MISMATCH!");
     } else if (recaptcha === false) {
       Swal.fire({
         icon: "warning",
