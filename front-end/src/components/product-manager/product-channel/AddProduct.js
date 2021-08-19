@@ -142,7 +142,7 @@ const AddProduct = () => {
                         <td>Status (Sell)</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="product_sell_status"
                             onChange={(e) => setSellStatus(e.target.value)}
                           >
@@ -155,7 +155,7 @@ const AddProduct = () => {
                         <td>Status (Purchase)</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="product_purchase_status"
                             onChange={(e) => setPurchaseStatus(e.target.value)}
                           >
@@ -182,7 +182,7 @@ const AddProduct = () => {
                         <td>Warehouse</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="warehouse_name"
                             onChange={(e) => setWarehouse(e.target.value)}
                           >
@@ -207,7 +207,7 @@ const AddProduct = () => {
                         <td>Nature of product</td>
                         <td colspan="2">
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_nature"
                             onChange={(e) => setNature(e.target.value)}
                           >
@@ -230,7 +230,7 @@ const AddProduct = () => {
                         </td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_weight_unit"
                             onChange={(e) => setWeightUnit(e.target.value)}
                           >
@@ -248,14 +248,14 @@ const AddProduct = () => {
                         <td>
                           <input
                             type="text"
-                            class="form-control"
+                            class="form-select"
                             name="product_dimention"
                             onChange={(e) => setDimention(e.target.value)}
                           ></input>
                         </td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_dimention_unit"
                             onChange={(e) => setDimentionUnit(e.target.value)}
                           >
@@ -280,7 +280,7 @@ const AddProduct = () => {
                         </td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_selling_tax"
                             onChange={(e) => setTax(e.target.value)}
                           >
