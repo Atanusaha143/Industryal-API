@@ -36,7 +36,7 @@ const LeaveRequest = () => {
       axios
         .post("http://127.0.0.1:8000/api/product/user/leave/create", formData)
         .then((response) => {
-          console.log(response);
+          history.push("/product/user/leave/myrequest");
         })
         .catch((error) => {
           console.log(error);
