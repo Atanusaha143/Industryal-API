@@ -10,7 +10,7 @@ const Profile = () => {
     const [user, setUser] = useState("")
     const [photo, setPhoto] = useState("")
 
-    const id = '1';
+    const id = '2';
 
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/sales/user/"+id)

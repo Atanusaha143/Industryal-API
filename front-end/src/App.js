@@ -13,6 +13,7 @@ import Login from "./components/common/Signin";
 import SubMenuOrder from './components/sales/SubMenuOrder';
 import FormAddOrder from './components/sales/FormAddOrder';
 import Profile from './components/sales/Profile';
+import FormUpdateUser from './components/sales/FormUpdateUser';
 // import './styles/styles.css'
 
 function App() {
@@ -79,7 +80,7 @@ function App() {
           </Route>
           <Route path="/sales/profile/update">
             <NavBar/>
-            User
+            <FormUpdateUser/>
             <Footer/>
           </Route>
 
