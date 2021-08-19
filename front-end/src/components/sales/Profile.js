@@ -8,6 +8,7 @@ import axios from 'axios'
 const Profile = () => {
 
     const [user, setUser] = useState("")
+    const [photo, setPhoto] = useState("")
 
     const id = '1';
 
@@ -19,14 +20,26 @@ const Profile = () => {
             .catch((error)=>{
                 // setError("failed");
             }
-            ); 
-            console.log(user);
+        ); 
+        console.log(user);
+
+        axios.get("http://127.0.0.1:8000/api/sales/user/propic/"+id, {
+            responseType: 'blob'
+        })
+            .then(photo=>{
+                setPhoto(photo);
+            })
+            .catch((error)=>{
+                // setError("failed");
+            }
+        ); 
+            console.log((photo));
     }, [])
 
     return (
-        <div class="profile">
+        <div className="profile">
             <div className="profilePic">
-                <img src="#" alt="Image not found"/>
+                {/* <img src={window.URL.createObjectURL(new Blob(photo.data), {type: "image/jpg"})} alt="Image not found"/> */}
             </div>
             <div className="mainProfileContainer">
                 <div className="mainProfileLabels">

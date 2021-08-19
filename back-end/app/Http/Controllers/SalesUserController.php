@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Sales\SalesUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class SalesUserController extends Controller
 {
@@ -62,5 +63,15 @@ class SalesUserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getImage($id)
+    {
+        // return "ok";
+        $user = SalesUser::find($id);
+        // $path = public_path().'/upload/Users/atanusaha143.jpg';
+        $path = public_path().'/upload/Users/'.$user['profile_pic'];
+        return Response::download($path);
+        
     }
 }
