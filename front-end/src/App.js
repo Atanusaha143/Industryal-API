@@ -1,13 +1,13 @@
-import NavBar from './components/NavBar'
-import TableCustomer from './components/TableCustomer';
-import FormUpdateCustomer from './components/FormUpdateCustomer';
-import FormAddCustomer from './components/FormAddCustomer'
-import SubMenuCustomer from './components/SubMenuCustomer';
+import NavBar from './components/sales/NavBar'
+import TableCustomer from './components/sales/TableCustomer';
+import FormUpdateCustomer from './components/sales/FormUpdateCustomer';
+import FormAddCustomer from './components/sales/FormAddCustomer'
+import SubMenuCustomer from './components/sales/SubMenuCustomer';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import './App.css'
-import SalesChart from './components/SalesChart';
-import Footer from './components/Footer';
+import SalesChart from './components/sales/SalesChart';
+import Footer from './components/sales/Footer';
 // import './styles/styles.css'
 
 function App() {
