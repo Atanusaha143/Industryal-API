@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SalesOrders;
+use App\Models\Sales\SalesOrders;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

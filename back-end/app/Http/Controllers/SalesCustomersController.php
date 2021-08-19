@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SalesCustomers;
+use App\Models\Sales\SalesCustomers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

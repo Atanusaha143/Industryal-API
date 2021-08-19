@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sales\SalesUser;
 use Illuminate\Http\Request;
 
-class SalesOrders extends Controller
+class SalesUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +37,8 @@ class SalesOrders extends Controller
      */
     public function show($id)
     {
-        //
+        $user = SalesUser::find($id);
+        return $user;
     }
 
     /**

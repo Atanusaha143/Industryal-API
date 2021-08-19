@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SalesCustomersController;
 use App\Http\Controllers\SalesOrdersController;
+use App\Http\Controllers\SalesUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,4 @@ Route::put('/sales/orders/{id}', [SalesOrdersController::class, 'update']);
 Route::delete('/sales/orders/{id}', [SalesOrdersController::class, 'destroy']);
 Route::get('/sales/orders/search/{name}', [SalesOrdersController::class, 'search']);
 
+Route::get('/sales/user/{id}', [SalesUserController::class, 'show']);
