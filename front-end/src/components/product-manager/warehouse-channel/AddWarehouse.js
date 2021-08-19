@@ -172,7 +172,7 @@ const AddWarehouse = () => {
                         <td clospan="3">Country</td>
                         <td clospan="3">
                           <select
-                            class="form-control"
+                            class="form-select"
                             id="warehouse"
                             name="warehouse_country"
                             onChange={(e) => setCountry(e.target.value)}
@@ -205,7 +205,7 @@ const AddWarehouse = () => {
                         <td>Status</td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             id="warehouse"
                             name="warehouse_status"
                             onChange={(e) => setStatus(e.target.value)}
