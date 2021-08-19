@@ -26,6 +26,11 @@ const LeaveRequest = () => {
       setErrorMessage("Plase provide leave description!");
     } else if (start_time > end_time) {
       setErrorMessage("Start time can't be greater than end time!");
+    } else if (
+      start_time < new Date().toISOString().slice(0, 10) ||
+      end_time < new Date().toISOString().slice(0, 10)
+    ) {
+      setErrorMessage("Please select a valid date format!");
     } else {
       const formData = new FormData();
       formData.append("type", type);
