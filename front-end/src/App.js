@@ -14,6 +14,7 @@ import SubMenuOrder from './components/sales/SubMenuOrder';
 import FormAddOrder from './components/sales/FormAddOrder';
 import Profile from './components/sales/Profile';
 import FormUpdateUser from './components/sales/FormUpdateUser';
+import SubMenuHeading from './components/sales/SubMenuHeading';
 // import './styles/styles.css'
 
 function App() {
@@ -74,24 +75,22 @@ function App() {
           </Route>
           <Route path="/sales/profile/user">
             <NavBar/>
-            User
+            <SubMenuHeading heading="View Profile"/>
             <Profile/>
             <Footer/>
           </Route>
           <Route path="/sales/profile/update">
             <NavBar/>
+            <SubMenuHeading heading="Edit Profile"/>
             <FormUpdateUser/>
             <Footer/>
           </Route>
           <Route path="/sales/profile/changepassword">
             <NavBar/>
+            <SubMenuHeading heading="Change Password"/>
             <FormUpdateUser/>
             <Footer/>
           </Route>
-
-          {/* <Route exact path="/" component={Login}></Route>
-          Product
-          <Route exact path="/product"></Route> */}
         </Switch>
       </Router>
     </div>

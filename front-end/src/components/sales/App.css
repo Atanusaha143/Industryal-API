@@ -68,6 +68,14 @@ body{
   flex-direction: row;
 }
 
+#SubMenu #Heading
+{
+  font-size: 18px;
+  margin: 10px 15px;
+  font-weight: bold;
+  color: var(--blue-3);
+}
+
 .SubLinkContainer
 {
   padding-top: 20px;
