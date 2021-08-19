@@ -23,7 +23,7 @@ const DeleteExp=()=>{
             'Content-Type': 'application/json',
             }
         })
-        history.push('/HR/expense/list');
+        history.go(0);
     }
 
     return(

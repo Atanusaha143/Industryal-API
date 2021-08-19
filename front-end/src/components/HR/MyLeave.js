@@ -24,16 +24,16 @@ const myLeave = async () => {
         else if(end_date.length===0){
             setErrorMessage("End date can't be empty");
         }
-        else if(description.length===0)
-        {
-            setErrorMessage("Description can't be empty");
-        }
         else if(start_date>end_date)
         {
             setErrorMessage("Start date must be smaller than End date");
         }
-        
-        else{
+        else if(description.length===0)
+        {
+            setErrorMessage("Description can't be empty");
+        } 
+        else
+        {
             await axios.post('http://127.0.0.1:8000/api/HR/leave/request/'+localStorage.getItem('username'), {
            type,start_date,end_date,description
         },{
@@ -44,10 +44,15 @@ const myLeave = async () => {
             console.log(response.data);
             history.push('/HR/leave/pending/list');
         });
+        // if(start_date>end_date)
+        // {
+        //     setErrorMessage("Start date must be smaller than End date");
+        // }
+        // console.log(start_date);
+        // console.log(end_date);
         
-        }
+        }}
         
-    }
 
 
     return(

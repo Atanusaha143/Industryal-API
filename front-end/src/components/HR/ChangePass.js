@@ -47,9 +47,12 @@ const ChangePass=()=>{
                 console.log(response.data);
                 if(response.data === 'Password not match'){
                     setErrorMessage("Password mismatch")
+                }else{
+                    history.push('/HR/user/profile');
                 }
-                history.push('/HR/user/profile');
+               
             });
+           
         }
     }
     return(

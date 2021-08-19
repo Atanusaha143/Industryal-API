@@ -24,7 +24,7 @@ const DeleteEmp =()=>{
             'Content-Type': 'application/json',
             }
         })
-        history.push('/HR/employee/list');
+        history.go(0);
     }
 
     return(
