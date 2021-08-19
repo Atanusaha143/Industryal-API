@@ -28,6 +28,8 @@ const TransferProduct = () => {
       setMessage("Warehouse name can't be empty!");
     } else if (!Number(transfer_quantity)) {
       setMessage("Transfer qunatity must be a number!");
+    } else if (transfer_quantity < 1) {
+      setMessage("Please provide a valid quantity!");
     } else {
       const data = { product_id, warehouse_name, transfer_quantity };
       axios
@@ -92,7 +94,7 @@ const TransferProduct = () => {
                         <td clospan="3"> New Warehouse</td>
                         <td clospan="3">
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="warehouse"
                             onChange={(e) => setWarehouseName(e.target.value)}
                           >

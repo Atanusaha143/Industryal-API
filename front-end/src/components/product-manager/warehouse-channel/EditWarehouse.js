@@ -60,6 +60,8 @@ const EditWarehouse = () => {
       setErrorMessage("Warehouse quantity can't be empty!");
     } else if (!Number(quantity)) {
       setErrorMessage("Warehouse quantity must be a number!");
+    } else if (quantity < 1) {
+      setErrorMessage("Please provide a valid quantity!");
     } else if (status.length === 0) {
       setErrorMessage("Warehouse status can't be empty!");
     } else {
