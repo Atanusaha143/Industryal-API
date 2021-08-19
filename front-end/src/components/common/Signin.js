@@ -19,6 +19,8 @@ export default function Signin() {
   const [erremail, setErrEmail] = useState("");
   const [errpass, setErrPass] = useState("");
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const history = useHistory();
 
   const onLogin = async () => {
@@ -49,6 +51,7 @@ export default function Signin() {
       })
       .catch((error) => {
         console.log("ERRRR:: ", error.response.data);
+        setErrorMessage("Invaild CREDENTIALS **");
       });
   };
 
@@ -64,8 +67,13 @@ export default function Signin() {
 
   //VALIDATION
   const onLoginValidation = () => {
-    if (email == "" && pass == "") {
+    if (email === "" && pass === "") {
       setErrEmail("* Email Required");
+      setErrPass("* Password Required");
+    }
+    if (email === "") {
+      setErrEmail("* Email Required");
+    } else if (pass == "") {
       setErrPass("* Password Required");
     } else {
       onLogin();
@@ -74,6 +82,14 @@ export default function Signin() {
 
   return (
     <div align="center" style={{ paddingTop: "80px" }}>
+      {errorMessage && (
+        <center>
+          {" "}
+          <div class="alert alert-danger col-3" role="alert">
+            {errorMessage}
+          </div>{" "}
+        </center>
+      )}
       <Card style={{ width: "20rem" }}>
         <Card.Header>Login</Card.Header>
         <ListGroup variant="flush">
