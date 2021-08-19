@@ -92,7 +92,7 @@ const TransferProduct = () => {
                         <td clospan="3"> New Warehouse</td>
                         <td clospan="3">
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="warehouse"
                             onChange={(e) => setWarehouseName(e.target.value)}
                           >
