@@ -95,7 +95,7 @@ body{
   display: flex;
   flex-direction: column;
   width: 620px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0px auto;
 }
 
@@ -325,7 +325,14 @@ body{
 {
   display: flex;
   flex-direction: column;
-  margin: 10px auto 20px 200px;
+  margin: 40px auto 20px 200px;
+}
+
+.profilePic
+{
+  border: 1px solid black;
+  width: 430px;
+
 }
 
 .mainProfileContainer
@@ -344,7 +351,24 @@ body{
 .mainProfileLabels label, .mainProfileData label
 {
   border: 1px solid black;
-  padding: 5px 10px 5px 10px;
+}
+
+.mainProfileLabels label
+{
+  background-color: var(--blue-3);
+  color: var(--white-1);
+  padding-left: 10px;
+  padding: 5px 10px 5px 20px;
+  max-width: 120px;
+  width: 120px;
+}
+
+.mainProfileData label
+{
+  background-color: var(--cyan-1);
+  padding: 5px 20px 5px 10px;
+  max-width: 250px;
+  width: 250px;
 }
 
 .mainProfileData
