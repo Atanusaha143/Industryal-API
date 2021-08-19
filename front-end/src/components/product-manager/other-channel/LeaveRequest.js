@@ -86,7 +86,7 @@ const LeaveRequest = () => {
                         <td clospan="3">Type</td>
                         <td clospan="3">
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="leave_type"
                             onChange={(e) => setType(e.target.value)}
                           >
@@ -100,7 +100,7 @@ const LeaveRequest = () => {
                         <td clospan="3">
                           <input
                             type="date"
-                            class="form-control"
+                            class="form-select"
                             name="leave_start_date"
                             onChange={(e) => setStartTime(e.target.value)}
                           ></input>
@@ -111,7 +111,7 @@ const LeaveRequest = () => {
                         <td clospan="3">
                           <input
                             type="date"
-                            class="form-control"
+                            class="form-select"
                             name="leave_end_date"
                             onChange={(e) => setEndTime(e.target.value)}
                           ></input>
