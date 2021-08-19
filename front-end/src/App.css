@@ -194,7 +194,7 @@ body{
   margin: 0px 50px 0px 150px;
 }
 
-.Form-Button .FormBtn
+.Form-Button button 
 {
   background-color: var(--blue-2);
   padding: 5px 10px 5px 10px;
@@ -206,7 +206,7 @@ body{
   transition: background-color 500ms, color 500ms;
 }
 
-.Form-Button .FormBtn:hover 
+.Form-Button button:hover 
 {
   background-color: var(--white-1);
   color: var(--blue-3);
@@ -280,7 +280,7 @@ body{
 
 .UpdateBtn
 {
-  background-color: var(--blue-2);
+  background-color: var(--blue-3);
   color: blanchedalmond;
   border-width: 1px;
   border-style: solid;
@@ -293,8 +293,8 @@ body{
 
 .UpdateBtn:hover
 {
-  background-color: var(--cyan-1);
-  color: var(--blue-2);
+  background-color: blanchedalmond;
+  color: green;
 }
 
 .DeleteBtn
@@ -312,7 +312,7 @@ body{
 
 .DeleteBtn:hover
 {
-  background-color: var(--cyan-1);
+  background-color: blanchedalmond;
   color: rgb(184, 50, 1);
   cursor: pointer;
 }
