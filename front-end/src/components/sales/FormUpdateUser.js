@@ -43,6 +43,7 @@ const FormUpdateUser = () => {
 
     const handleSubmission = (event) => {
         event.preventDefault();
+        //firstname
         if(user.firstname == "")
         {
             setErrFirstName("Required")
@@ -58,6 +59,7 @@ const FormUpdateUser = () => {
                 setErrFirstName("")
             }
         }
+        //lastname
         if(user.lastname == "")
         {
             setErrLastName("Required")
@@ -73,6 +75,7 @@ const FormUpdateUser = () => {
                 setErrLastName("")
             }
         }
+        //username
         if(user.username == "")
         {
             setErrUsername("Required")
@@ -146,27 +149,6 @@ const FormUpdateUser = () => {
                 })
             )
             console.log(user)
-            // console.log(errFirstName)
-            // console.log(errLastName)
-            // console.log(errEmail)
-            // console.log(errPhone)
-            // console.log(errWorkHour)
-            // console.log(errPos)
-            // console.log(errUsername)
-
-            // axios.post("http://127.0.0.1:8000/api/sales/users", formData)
-            // .then((response)=>{
-            //     console.log(response.data)
-            //     setPostMsg("Created user successfully")
-            // })
-            // .catch(
-            //     ((err)=>{
-            //         if(err.toJSON().message == "Request failed with status code 422")
-            //         {
-            //             setPostMsg("Error 422: Cannot process data to system")
-            //         }
-            //     })
-            // )
         }
         // console.log(user)
         // console.log(event)
@@ -217,7 +199,7 @@ const FormUpdateUser = () => {
                 </div>
                 <div className="Form-Button">
                     <button type='submit'className="FormBtn">Confirm</button>
-                    <Link className="LinkBtn" to="/sales/users">Go Back</Link>
+                    <Link className="LinkBtn" to="/sales/profile/user">Go Back</Link>
                 </div>
                 <label className="postMsg">{postMsg}</label>
                 

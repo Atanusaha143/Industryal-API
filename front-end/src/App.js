@@ -83,6 +83,11 @@ function App() {
             <FormUpdateUser/>
             <Footer/>
           </Route>
+          <Route path="/sales/profile/changepassword">
+            <NavBar/>
+            <FormUpdateUser/>
+            <Footer/>
+          </Route>
 
           {/* <Route exact path="/" component={Login}></Route>
           Product
