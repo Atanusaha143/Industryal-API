@@ -71,10 +71,15 @@ function App() {
             emails
             <Footer/>
           </Route>
-          <Route path="/sales/user">
+          <Route path="/sales/profile/user">
             <NavBar/>
             User
             <Profile/>
+            <Footer/>
+          </Route>
+          <Route path="/sales/profile/update">
+            <NavBar/>
+            User
             <Footer/>
           </Route>
 

@@ -194,7 +194,7 @@ body{
   margin: 0px 50px 0px 150px;
 }
 
-.Form-Button .FormBtn
+.FormBtn
 {
   background-color: var(--blue-2);
   padding: 5px 10px 5px 10px;
@@ -206,7 +206,7 @@ body{
   transition: background-color 500ms, color 500ms;
 }
 
-.Form-Button .FormBtn:hover 
+.FormBtn:hover 
 {
   background-color: var(--cyan-1);
   color: var(--blue-3);
@@ -332,13 +332,19 @@ body{
 {
   border: 1px solid black;
   width: 430px;
+}
 
+.profilePic img
+{
+  margin: 0 auto;
+  /* background-color: yellowgreen; */
 }
 
 .mainProfileContainer
 {
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
 }
 
 .mainProfileLabels
