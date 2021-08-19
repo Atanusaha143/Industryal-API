@@ -44,18 +44,26 @@ const AddProduct = () => {
       setErrorMessage("Product stock can't be empty!");
     } else if (!Number(stock)) {
       setErrorMessage("Product stock value must be a number!");
+    } else if (stock < 1) {
+      setErrorMessage("Please provide a valid stock quantity");
     } else if (weight.length === 0) {
       setErrorMessage("Product weight can't be empty!");
     } else if (!Number(weight)) {
       setErrorMessage("Product weight value must be a number!");
+    } else if (weight < 1) {
+      setErrorMessage("Please provide a valid weight!");
     } else if (dimention.length === 0) {
       setErrorMessage("Product dimention can't be empty!");
     } else if (!Number(dimention)) {
       setErrorMessage("Product dimention value must be a number!");
+    } else if (dimention < 1) {
+      setErrorMessage("Please provide a valid dimention!");
     } else if (selling_price.length === 0) {
       setErrorMessage("Product selling price can't be empty!");
     } else if (!Number(selling_price)) {
       setErrorMessage("Product selling price must be a number!");
+    } else if (selling_price < 1) {
+      setErrorMessage("Please provide a valid amount!");
     } else if (product_image.length === 0) {
       setErrorMessage("Product image can't be empty!");
     } else {
@@ -248,7 +256,7 @@ const AddProduct = () => {
                         <td>
                           <input
                             type="text"
-                            class="form-select"
+                            class="form-control"
                             name="product_dimention"
                             onChange={(e) => setDimention(e.target.value)}
                           ></input>
