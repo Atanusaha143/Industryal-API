@@ -320,3 +320,36 @@ body{
   color: rgb(184, 50, 1);
   cursor: pointer;
 }
+
+.profile
+{
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 20px 200px;
+}
+
+.mainProfileContainer
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.mainProfileLabels
+{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.mainProfileLabels label, .mainProfileData label
+{
+  border: 1px solid black;
+  padding: 5px 10px 5px 10px;
+}
+
+.mainProfileData
+{
+  display: flex;
+  flex-direction: column;
+}
+
