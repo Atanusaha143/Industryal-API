@@ -23,7 +23,7 @@ const NavBar = () => {
                 <Link className="NavLink" to="/sales/statistics">Stats</Link>
             </div>
             <div className="NavLinkContainer">
-                <Link className="NavLink" to="/sales/emails">Emails</Link>
+                <Link className="NavLink" to="/sales/emails/all">Emails</Link>
             </div>
             <div className="NavLinkContainer">
                 <Link className="NavLink" to='/sales/profile/user'>User</Link>

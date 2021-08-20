@@ -99,6 +99,6 @@ class SalesOrdersController extends Controller
     public function search(string $name)
     {
         // return gettype($id);
-        return SalesOrders::where('name', 'like', '%'.$name.'%')->get();
+        return SalesOrders::where('id', 'like', '%'.$name.'%')->get();
     }
 }

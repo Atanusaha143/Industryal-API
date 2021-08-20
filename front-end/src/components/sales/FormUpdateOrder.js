@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 const FormUpdateOrder = () => {
 
     const[errCusID, setCustID] = useState("")
-    const[errDesc, setDesc] = useState("")
-    const[errAmount, setAmount] = useState("")
-    const[errStatus, setStatus] = useState("")
-    const[errType, setType] = useState("")
     const[errDelivered, setDeliv] = useState("")
     const[postMsg, setPostMsg] = useState("")
+    const[errDesc, setDesc] = useState("");
+    const[errTotal, setTotal] = useState("");
+    const[errStatus, setStatus] = useState("");
+    const[errType, setType] = useState("");
     const[order, setOrder] = useState({
         customer_id:'',
         total_amount:'',
@@ -41,18 +41,51 @@ const FormUpdateOrder = () => {
 
     const handleSubmission = (event) => {
         event.preventDefault()
+        if(order.order_description == "")
+        {
+            setDesc("Required")
+        }
+        else 
+        {
+            setDesc("")
+        }
+        if(order.type == "")
+        {
+            setType("Required")
+        }
+        else 
+        {
+            setType("")
+        }
+        if(order.total_amount == "")
+        {
+            setTotal("Required")
+        }
+        else 
+        {
+            setTotal("")
+        }
+        if(order.status == "")
+        {
+            setStatus("Required")
+        }
+        else 
+        {
+            setStatus("")
+        }
+        console.log(order);
         axios.put("http://127.0.0.1:8000/api/sales/order/"+answer, {
-            'customer_id': order.customer_id,
-            'total_amount':order.total_amount,
-            'status':order.status,
-            'delivered_on':order.delivered_on,
-            'type':order.type,
-            'order_description':order.order_description
-        }).then((response)=>{
-            setPostMsg("Updated Successfully")
-        }).catch(response=>{
-            setPostMsg("Failed to update")
-        })
+            'customer_id':order.customer_id,
+                'total_amount':order.total_amount,
+                'status':order.status,
+                'delivered_on': order.delivered_on,
+                'type': order.type,
+                'order_description': order.order_description
+            }).then((response)=>{
+                setPostMsg("Updated Successfully")
+            }).catch(response=>{
+                setPostMsg("Failed to update")
+            })
     }
 
     return (
@@ -72,7 +105,7 @@ const FormUpdateOrder = () => {
                 <div className="Label-Input">
                     <label>Total Amount:</label>
                     <input className="inputBox" type="text" name="total_amount" value={order.total_amount} onChange={handleInputChange}/>
-                    <div className="errMsg">{errAmount}</div>
+                    <div className="errMsg">{errTotal}</div>
                 </div>
                 <div className="Label-Input">
                     <label>Status:</label>

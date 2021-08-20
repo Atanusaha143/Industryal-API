@@ -70,7 +70,7 @@ const TableOrders = () => {
         <div>
             <div className="searchBar">
                 <form onSubmit={handleSearchSubmit}>
-                    <input type="text" className="searchBarInput" placeholder="Enter Name" onChange={onSearchInput}/>
+                    <input type="text" className="searchBarInput" placeholder="Enter ID" onChange={onSearchInput}/>
                     <button type="submit" className="searchBtn">
                     </button>
                 </form>
