@@ -6,6 +6,7 @@ import SubMenuCustomer from './components/sales/SubMenuCustomer';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import SalesChart from './components/sales/SalesChart';
 import Footer from './components/sales/Footer';
+import Home from "./components/product-manager/home/Home";
 import TableOrders from './components/sales/TableOrders';
 import Login from "./components/common/Signin";
 import SubMenuOrder from './components/sales/SubMenuOrder';
@@ -131,7 +132,7 @@ function App() {
             <FormChangePassword/>
             <Footer/>
           </Route>
-          
+
           <Route exact path="/" component={Login}></Route>
           {/* Product */}
           <Route exact path="/product">
