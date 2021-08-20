@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SalesCustomersController;
 use App\Http\Controllers\SalesOrdersController;
+use App\Http\Controllers\SalesProductController;
 use App\Http\Controllers\SalesUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,5 @@ Route::get('/sales/user/propic/{id}', [SalesUserController::class, 'getImage']);
 Route::put('/sales/user/{id}', [SalesUserController::class, 'update']);
 Route::post('/sales/user/', [SalesUserController::class, 'getPassword']);
 Route::put('/sales/password', [SalesUserController::class, 'setPassword']);
+
+Route::get('/sales/products/all', [SalesProductController::class, 'index']);
