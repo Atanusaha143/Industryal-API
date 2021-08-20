@@ -26,6 +26,9 @@ const NavBar = () => {
                 <Link className="NavLink" to="/sales/emails/all">Emails</Link>
             </div>
             <div className="NavLinkContainer">
+                <Link className="NavLink" to="/sales/leaverequest">Leave Request</Link>
+            </div>
+            <div className="NavLinkContainer">
                 <Link className="NavLink" to='/sales/profile/user'>User</Link>
             </div>
         </div>

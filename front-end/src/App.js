@@ -100,6 +100,12 @@ function App() {
             <TableEmails/>
             <Footer/>
           </Route>
+          <Route path="/sales/leaverequest/">
+            <NavBar/>
+            <SubMenuHeading heading="Leave Request"/>
+            
+            <Footer/>
+          </Route>
           <Route path="/sales/profile/changepassword">
             <NavBar/>
             <SubMenuHeading heading="Change Password"/>
