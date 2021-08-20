@@ -48,7 +48,6 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-        <Route exact path="/" component={Login}></Route>
           <Route exact path="/sales/">
             <SalesHome/>
           </Route>
@@ -131,6 +130,87 @@ function App() {
             {/* <FormUpdateUser/> */}
             <FormChangePassword/>
             <Footer/>
+          </Route>
+          
+          <Route exact path="/" component={Login}></Route>
+          {/* Product */}
+          <Route exact path="/product">
+            <Home title="dashboard" nav="common" />
+          </Route>
+          <Route exact path="/product/create">
+            <Home title="add-product" nav="common" />
+          </Route>
+          <Route exact path="/product/list">
+            <Home title="product-list" nav="common" />
+          </Route>
+          <Route exact path="/product/edit/:id">
+            <Home title="product-edit" nav="common" />
+          </Route>
+          <Route exact path="/product/list/faulty">
+            <Home title="faulty-product-list" nav="common" />
+          </Route>
+          <Route exact path="/product/stocks">
+            <Home title="product-stocks" nav="common" />
+          </Route>
+          <Route exact path="/product/transfer">
+            <Home title="product-transfer" nav="common" />
+          </Route>
+          <Route exact path="/product/statistics">
+            <Home title="product-chart" nav="common" />
+          </Route>
+          <Route exact path="/product/compare">
+            <Home title="product-compare" nav="common" />
+          </Route>
+
+          {/* Warehouse */}
+          <Route exact path="/warehouse/create">
+            <Home title="add-warehouse" nav="common" />
+          </Route>
+          <Route exact path="/warehouse/list">
+            <Home title="warehouse-list" nav="common" />
+          </Route>
+          <Route exact path="/warehouse/edit/:id">
+            <Home title="warehouse-edit" nav="common" />
+          </Route>
+          <Route exact path="/warehouse/statistics">
+            <Home title="warehouse-chart" nav="common" />
+          </Route>
+
+          {/* Other */}
+          <Route exact path="/product/user/leave">
+            <Home title="user-leave" nav="common" />
+          </Route>
+          <Route exact path="/product/user/leave/myrequest">
+            <Home title="user-myLeave" nav="common" />
+          </Route>
+          <Route exact path="/product/user/activities">
+            <Home title="user-activities" nav="common" />
+          </Route>
+          <Route exact path="/product/user/administration">
+            <Home title="administration" nav="common" />
+          </Route>
+          <Route exact path="/product/user/administration/myissue">
+            <Home title="administration-myIssues" nav="common" />
+          </Route>
+          <Route exact path="/product/map">
+            <Home title="google-map" nav="common" />
+          </Route>
+
+          {/* User */}
+          <Route exact path="/product/user/profile">
+            <Home title="profile" nav="profile" />
+          </Route>
+          <Route exact path="/product/user/edit">
+            <Home title="profile-edit" nav="profile" />
+          </Route>
+          <Route exact path="/product/user/edit/profilepicture">
+            <Home title="profile-picture-edit" nav="profile" />
+          </Route>
+          <Route exact path="/product/user/edit/changePassword">
+            <Home title="profile-change-password" nav="profile" />
+          </Route>
+          <Route exact path="/product/user/edit/changePassword/verify">
+            <Home title="profile-change-password-verify" nav="profile" />
           </Route>
           {/*FINANCE*/}
           <Route exact path="/signout" component={Signout} />
