@@ -391,3 +391,47 @@ body{
   flex-direction: column;
 }
 
+.PromptContainer
+{
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  width: 50%;
+  /* background-color: yellow; */
+}
+
+.PromptText
+{
+  font-size: 20px;
+  text-align: center;
+  padding: 20px 10px 20px 10px;
+  font-weight: bold;
+}
+
+.PromptSubContainer
+{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.YesNo
+{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 10px;
+}
+
+.PromptRight
+{
+  /* background-color: yellowgreen; */
+  padding: 0px 100px;
+}
+
+.PromptLeft
+{
+  /* background-color: violet; */
+  display: flex;
+  flex-direction: column;
+}

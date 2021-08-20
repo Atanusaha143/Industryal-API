@@ -123,7 +123,7 @@ const FormAddCustomer = () => {
                     <div className="errMsg">{errName}</div>
                 </div>
                 <div className="Label-Input">
-                    <label>:</label>
+                    <label>Email:</label>
                     <input className="inputBox" type="text"
                             name="email"
                             placeholder="Enter the customer's email"
