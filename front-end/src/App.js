@@ -19,6 +19,7 @@ import FormChangePassword from './components/sales/FormChangePassword';
 import StackedAreaChart from './components/sales/StackedAreaChart';
 import PromptCreateOrder from './components/sales/PromptCreateOrder';
 import TableProduct from './components/sales/TableProduct';
+import FormUpdateOrder from './components/sales/FormUpdateOrder';
 // import './styles/styles.css'
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
           </Route>
           <Route path="/sales/order/update/:id">
             <NavBar/>
-            <FormUpdateCustomer/>
+            <FormUpdateOrder/>
             <Footer/>
           </Route>
           <Route path="/sales/order/add">
@@ -76,6 +77,7 @@ function App() {
           </Route>
           <Route path="/sales/statistics">
             <NavBar/>
+            
             <StackedAreaChart/>
             <Footer/>
           </Route>

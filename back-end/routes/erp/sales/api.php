@@ -31,8 +31,8 @@ Route::get('/sales/customers/search/{name}', [SalesCustomersController::class, '
 
 Route::get('/sales/orders', [SalesOrdersController::class, 'index']);
 Route::post('/sales/orders', [SalesOrdersController::class, 'store']);
-Route::get('/sales/orders/{id}', [SalesOrdersController::class, 'show']);
-Route::put('/sales/orders/{id}', [SalesOrdersController::class, 'update']);
+Route::get('/sales/order/{id}', [SalesOrdersController::class, 'show']);
+Route::put('/sales/order/{id}', [SalesOrdersController::class, 'update']);
 Route::delete('/sales/orders/{id}', [SalesOrdersController::class, 'destroy']);
 Route::get('/sales/orders/search/{name}', [SalesOrdersController::class, 'search']);
 

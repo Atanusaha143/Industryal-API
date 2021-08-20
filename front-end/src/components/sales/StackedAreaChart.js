@@ -50,7 +50,7 @@ const data = [
 
 const StackedAreaChart = () => {
     return (
-      <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width={1000} height={320}>
         <AreaChart
           width={500}
           height={400}
@@ -66,9 +66,7 @@ const StackedAreaChart = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stackId="1" stroke="#8884d8" fill="#8884d8" />
-          <Area type="monotone" dataKey="pv" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-          <Area type="monotone" dataKey="amt" stackId="1" stroke="#ffc658" fill="#ffc658" />
+          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
         </AreaChart>
       </ResponsiveContainer>
     );
