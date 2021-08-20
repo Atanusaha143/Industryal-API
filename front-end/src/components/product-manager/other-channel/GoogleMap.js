@@ -1,5 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
+import { BiMap } from "react-icons/bi";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -17,7 +18,10 @@ export default function GoogleMap() {
     <div className="col-9 border border-dark rounded p-3">
       <div className="row justify-content-center">
         <center>
-          <h3> Map</h3>
+          <h3>
+            {" "}
+            <BiMap></BiMap> Map
+          </h3>
         </center>
         <hr></hr>
         <div style={{ height: "100vh", width: "100%" }}>
