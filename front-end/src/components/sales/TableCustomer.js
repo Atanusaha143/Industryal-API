@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 const TableCustomer = () => {
@@ -21,10 +21,6 @@ const TableCustomer = () => {
     }, [])
 
     let id_ = 0;
-
-    const generateUpdateForm = (id) => {
-        console.log(id);
-    }
 
     const onSearchInput = (event) => {
         event.preventDefault();

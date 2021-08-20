@@ -18,6 +18,7 @@ import SubMenuHeading from './components/sales/SubMenuHeading';
 import FormChangePassword from './components/sales/FormChangePassword';
 import StackedAreaChart from './components/sales/StackedAreaChart';
 import PromptCreateOrder from './components/sales/PromptCreateOrder';
+import TableProduct from './components/sales/TableProduct';
 // import './styles/styles.css'
 
 function App() {
@@ -46,6 +47,13 @@ function App() {
             <SubMenuOrder/>
             {/* <FormAddOrder/> */}
             <PromptCreateOrder/>
+            <Footer/>
+          </Route>
+          <Route path="/sales/order/place">
+            <NavBar/>
+            <SubMenuOrder/>
+            {/* <FormAddOrder/> */}
+            <TableProduct/>
             <Footer/>
           </Route>
           <Route path="/sales/customers">

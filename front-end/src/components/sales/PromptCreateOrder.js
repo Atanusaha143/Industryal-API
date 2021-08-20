@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
 
 const PromptCreateOrder = () => {
 
@@ -9,6 +10,18 @@ const PromptCreateOrder = () => {
     const handleSubmission = (event) =>{
         event.preventDefault()
         console.log(event.target[0].value)
+        axios.get("http://127.0.0.1:8000/api/sales/orders/"+event.target[0].value)
+            .then(result=>{
+                if(result.data != "")
+                {
+                    window.location.href="http://localhost:3000/sales/order/place";
+                }
+                else
+                {
+                    console.log(result)
+                    setErr("No customer found")
+                }
+            })
     }
 
     return (
@@ -17,10 +30,10 @@ const PromptCreateOrder = () => {
             <div className="PromptSubContainer">
                 <div className="PromptLeft">
                     <div className="YesNo">Yes</div>
-                    <div>
+                    <div style={{display:"flex", flexDirection:"column"}}>
                         <form onSubmit={handleSubmission}>
-                            <input name="cusid" type="numeric"/>
-                            <button className="LinkBtn" type="submit">Enter ID</button>
+                            <input name="cusid" type="numeric"/><br/>
+                            <button className="LinkBtn" type="submit">Enter ID</button><br/>
                             <label>{errMsg}</label>
                         </form>
                     </div>
