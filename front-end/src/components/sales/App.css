@@ -1,4 +1,4 @@
-*
+.Sales *
 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   /* font-size: 13px; */
@@ -49,9 +49,9 @@
   color: var(--blue-3);
 }
 
-body{
+/* .Sales body{
   background-color: var(--white-blue);
-}
+} */
 
 .NavIcon 
 {
@@ -115,7 +115,7 @@ body{
   padding: 10px 10px 5px 0px;
 }
 
-.Form input[type="text"], input[type="password"]
+.Form input[type="text"],.Form input[type="password"]
 {
   padding: 5px 5px 5px 10px;
   margin: 5px auto;
@@ -143,6 +143,7 @@ body{
   width: 150px;
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
+  background-color: rgb(198, 198, 213);
   border: none;
   transition: width 500ms;
 }

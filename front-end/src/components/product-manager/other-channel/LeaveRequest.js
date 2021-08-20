@@ -26,6 +26,11 @@ const LeaveRequest = () => {
       setErrorMessage("Plase provide leave description!");
     } else if (start_time > end_time) {
       setErrorMessage("Start time can't be greater than end time!");
+    } else if (
+      start_time < new Date().toISOString().slice(0, 10) ||
+      end_time < new Date().toISOString().slice(0, 10)
+    ) {
+      setErrorMessage("Please select a valid date format!");
     } else {
       const formData = new FormData();
       formData.append("type", type);
@@ -36,7 +41,7 @@ const LeaveRequest = () => {
       axios
         .post("http://127.0.0.1:8000/api/product/user/leave/create", formData)
         .then((response) => {
-          console.log(response);
+          history.push("/product/user/leave/myrequest");
         })
         .catch((error) => {
           console.log(error);
@@ -86,7 +91,7 @@ const LeaveRequest = () => {
                         <td clospan="3">Type</td>
                         <td clospan="3">
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="leave_type"
                             onChange={(e) => setType(e.target.value)}
                           >
@@ -100,7 +105,7 @@ const LeaveRequest = () => {
                         <td clospan="3">
                           <input
                             type="date"
-                            class="form-control"
+                            class="form-select"
                             name="leave_start_date"
                             onChange={(e) => setStartTime(e.target.value)}
                           ></input>
@@ -111,7 +116,7 @@ const LeaveRequest = () => {
                         <td clospan="3">
                           <input
                             type="date"
-                            class="form-control"
+                            class="form-select"
                             name="leave_end_date"
                             onChange={(e) => setEndTime(e.target.value)}
                           ></input>

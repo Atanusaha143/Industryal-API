@@ -1,10 +1,26 @@
-import { Navbar } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
-import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import "sweetalert2/dist/sweetalert2.css";
 
 const SideNavbar = () => {
+  const MySwal = withReactContent(Swal);
+  const [date, setDate] = useState(new Date());
+  const onChange = (date) => {
+    setDate(date);
+  };
+
+  const showCalendar = () => {
+    MySwal.fire({
+      title: (
+        <Calendar onChange={onChange} value={date} className="w-100"></Calendar>
+      ),
+      confirmButtonText: "Hide",
+    });
+  };
   return (
     <>
       <div className="col-12 col-lg-2 border border-dark bg-light rounded p-3">
@@ -107,6 +123,10 @@ const SideNavbar = () => {
           <Link to="/product/map" className="btn btn-outline-dark btn-sm mb-2">
             Map
           </Link>
+          <br></br>
+          <button onClick={() => showCalendar()} className="btn btn-primary">
+            Calendar
+          </button>
         </div>
       </div>
     </>

@@ -45,6 +45,8 @@ const AddWarehouse = () => {
       setErrorMessage("Warehouse quantity can't be empty!");
     } else if (!Number(quantity)) {
       setErrorMessage("Warehouse quantity must be a number!");
+    } else if (quantity < 1) {
+      setErrorMessage("Please provide a valid quantity!");
     } else if (status.length === 0) {
       setErrorMessage("Warehouse status can't be empty!");
     } else {
@@ -172,7 +174,7 @@ const AddWarehouse = () => {
                         <td clospan="3">Country</td>
                         <td clospan="3">
                           <select
-                            class="form-control"
+                            class="form-select"
                             id="warehouse"
                             name="warehouse_country"
                             onChange={(e) => setCountry(e.target.value)}
@@ -205,7 +207,7 @@ const AddWarehouse = () => {
                         <td>Status</td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             id="warehouse"
                             name="warehouse_status"
                             onChange={(e) => setStatus(e.target.value)}

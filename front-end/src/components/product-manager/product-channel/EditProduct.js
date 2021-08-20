@@ -66,18 +66,26 @@ const EditProduct = () => {
       setErrorMessage("Product stock can't be empty!");
     } else if (!Number(stock)) {
       setErrorMessage("Product stock value must be a number!");
+    } else if (stock < 1) {
+      setErrorMessage("Please provide a valid stock quantity");
     } else if (weight.length === 0) {
       setErrorMessage("Product weight can't be empty!");
     } else if (!Number(weight)) {
       setErrorMessage("Product weight value must be a number!");
+    } else if (weight < 1) {
+      setErrorMessage("Please provide a valid weight!");
     } else if (dimention.length === 0) {
       setErrorMessage("Product dimention can't be empty!");
     } else if (!Number(dimention)) {
       setErrorMessage("Product dimention value must be a number!");
+    } else if (dimention < 1) {
+      setErrorMessage("Please provide a valid dimention!");
     } else if (selling_price.length === 0) {
       setErrorMessage("Product selling price can't be empty!");
     } else if (!Number(selling_price)) {
       setErrorMessage("Product selling price must be a number!");
+    } else if (selling_price < 1) {
+      setErrorMessage("Please provide a valid amount!");
     } else if (product_condition.length === 0) {
       setErrorMessage("Product condition can't be empty!");
     } else {
@@ -163,7 +171,7 @@ const EditProduct = () => {
                         <td>Status (Sell)</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="product_sell_status"
                             value={status_sell}
                             onChange={(e) => setSellStatus(e.target.value)}
@@ -177,7 +185,7 @@ const EditProduct = () => {
                         <td>Status (Purchase)</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="product_purchase_status"
                             value={status_purchase}
                             onChange={(e) => setPurchaseStatus(e.target.value)}
@@ -206,7 +214,7 @@ const EditProduct = () => {
                         <td>Warehouse</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="warehouse_name"
                             value={warehouse_name}
                             onChange={(e) => setWarehouse(e.target.value)}
@@ -233,7 +241,7 @@ const EditProduct = () => {
                         <td>Nature of product</td>
                         <td colspan="2">
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_nature"
                             value={nature}
                             onChange={(e) => setNature(e.target.value)}
@@ -258,7 +266,7 @@ const EditProduct = () => {
                         </td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_weight_unit"
                             value={weight_unit}
                             onChange={(e) => setWeightUnit(e.target.value)}
@@ -285,7 +293,7 @@ const EditProduct = () => {
                         </td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_dimention_unit"
                             value={dimention_unit}
                             onChange={(e) => setDimentionUnit(e.target.value)}
@@ -312,7 +320,7 @@ const EditProduct = () => {
                         </td>
                         <td>
                           <select
-                            class="form-control"
+                            class="form-select"
                             name="product_selling_tax"
                             value={tax}
                             onChange={(e) => setTax(e.target.value)}
@@ -326,7 +334,7 @@ const EditProduct = () => {
                         <td>Product Condition</td>
                         <td colSpan="2">
                           <select
-                            className="form-control"
+                            className="form-select"
                             name="product_condition"
                             value={product_condition}
                             onChange={(e) => setCondition(e.target.value)}

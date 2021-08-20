@@ -4,9 +4,17 @@ import { Nav } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
+import { useState } from "react";
 
 const Header = () => {
   const history = useHistory();
+  let cTime = new Date().toLocaleTimeString();
+  const [currTime, setCurrTime] = useState(cTime);
+  const updateTime = () => {
+    cTime = new Date().toLocaleTimeString();
+    setCurrTime(cTime);
+  };
+  setInterval(updateTime, 1000);
   function logout() {
     localStorage.clear();
     history.push("/");
@@ -44,6 +52,10 @@ const Header = () => {
                   Logout <FiLogOut></FiLogOut>{" "}
                 </Nav.Link>
               </Nav>
+              &nbsp; &nbsp;
+              <b className="text-light mt-2 border border-info rounded bg-secondary p-1">
+                {currTime}
+              </b>
             </Navbar.Collapse>
           </Container>
         </Navbar>

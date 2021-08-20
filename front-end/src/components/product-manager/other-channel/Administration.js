@@ -30,6 +30,7 @@ const Administration = () => {
         )
         .then((response) => {
           setMessage("Issue has been sent!");
+          setErrorMessage("");
           console.log(response);
         })
         .catch((error) => {
