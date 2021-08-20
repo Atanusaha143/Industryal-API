@@ -101,6 +101,19 @@ class SalesUserController extends Controller
         }
     }
 
+    public function setPassword(Request $request)
+    {
+        $user = SalesUser::find($request->id);
+        $request->validate([
+            'id'=>'required',
+            'pass'=>'required',
+        ]);
+        $user->update([
+            $user->pass = $request->pass
+        ]);
+        return true;
+    }
+
     public function getImage($id)
     {
         // return "ok";
