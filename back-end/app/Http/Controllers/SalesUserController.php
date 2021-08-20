@@ -81,9 +81,24 @@ class SalesUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function getPassword(Request $request)
     {
-        //
+        $user = SalesUser::find($request->id);
+        if($user['pass'])
+        {
+            if($user['pass'] == $request->pass)
+            {
+                return 'matched';
+            }
+            else
+            {
+                return 'unmatched';
+            }
+        }
+        else
+        {
+            return 'false';
+        }
     }
 
     public function getImage($id)

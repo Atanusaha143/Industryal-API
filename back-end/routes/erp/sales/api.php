@@ -38,3 +38,4 @@ Route::get('/sales/orders/search/{name}', [SalesOrdersController::class, 'search
 Route::get('/sales/user/{id}', [SalesUserController::class, 'show']);
 Route::get('/sales/user/propic/{id}', [SalesUserController::class, 'getImage']);
 Route::put('/sales/user/{id}', [SalesUserController::class, 'update']);
+Route::post('/sales/user/', [SalesUserController::class, 'getPassword']);
