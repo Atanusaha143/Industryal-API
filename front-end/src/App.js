@@ -15,6 +15,8 @@ import FormAddOrder from './components/sales/FormAddOrder';
 import Profile from './components/sales/Profile';
 import FormUpdateUser from './components/sales/FormUpdateUser';
 import SubMenuHeading from './components/sales/SubMenuHeading';
+import FormChangePassword from './components/sales/FormChangePassword';
+import StackedAreaChart from './components/sales/StackedAreaChart';
 // import './styles/styles.css'
 
 function App() {
@@ -24,7 +26,6 @@ function App() {
         <Switch>
           <Route exact path="/sales/">
             <NavBar/>
-            home
             <SalesChart/>
             <Footer/>
           </Route>
@@ -65,7 +66,7 @@ function App() {
           </Route>
           <Route path="/sales/statistics">
             <NavBar/>
-            statistics
+            <StackedAreaChart/>
             <Footer/>
           </Route>
           <Route path="/sales/emails">
@@ -88,7 +89,8 @@ function App() {
           <Route path="/sales/profile/changepassword">
             <NavBar/>
             <SubMenuHeading heading="Change Password"/>
-            <FormUpdateUser/>
+            {/* <FormUpdateUser/> */}
+            <FormChangePassword/>
             <Footer/>
           </Route>
         </Switch>
