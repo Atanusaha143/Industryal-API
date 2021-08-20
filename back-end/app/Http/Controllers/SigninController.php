@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 class SigninController extends Controller
 {
+    //Dummy Verifcation
     public function verify(Request $req){
-
         $user = User::where('email',$req->email)->where('pass',$req->pass)->first();
         if($user)
         {
