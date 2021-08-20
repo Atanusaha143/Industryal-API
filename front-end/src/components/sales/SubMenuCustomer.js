@@ -8,7 +8,7 @@ const SideMenuCustomer = () => {
         <div id="SubMenu">
             <div className="SubLinkContainer">
                 <Link className="SubLink" to="/sales/customers/">
-                    All Customer
+                    All Customers
                 </Link>
             </div>
             <div className="SubLinkContainer">
@@ -16,11 +16,6 @@ const SideMenuCustomer = () => {
                     Add Customer
                 </Link>
             </div>
-            {/* <div className="Option">
-                <Link>
-                    Banned Customers
-                </Link>
-            </div> */}
         </div>
 
     )
