@@ -45,6 +45,8 @@ export default function Signin() {
             history.push("/financedashboard");
           } else if (localStorage.getItem("type") === "product") {
             history.push("/product");
+          } else if (localStorage.getItem("type")== "sales"){
+            history.push("/sales");
           }
           //DO YOURS
         }
