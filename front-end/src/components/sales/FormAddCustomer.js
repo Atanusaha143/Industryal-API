@@ -113,7 +113,7 @@ const FormAddCustomer = () => {
         <div>
             <form className="Form" onSubmit={handleSubmission}>
                 <div className="Label-Input">
-                    <label>Name:</label>
+                    <label>Customer ID:</label>
                     <input className="inputBox" type="text" 
                             name="name"
                             placeholder="Enter the customer's name"
@@ -123,7 +123,7 @@ const FormAddCustomer = () => {
                     <div className="errMsg">{errName}</div>
                 </div>
                 <div className="Label-Input">
-                    <label>Email:</label>
+                    <label>:</label>
                     <input className="inputBox" type="text"
                             name="email"
                             placeholder="Enter the customer's email"

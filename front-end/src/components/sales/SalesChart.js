@@ -1,64 +1,91 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, AreaChart, Tooltip, Area } from 'recharts';
 
 const data = [
     {
       name: 'Jan',
-      uv: 1000,
+      uv: 62875,
     },
     {
       name: 'Feb',
-      uv: 2000,
+      uv: 54087,
     },
     {
       name: 'Mar',
-      uv: 3000,
+      uv: 49118,
     },
     {
       name: 'Apr',
-      uv: 4000,
+      uv: 66842,
     },
     {
       name: 'May',
-      uv: 5000,
+      uv: 60895,
     },
     {
       name: 'Jun',
-      uv: 6000,
+      uv: 7297,
     },
     {
       name: 'Jul',
-      uv: 7000,
+      uv: 63004,
     },
     {
       name: 'Aug',
-      uv: 8000,
+      uv: 60882,
     },
     {
       name: 'Sep',
-      uv: 9000,
+      uv: 45358,
     },
     {
       name: 'Oct',
-      uv: 10000,
+      uv: 17105,
     },
     {
       name: 'Nov',
-      uv: 11000,
+      uv: 80106,
     },
     {
       name: 'Dec',
-      uv: 12000,
+      uv: 81537,
     },
   ];
 
+  
+
 const SalesChart = () => {
     return (
-        <LineChart width={600} height={300} data={data}>
-        <Line type="monotone" dataKey="uv"  />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        </LineChart>
+        <div style={{display:"flex", flexDirection:"column"}}>
+          <div>
+          <LineChart label="abc" width={1000} height={200} data={data}>
+            <Line type="monotone" dataKey="uv"  />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="name" />
+            <YAxis />
+          </LineChart>
+          </div>
+          <div style={{paddingLeft:"10px"}}>
+          <ResponsiveContainer width={1000} height={320}>
+            <AreaChart
+              width={500}
+              height={400}
+              data={data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+            </AreaChart>
+          </ResponsiveContainer>
+          </div>
+        </div>
     )
 }
 
