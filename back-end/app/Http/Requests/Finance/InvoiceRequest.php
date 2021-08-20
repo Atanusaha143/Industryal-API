@@ -28,7 +28,7 @@ class InvoiceRequest extends FormRequest
         return [
             'title' => 'required',
             'name' => 'required',
-            'order' => ['required', new IsBankConnected()],
+            'order' => ['required'],
         ];
     }
     public function messages()

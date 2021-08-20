@@ -26,7 +26,7 @@ class BudgetRequest extends FormRequest
     {
         return [
             'type' => 'required',
-            'amount' => ['required',new IsBankConnected()],
+            'amount' => ['required'],
         ];
     }
     public function messages()

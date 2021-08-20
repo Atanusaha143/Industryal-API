@@ -45,7 +45,7 @@ Route::get('financeleavedelete/{id}', ['as'=>'financeleave.delete', 'uses'=>'Fin
 //PAYMENT
 Route::get('financepaymenthistory/{id}', ['as'=>'financepayment.history', 'uses'=>'FinancePaymentController@history']);
 Route::get('financeunadjustedcinvoice/{id}', ['as'=>'financeunadjusted.customer', 'uses'=>'FinancePaymentController@customer']);
-Route::get('financeunadjustedsinvoice/{id}', ['as'=>'financeunadjusted.supplier', 'uses'=>'FinancePaymentController@history']);
+Route::get('financeunadjustedsinvoice/{id}', ['as'=>'financeunadjusted.supplier', 'uses'=>'FinancePaymentController@supplier']);
 Route::get('financeadjustcustomer/{id}/{user_id}', ['as'=>'financeunadjusted.customer', 'uses'=>'FinancePaymentController@customer_adjust']); //invoice id
 Route::get('financeadjustsupplier/{id}/{user_id}', ['as'=>'financeunadjusted.supplier', 'uses'=>'FinancePaymentController@supplier_adjust']); //invoice id
 
