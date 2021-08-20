@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaWalking } from "react-icons/fa";
-import { DatasetController } from "chart.js";
 
 const LeaveRequest = () => {
   const [type, setType] = useState("Sick leave");
