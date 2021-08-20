@@ -32,8 +32,6 @@ class SalesOrdersController extends Controller
             'total_amount'=>'required',
             'status'=>'required',
             'type'=>'required',
-            // 'created_at'=>'required',
-            // 'updated_at'=>'required'
         ]);
         return SalesOrders::create($request->all());
 
@@ -62,6 +60,13 @@ class SalesOrdersController extends Controller
     public function update(Request $request, string $id)
     {
         $order = SalesOrders::find($id);
+        $request->validate([
+            'customer_id'=>'required',
+            'order_description' => 'required',
+            'total_amount'=>'required',
+            'status'=>'required',
+            'type'=>'required',
+        ]);
         $order->update([
             $order->customer_id = $request->customer_id,
             $order->order_description = $request->order_description,

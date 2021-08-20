@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SalesCustomersController;
+use App\Http\Controllers\SalesEmailController;
 use App\Http\Controllers\SalesOrdersController;
 use App\Http\Controllers\SalesProductController;
 use App\Http\Controllers\SalesUserController;
@@ -43,3 +44,7 @@ Route::post('/sales/user/', [SalesUserController::class, 'getPassword']);
 Route::put('/sales/password', [SalesUserController::class, 'setPassword']);
 
 Route::get('/sales/products/all', [SalesProductController::class, 'index']);
+
+Route::get('/sales/email/all', [SalesEmailController::class, 'index']);
+Route::get('/sales/email/from', [SalesEmailController::class, 'from']);
+Route::get('/sales/email/to', [SalesEmailController::class, 'to']);
