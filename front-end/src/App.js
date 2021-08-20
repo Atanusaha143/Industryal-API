@@ -20,6 +20,7 @@ import StackedAreaChart from './components/sales/StackedAreaChart';
 import PromptCreateOrder from './components/sales/PromptCreateOrder';
 import TableProduct from './components/sales/TableProduct';
 import FormUpdateOrder from './components/sales/FormUpdateOrder';
+import TableEmails from './components/sales/TableEmails';
 // import './styles/styles.css'
 
 function App() {
@@ -81,10 +82,6 @@ function App() {
             <StackedAreaChart/>
             <Footer/>
           </Route>
-          <Route path="/sales/emails">
-            <NavBar/>
-            <Footer/>
-          </Route>
           <Route path="/sales/profile/user">
             <NavBar/>
             <SubMenuHeading heading="View Profile"/>
@@ -95,6 +92,12 @@ function App() {
             <NavBar/>
             <SubMenuHeading heading="Edit Profile"/>
             <FormUpdateUser/>
+            <Footer/>
+          </Route>
+          <Route path="/sales/emails/all/">
+            <NavBar/>
+            <SubMenuHeading heading="Emails"/>
+            <TableEmails/>
             <Footer/>
           </Route>
           <Route path="/sales/profile/changepassword">

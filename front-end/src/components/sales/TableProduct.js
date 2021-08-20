@@ -76,12 +76,12 @@ const TableProduct = () => {
             <div style={{display:"flex", flexDirection:"column"}}>
             <div>Customer Name: {customer.name}</div>
             <div>Customer ID: {customer.id}</div>
-            <div>
-                <input onChange={descInput} value={description} type="text" name="description"/>
-                <button className="LinkBtn" onClick={handleSubmission}>Checkout</button>
-                <label>{message}</label>
+                <div>
+                    <input onChange={descInput} value={description} type="text" name="description"/>
+                    <button className="LinkBtn" onClick={handleSubmission}>Checkout</button>
+                    <label>{message}</label>
+                </div>
             </div>
-        </div>
             <table className="CusTable">
                 <thead>
                     <tr>

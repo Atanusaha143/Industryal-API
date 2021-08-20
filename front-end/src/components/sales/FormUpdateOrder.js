@@ -45,6 +45,7 @@ const FormUpdateOrder = () => {
             'customer_id': order.customer_id,
             'total_amount':order.total_amount,
             'status':order.status,
+            'delivered_on':order.delivered_on,
             'type':order.type,
             'order_description':order.order_description
         }).then((response)=>{
@@ -60,7 +61,7 @@ const FormUpdateOrder = () => {
             <form className="Form" onSubmit={handleSubmission}>
                 <div className="Label-Input">
                     <label>Customer ID:</label>
-                    <input className="inputBox" type="text" name="customer_id" id="name" value={order.customer_id} onChange={handleInputChange} />
+                    <input className="inputBox" type="text" name="customer_id" id="name" value={order.customer_id} onChange={handleInputChange} readOnly />
                     <div className="errMsg">{errCusID}</div>
                 </div>
                 <div className="Label-Input">
@@ -85,7 +86,7 @@ const FormUpdateOrder = () => {
                 </div>
                 <div className="Label-Input">
                     <label>Delivered On:</label>
-                    <input className="inputBox" type="text" name="type" value={order.delivered_on} onChange={handleInputChange}/>
+                    <input className="inputBox" type="date" name="delivered_on" value={order.delivered_on} onChange={handleInputChange}/>
                     <div className="errMsg">{errDelivered}</div>
                 </div>
                 <div className="Form-Button">
