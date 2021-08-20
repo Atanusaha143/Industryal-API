@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Common\ForgotpassEmailRequest;
 use App\Http\Requests\Common\ForgotpassConfirmRequest;
-use App\Models\Finance\User;
+use App\Models\User;
 require_once 'Common/MailSender.php';
 
 class ForgotpassController extends Controller

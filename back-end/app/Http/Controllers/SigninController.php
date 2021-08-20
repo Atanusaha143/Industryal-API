@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use App\Models\User;
-=======
-use App\Models\Product\User;
->>>>>>> main
 
 class SigninController extends Controller
 {
