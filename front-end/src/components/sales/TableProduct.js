@@ -7,9 +7,13 @@ const TableProduct = () => {
     const[items, setItems] = useState([]);
     const[error, setError] = useState();
     const[itemslist, setItemsList] = useState([])
+    const[customer, setCustomer] = useState("")
+    const[total, setTotal] = useState("")
+    const[description, setDesc] = useState("")
+    const[message, setMessage] = useState("")
 
     useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/api/product/list")
+        axios.get("http://127.0.0.1:8000/api/sales/products/all")
             .then(response=>{
                 setItems(response.data)
                 setError("success");
@@ -23,19 +27,61 @@ const TableProduct = () => {
     const onCheck = (event) => {
         // console.log(event.target.value)
         setItemsList([...itemslist, event.target.value])
+        console.log(itemslist.map(i=>Number(i)))
+        console.log(itemslist.map(i=>Number(i)).reduce(function(a,b){
+            return a+b;
+        },0))
+        setTotal(itemslist.map(i=>Number(i)).reduce(function(a,b){
+            return a+b;
+        },0))
     }
 
-    console.log(itemslist)
+    // console.log(itemslist)
+    
+
+    var parts = window.location.href.split('/');
+    var answer = parts[parts.length - 1];
+
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/api/sales/customers/"+answer)
+        .then(response=>{
+            // console.log(customer)
+            setCustomer(response.data)
+        })
+    }, [])
+
+    const handleSubmission = (event) => {
+        axios.post("http://127.0.0.1:8000/api/sales/orders/",{
+            'customer_id':customer.id,
+            'total_amount':total,
+            'status':'Processing',
+            'type':'normal',
+            'order_description':description
+        }).then(response=>{
+            setMessage("Order added")
+            console.log(response)
+        }).catch(response=>{
+            setMessage("Failed");
+            console.log(response)
+        })
+    }
+
+    const descInput = (event) => {
+        setDesc(event.target.value)
+        console.log(description)
+    }
 
     return (
         <div>
-            {/* <div className="searchBar">
-                <form onSubmit={handleSearchSubmit}>
-                    <input type="text" className="searchBarInput" placeholder="Enter Name" onChange={onSearchInput}/>
-                    <button type="submit" className="searchBtn">
-                    </button>
-                </form>
-            </div> */}
+            <div style={{display:"flex", flexDirection:"column"}}>
+            <div>Customer Name: {customer.name}</div>
+            <div>Customer ID: {customer.id}</div>
+            <div>
+                <input onChange={descInput} value={description} type="text" name="description"/>
+                <button className="LinkBtn" onClick={handleSubmission}>Checkout</button>
+                <label>{message}</label>
+            </div>
+        </div>
             <table className="CusTable">
                 <thead>
                     <tr>
@@ -68,7 +114,7 @@ const TableProduct = () => {
                                     <td>{prod.stock}</td>
                                     <td>
                                         {/* <input name="quantity" value={} style={{width:"40px"}} type="numeric"/> */}
-                                        <input name={prod.id} value={prod.id} onChange={onCheck} type="checkbox"/>
+                                        <input name={prod.id} value={prod.selling_price} onChange={onCheck} type="checkbox"/>
                                     </td>
                                     {/* <td>{prod.delivery_point}</td> */}
                                     {/* <td>{prod.first_purchase}</td>

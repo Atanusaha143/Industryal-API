@@ -10,11 +10,11 @@ const PromptCreateOrder = () => {
     const handleSubmission = (event) =>{
         event.preventDefault()
         console.log(event.target[0].value)
-        axios.get("http://127.0.0.1:8000/api/sales/orders/"+event.target[0].value)
+        axios.get("http://127.0.0.1:8000/api/sales/customers/"+event.target[0].value)
             .then(result=>{
                 if(result.data != "")
                 {
-                    window.location.href="http://localhost:3000/sales/order/place";
+                    window.location.href="http://localhost:3000/sales/order/place/"+result.data.id;
                 }
                 else
                 {

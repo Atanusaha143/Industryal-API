@@ -49,7 +49,7 @@ function App() {
             <PromptCreateOrder/>
             <Footer/>
           </Route>
-          <Route path="/sales/order/place">
+          <Route path="/sales/order/place/:id">
             <NavBar/>
             <SubMenuOrder/>
             {/* <FormAddOrder/> */}
