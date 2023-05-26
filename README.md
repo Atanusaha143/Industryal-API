@@ -1,5 +1,5 @@
 # Industryal-API
-Node_version: 14.17.2 \
+Node_version: 14.17.2
 # Instruction
 To install all packages, run command: 
 ###### npm install
