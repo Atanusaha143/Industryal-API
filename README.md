@@ -1,26 +1,26 @@
 # Industryal-API
 Node_version: 14.17.2
 # Instruction
-To install all packages, run command: 
+To install all packages, run the command: 
 ###### npm install
 # Description
 This project will handle a system that manages and tracks the procedure of turning raw 
 materials into purchasable or sellable products. There will be users who will handle different 
-sectors of the system, namely – HR, Sales and Marketing, Finance and Accounting and Products. 
-There will be one SuperAdmin user who will be able to access all the features provided in the 
+system sectors, namely – HR, Sales and Marketing, Finance and Accounting, and Products. 
+One SuperAdmin user will be able to access all the features provided in the 
 system, including adding new users.
 
 Five types of users:
-1) SuperAdmin
-2) Users
-    a) Product Manager
-    b) Sales and Marketing Manager
-    c) Human Resources Manager
-    d) Finance and Accounting Manager
+* SuperAdmin
+*  Users:
+    1) Product Manager
+    2) Sales and Marketing Manager
+    3) Human Resources Manager
+    4) Finance and Accounting Manager
     
 Common Features for All Users:
   1. Log in to/Log out of the system
-  2. Reset password for account
+  2. Reset the password for an account
   3. Chatting with other employees
   4. Notices
 
@@ -35,7 +35,7 @@ Product Manager Functionality:
   4. Search Product
   5. Product Statistics
   6. Product Stocks
-  7. Create Warehouse
+  7. Create a Warehouse
   8. Warehouse List
   9. Search Warehouse
   10. Transfer Product
@@ -60,14 +60,14 @@ Sales and Marketing Manager Functionality:
   12. Manipulate Orders Database (CRUD)
   13. Send mass emails to customers regarding offers
   14. Apply for Leave which will be handled by HR
-  15. Export sales figures as document and download
+  15. Export sales figures as a document and download
 
 Human Resources Manager Functionality: 
   1. Create users
   2. Search users
   3. Create employee
   4. Create Group
-  5. Add employee to group
+  5. Add an employee to the group
   6. request for leave
   7. Accept or Cancel leave request
   8. Rostering
@@ -78,8 +78,8 @@ Human Resources Manager Functionality:
   13. Payroll
 
 Finance and Accounting Manager Functionality:
-  1. Create Customer Invoice
-  2. Create Supplier Invoice
+  1. Create a Customer Invoice
+  2. Create a Supplier Invoice
   3. Send Invoice Via Email
   4. Generate Customer/Supplier Invoice Stats
   5. Handle Customer Payments
